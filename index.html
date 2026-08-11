@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8"/>
+        <title>Karry Karanja | Personal Finance</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
+        <meta content="Practical, easy-to-understand personal finance education from Karry Karanja." name="description"/>
+        <meta content="Karry Karanja" name="author"/>
+
+        <!-- GLOBAL MANDATORY STYLES -->
+        <link href="https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+        <link href="vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+        <!-- PAGE LEVEL PLUGIN STYLES -->
+        <link href="css/animate.css" rel="stylesheet">
+        <link href="vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css"/>
+
+        <!-- THEME STYLES -->
+        <link href="css/layout.min.css" rel="stylesheet" type="text/css"/>
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="favicon.ico"/>
+
+        <!-- Karry Karanja readability adjustment: keep the original slider design, but reduce hero title size. -->
+        
+    
+<style>
+:root{--blue:#38b6ff;--navy:#071a2d;--navy2:#0b2742;--black:#05090d;--white:#fff;--muted:#64748b;--light:#f4f8fc;--line:#dce7f0;--shadow:0 20px 55px rgba(7,26,45,.12)}
+html{scroll-behavior:smooth}body{font-family:Inter,Arial,sans-serif;color:var(--navy);background:#fff;line-height:1.75}
+h1,h2,h3,h4{font-weight:700;letter-spacing:-.02em}.section-title{font-size:clamp(34px,4vw,54px);line-height:1.1;margin:0 0 18px}.section-kicker{color:var(--blue);font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin-bottom:12px}.section-intro{max-width:760px;color:#64748b;font-size:17px}.section-heading{padding:110px 0 55px}.modern-section{padding:0 0 110px}
+.navbar{background:rgba(7,26,45,.94)!important;backdrop-filter:blur(12px);border:0!important}.navbar-nav>li>a{font-weight:600!important}
+.hero-modern{position:relative;min-height:760px;display:flex;align-items:center;overflow:hidden;background:var(--navy)}.hero-modern:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,9,13,.84),rgba(7,26,45,.48),rgba(7,26,45,.16));z-index:1}.hero-modern img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.hero-content{position:relative;z-index:2;padding:130px 0 100px;color:#fff}.hero-content h1{font-size:clamp(48px,6vw,82px);line-height:1.02;max-width:850px;margin-bottom:26px}.hero-content p{font-size:19px;max-width:720px;color:rgba(255,255,255,.9)}
+.btn-modern{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:4px;font-weight:700;text-decoration:none;transition:.25s}.btn-blue{background:var(--blue);color:#00111e}.btn-blue:hover{transform:translateY(-2px);color:#00111e;box-shadow:0 12px 30px rgba(56,182,255,.3)}.btn-outline{border:1px solid rgba(255,255,255,.6);color:#fff;margin-left:10px}.btn-outline:hover{background:#fff;color:var(--navy)}
+.stat-strip{margin-top:55px;display:flex;flex-wrap:wrap;gap:14px}.stat{padding:16px 20px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(8px);border-radius:6px}.stat strong{display:block;color:var(--blue);font-size:20px}.stat span{font-size:12px;color:#dbe8f3}
+.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:65px;align-items:center}.image-card{position:relative;border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}.image-card img{width:100%;display:block}.image-card .badge{position:absolute;bottom:24px;left:24px;background:var(--navy);color:#fff;padding:18px 20px;border-left:4px solid var(--blue)}
+.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:35px}.principle,.edu-card,.resource-card,.fit-card,.contact-card{background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 10px 35px rgba(7,26,45,.06)}.principle{padding:25px}.principle .num{color:var(--blue);font-weight:800;font-size:13px}.principle h3{font-size:20px;margin:9px 0}
+.wealth-section{background:var(--navy);color:#fff}.wealth-section .section-intro{color:#b9cbd9}.wealth-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}.edu-card{padding:28px;min-height:285px;position:relative;transition:.25s}.edu-card:hover,.resource-card:hover,.fit-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}.edu-card .stage{font-size:12px;color:var(--blue);font-weight:800;letter-spacing:.12em}.edu-card h3{font-size:23px;margin:12px 0}.edu-card p{color:#637588;font-size:14px}.edu-card ul,.resource-card ul{padding-left:18px;color:#657689;font-size:14px}.edu-card:before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--blue);border-radius:10px 10px 0 0}
+.pillar-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}.resource-card{padding:30px}.resource-card h3{margin-top:0;font-size:25px}.resource-card .label{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--blue);font-weight:800}.launch{margin-top:28px;padding:30px;border-radius:10px;background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff}.launch-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}.launch-item{padding:20px;border:1px solid rgba(255,255,255,.13);border-radius:8px}
+.partnership-section{background:var(--light)}.fit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.fit-card{padding:25px}.fit-card h3{font-size:19px}.standards{margin-top:45px;background:var(--navy);color:#fff;border-radius:12px;padding:40px}.standards-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}.standards ul{padding-left:20px}.standards li{margin:8px 0}
+.contact-modern{background:var(--navy);color:#fff}.contact-modern .section-intro{color:#b9cbd9}.contact-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:30px}.contact-card{padding:32px;background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);color:#fff}.contact-card p{color:#b9cbd9}.contact-card a{color:var(--blue)}.footer-modern{background:#030a12;color:#9eb1c0;padding:28px 0}.footer-modern a{color:#d9e8f2}
+@media(max-width:991px){.about-grid,.contact-grid{grid-template-columns:1fr}.wealth-grid{grid-template-columns:repeat(2,1fr)}.fit-grid{grid-template-columns:repeat(2,1fr)}.principles{grid-template-columns:1fr}.launch-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.hero-modern{min-height:680px}.hero-content{padding-top:150px}.hero-content h1{font-size:46px}.btn-outline{margin-left:0;margin-top:10px}.wealth-grid,.pillar-grid,.fit-grid{grid-template-columns:1fr}.section-heading{padding-top:75px}}
+</style>
+
+<style>
+/* ===== Enhanced visual system ===== */
+:root{
+  --blue:#38b6ff;
+  --navy:#071a2d;
+  --ink:#0a1520;
+  --muted:#66788a;
+  --light:#f3f8fb;
+  --line:#dbe7ef;
+  --shadow:0 22px 60px rgba(7,26,45,.12);
+}
+html{scroll-behavior:smooth}
+body{overflow-x:hidden}
+section{position:relative;overflow:hidden}
+.section-heading{position:relative}
+.section-heading:after{
+  content:"";display:block;width:72px;height:3px;margin-top:24px;
+  background:linear-gradient(90deg,var(--blue),transparent);
+  border-radius:10px
+}
+
+/* Hero */
+.hero-modern{isolation:isolate}
+.hero-modern>img{
+  transition:transform 10s cubic-bezier(.2,.65,.25,1),filter .8s ease;
+  animation:heroZoom 12s ease-in-out infinite alternate
+}
+.hero-modern:after{
+  content:"";position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(circle at 78% 25%,rgba(56,182,255,.25),transparent 24%),
+    linear-gradient(90deg,rgba(3,12,21,.82),rgba(7,26,45,.48),rgba(7,26,45,.16));
+}
+.hero-modern .container{position:relative;z-index:2}
+.hero-content{animation:heroContent .9s .15s both}
+.hero-content h1{max-width:900px}
+.hero-content .btn-modern{transition:transform .3s,box-shadow .3s}
+.hero-content .btn-modern:hover{transform:translateY(-3px);box-shadow:0 14px 35px rgba(56,182,255,.28)}
+@keyframes heroZoom{from{transform:scale(1.01)}to{transform:scale(1.07)}}
+@keyframes heroContent{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:none}}
+
+/* Floating decorative shapes */
+.modern-section:before{
+  content:"";position:absolute;width:420px;height:420px;border-radius:50%;
+  right:-230px;top:50px;
+  background:radial-gradient(circle,rgba(56,182,255,.08),transparent 68%);
+  pointer-events:none
+}
+.modern-section:nth-of-type(even):before{left:-230px;right:auto}
+.modern-section>*{position:relative;z-index:1}
+
+/* About visual */
+.image-card{position:relative;overflow:hidden;border-radius:16px;box-shadow:var(--shadow)}
+.image-card img{width:100%;transition:transform .8s ease,filter .5s ease}
+.image-card:hover img{transform:scale(1.045);filter:saturate(1.08)}
+.image-card:after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(135deg,transparent 55%,rgba(56,182,255,.18));
+  pointer-events:none
+}
+.badge{transition:transform .35s ease,box-shadow .35s ease}
+.image-card:hover .badge{transform:translateY(-5px);box-shadow:0 15px 35px rgba(7,26,45,.18)}
+
+/* Image-backed story blocks */
+.visual-story{
+  display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:stretch;
+  margin-top:48px
+}
+.visual-story .story-image{min-height:420px;border-radius:16px;overflow:hidden;position:relative;box-shadow:var(--shadow)}
+.story-image img{width:100%;height:100%;object-fit:cover;transition:transform .9s ease}
+.story-image:hover img{transform:scale(1.06)}
+.story-image .story-caption{
+  position:absolute;left:24px;right:24px;bottom:24px;padding:20px;
+  border-radius:12px;background:rgba(7,26,45,.78);backdrop-filter:blur(10px);color:#fff
+}
+.story-copy{display:grid;gap:18px}
+.story-copy .story-point{
+  padding:24px;border:1px solid var(--line);background:#fff;border-radius:12px;
+  box-shadow:0 10px 30px rgba(7,26,45,.05);
+  transition:transform .3s,box-shadow .3s,border-color .3s
+}
+.story-point:hover{transform:translateX(6px);box-shadow:0 16px 35px rgba(7,26,45,.09);border-color:rgba(56,182,255,.45)}
+.story-point strong{display:block;margin-bottom:7px;font-size:18px}
+
+/* Education cards */
+.wealth-section{
+  background:
+    radial-gradient(circle at 8% 12%,rgba(56,182,255,.15),transparent 25%),
+    radial-gradient(circle at 90% 78%,rgba(56,182,255,.08),transparent 28%),
+    linear-gradient(135deg,#061728,#0b2239 55%,#061728)
+}
+.edu-card{
+  overflow:hidden;transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s,border-color .3s;
+  background:rgba(255,255,255,.98)
+}
+.edu-card:hover{transform:translateY(-12px) scale(1.015);box-shadow:0 28px 55px rgba(0,0,0,.22);border-color:rgba(56,182,255,.6)}
+.edu-card .edu-image{height:135px;margin:-28px -28px 22px;overflow:hidden}
+.edu-card .edu-image img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+.edu-card:hover .edu-image img{transform:scale(1.08)}
+.edu-card:before{height:5px}
+.wealth-connector{
+  display:flex;align-items:center;justify-content:center;gap:10px;margin:35px 0 0;
+  color:rgba(255,255,255,.55);font-size:12px;letter-spacing:.12em;text-transform:uppercase
+}
+.wealth-connector span{width:34px;height:1px;background:rgba(56,182,255,.55)}
+
+/* Resource visuals */
+.resource-card{
+  overflow:hidden;transition:transform .35s,box-shadow .35s;
+  position:relative
+}
+.resource-card:hover{transform:translateY(-8px);box-shadow:var(--shadow)}
+.resource-card .resource-image{height:180px;overflow:hidden;margin:-25px -25px 22px}
+.resource-card .resource-image img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+.resource-card:hover .resource-image img{transform:scale(1.07)}
+.launch{
+  position:relative;overflow:hidden;
+  background:
+    linear-gradient(115deg,rgba(7,26,45,.98),rgba(7,26,45,.84)),
+    url('img/800x400/01.jpg') center/cover;
+}
+.launch:after{
+  content:"";position:absolute;width:350px;height:350px;right:-150px;bottom:-170px;
+  border-radius:50%;border:1px solid rgba(56,182,255,.25);
+  box-shadow:0 0 0 40px rgba(56,182,255,.03),0 0 0 80px rgba(56,182,255,.02)
+}
+.launch-grid>div{transition:transform .3s}
+.launch-grid>div:hover{transform:translateY(-4px)}
+
+/* Partnership cards */
+.fit-card{position:relative;overflow:hidden;transition:transform .35s,box-shadow .35s}
+.fit-card:before{content:"";display:block;height:170px;margin:-25px -25px 22px;background:center/cover no-repeat}
+.fit-card:nth-child(1):before{background-image:url('img/397x300/01.jpg')}
+.fit-card:nth-child(2):before{background-image:url('img/397x300/02.jpg')}
+.fit-card:nth-child(3):before{background-image:url('img/397x300/03.jpg')}
+.fit-card:nth-child(4):before{background-image:url('img/397x300/04.jpg')}
+.fit-card:hover{transform:translateY(-9px);box-shadow:var(--shadow)}
+.standards{
+  position:relative;overflow:hidden;
+  background:
+    linear-gradient(120deg,rgba(4,16,28,.97),rgba(7,26,45,.9)),
+    url('img/1920x1080/02.jpg') center/cover;
+}
+.standards:after{
+  content:"";position:absolute;width:260px;height:260px;border:1px solid rgba(56,182,255,.25);
+  border-radius:50%;right:-90px;top:-100px;box-shadow:0 0 0 35px rgba(56,182,255,.035),0 0 0 70px rgba(56,182,255,.02)
+}
+.standards-grid{position:relative;z-index:2}
+
+/* Contact */
+.contact-modern{
+  background:
+    radial-gradient(circle at 10% 20%,rgba(56,182,255,.18),transparent 26%),
+    linear-gradient(135deg,#061728,#081e31 55%,#030b14)
+}
+.contact-modern:before{
+  content:"";position:absolute;inset:0;opacity:.18;
+  background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);
+  background-size:55px 55px
+}
+.contact-form{
+  background:rgba(255,255,255,.97);border-radius:16px;padding:34px;
+  box-shadow:0 30px 75px rgba(0,0,0,.22);color:var(--ink)
+}
+.form-group-modern{margin-bottom:18px}
+.form-group-modern label{display:block;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;color:#526678}
+.form-control-modern{
+  width:100%;border:1px solid #d7e2ea;border-radius:8px;padding:14px 15px;
+  background:#fafdff;outline:none;transition:border-color .25s,box-shadow .25s,transform .25s
+}
+.form-control-modern:focus{
+  border-color:var(--blue);box-shadow:0 0 0 4px rgba(56,182,255,.12);transform:translateY(-1px)
+}
+textarea.form-control-modern{min-height:145px;resize:vertical}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.form-success{display:none;margin-top:15px;padding:13px 15px;border-radius:8px;background:#e9f9f0;color:#146c3a;font-size:14px}
+.form-success.show{display:block;animation:successIn .45s both}
+@keyframes successIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.contact-side-image{height:100%;min-height:440px;border-radius:16px;overflow:hidden;position:relative;box-shadow:var(--shadow)}
+.contact-side-image img{width:100%;height:100%;object-fit:cover;transition:transform 1s ease}
+.contact-side-image:hover img{transform:scale(1.05)}
+.contact-side-image:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(3,10,18,.85),transparent 55%)}
+.contact-side-caption{position:absolute;z-index:2;left:28px;right:28px;bottom:28px;color:#fff}
+.contact-side-caption h3{color:#fff;font-size:28px;margin-bottom:8px}
+
+/* Scroll reveal */
+.reveal-on-scroll{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1)}
+.reveal-on-scroll.is-visible{opacity:1;transform:none}
+.reveal-left{opacity:0;transform:translateX(-35px);transition:opacity .8s ease,transform .8s ease}
+.reveal-left.is-visible{opacity:1;transform:none}
+.reveal-right{opacity:0;transform:translateX(35px);transition:opacity .8s ease,transform .8s ease}
+.reveal-right.is-visible{opacity:1;transform:none}
+.stagger>*{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.stagger.is-visible>*{opacity:1;transform:none}
+.stagger.is-visible>*:nth-child(2){transition-delay:.08s}
+.stagger.is-visible>*:nth-child(3){transition-delay:.16s}
+.stagger.is-visible>*:nth-child(4){transition-delay:.24s}
+.stagger.is-visible>*:nth-child(5){transition-delay:.32s}
+
+/* Responsive */
+@media(max-width:991px){
+  .visual-story{grid-template-columns:1fr}
+  .contact-side-image{min-height:360px}
+}
+@media(max-width:600px){
+  .form-row{grid-template-columns:1fr}
+  .story-image{min-height:330px!important}
+  .contact-form{padding:24px}
+}
+</style>
+
+
+<style>
+/* Final visual corrections */
+.header .logo-img,
+.header .logo img,
+.header img[alt*="logo" i]{
+  max-height:42px !important;
+  width:auto !important;
+  height:auto !important;
+  object-fit:contain;
+}
+@media(max-width:991px){
+  .header .logo-img,
+  .header .logo img,
+  .header img[alt*="logo" i]{
+    max-height:36px !important;
+  }
+}
+
+/* Replace heavy navy sections with a very light blue editorial background */
+.wealth-section,
+.standards,
+.contact-modern{
+  background:
+    radial-gradient(circle at 8% 15%,rgba(56,182,255,.18),transparent 28%),
+    radial-gradient(circle at 92% 80%,rgba(56,182,255,.12),transparent 30%),
+    linear-gradient(135deg,#f5fbff 0%,#eaf7fd 52%,#f8fcff 100%) !important;
+  color:#0a1520 !important;
+}
+.wealth-section h1,.wealth-section h2,.wealth-section h3,.wealth-section h4,
+.standards h1,.standards h2,.standards h3,.standards h4,
+.contact-modern h1,.contact-modern h2,.contact-modern h3,.contact-modern h4{
+  color:#0a1520 !important;
+}
+.wealth-section p,.wealth-section li,
+.standards p,.standards li,
+.contact-modern p{
+  color:#536879 !important;
+}
+.wealth-connector{color:#607688 !important}
+.wealth-connector span{background:rgba(56,182,255,.45) !important}
+
+/* Keep cards visually separated from the light background */
+.wealth-section .edu-card,
+.standards .fit-card{
+  background:rgba(255,255,255,.92);
+  border-color:#d9eaf3;
+}
+
+/* Natural Integration — image-backed visual treatment */
+.natural-integration{
+  position:relative !important;
+  overflow:hidden;
+  background:
+    linear-gradient(90deg,rgba(7,26,45,.88),rgba(7,26,45,.52),rgba(7,26,45,.18)),
+    url('img/800x400/01.jpg') center center/cover no-repeat !important;
+  color:#fff !important;
+}
+.natural-integration h1,.natural-integration h2,.natural-integration h3,
+.natural-integration p,.natural-integration li{
+  color:#fff !important;
+}
+.natural-integration:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,rgba(56,182,255,.14),transparent 55%);
+  pointer-events:none;
+}
+.natural-integration > *{
+  position:relative;
+  z-index:2;
+}
+
+/* Contact image: ensure the image layer is visible above backgrounds */
+.contact-modern .contact-side-image{
+  display:block !important;
+  min-height:440px;
+  background:#dceff8;
+  position:relative;
+  overflow:hidden;
+}
+.contact-modern .contact-side-image img{
+  display:block !important;
+  visibility:visible !important;
+  opacity:1 !important;
+  position:absolute;
+  inset:0;
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  z-index:1;
+}
+.contact-modern .contact-side-image:after{
+  z-index:2;
+}
+.contact-modern .contact-side-caption{
+  z-index:3;
+}
+@media(max-width:991px){
+  .contact-modern .contact-side-image{min-height:360px}
+}
+</style>
+
+<style id="editorial-light-theme">
+/* ===== FINAL LIGHT-BLUE EDITORIAL THEME ===== */
+:root{--blue:#38b6ff;--editorial:#f6fbfe;--editorial-2:#eaf7fd;--ink:#0a1520;--slate:#536879;--line:#d8e8f1}
+body{background:var(--editorial);color:var(--ink)}
+/* Keep the hero intentionally dark because it uses photography and white text. */
+.hero-modern{background:#071a2d}
+/* Main editorial sections */
+#about,#education,#resources,#partnerships,#contact,
+.modern-section,.partnership-section{background:linear-gradient(135deg,#f8fcff 0%,#eef9fd 52%,#f7fcff 100%) !important;color:var(--ink) !important}
+#about .section-title,#education .section-title,#resources .section-title,#partnerships .section-title,#contact .section-title,
+#about h1,#about h2,#about h3,#about h4,#education h1,#education h2,#education h3,#education h4,
+#resources h1,#resources h2,#resources h3,#resources h4,#partnerships h1,#partnerships h2,#partnerships h3,#partnerships h4,
+#contact h1,#contact h2,#contact h3,#contact h4{color:var(--ink) !important}
+#about p,#about li,#education p,#education li,#resources p,#resources li,#partnerships p,#partnerships li,#contact p{color:var(--slate) !important}
+#about .section-intro,#education .section-intro,#resources .section-intro,#partnerships .section-intro,#contact .section-intro{color:var(--slate) !important}
+/* Light cards */
+.edu-card,.resource-card,.fit-card,.story-point,.contact-card{background:#fff !important;color:var(--ink) !important;border:1px solid var(--line)}
+.edu-card h3,.resource-card h3,.fit-card h3,.story-point strong{color:var(--ink) !important}
+.edu-card p,.edu-card li,.resource-card p,.resource-card li,.fit-card p,.fit-card li,.story-point span,.contact-card p{color:var(--slate) !important}
+/* Partnership standards becomes a light editorial panel instead of dark navy. */
+.standards{background:linear-gradient(135deg,#ffffff,#eaf7fd) !important;color:var(--ink) !important;border:1px solid var(--line);box-shadow:0 20px 55px rgba(7,26,45,.08)}
+.standards h2,.standards h3,.standards h4,.standards strong{color:var(--ink) !important}
+.standards p,.standards li{color:var(--slate) !important}
+/* Launch library remains a deliberate dark visual feature, so its white text stays readable. */
+.launch{background:linear-gradient(135deg,#0b2742,#123c5d) !important;color:#fff !important;box-shadow:0 22px 55px rgba(7,26,45,.13)}
+.launch h2,.launch h3,.launch strong{color:#fff !important}
+.launch p,.launch li{color:#dcecf5 !important}
+/* Contact form is explicitly light. */
+.contact-form{background:rgba(255,255,255,.98) !important;color:var(--ink) !important;border:1px solid var(--line)}
+.contact-form label{color:#526678 !important}
+/* Contact image caption is intentionally white because it sits on a photographic overlay. */
+.contact-side-caption,.contact-side-caption h3{color:#fff !important}
+.contact-side-image:after{background:linear-gradient(0deg,rgba(3,10,18,.86),transparent 58%) !important}
+/* About story caption also remains white over photography. */
+.story-caption,.story-caption strong,.story-caption small{color:#fff !important}
+/* Footer is intentionally dark and therefore retains light text. */
+.footer-modern{background:#071a2d !important;color:#bcd0dc !important}
+.footer-modern strong{color:#fff !important}
+.footer-modern a{color:#dcecf5 !important}
+/* Remove accidental white text on light sections from inline/template rules, while preserving image overlays. */
+#about [style*="color:#fff"],#about [style*="color: #fff"],
+#education [style*="color:#fff"],#education [style*="color: #fff"],
+#resources [style*="color:#fff"],#resources [style*="color: #fff"],
+#partnerships [style*="color:#fff"],#partnerships [style*="color: #fff"],
+#contact [style*="color:#fff"],#contact [style*="color: #fff"]{color:var(--ink) !important}
+/* But preserve the photographic captions. */
+#contact .contact-side-caption,#contact .contact-side-caption h3,#about .story-caption,#about .story-caption strong,#about .story-caption small{color:#fff !important}
+/* Improve contrast of section kickers. */
+.section-kicker{color:#1598df !important}
+/* Subtle editorial texture without making the site dark. */
+#about:before,#education:before,#resources:before,#partnerships:before,#contact:before{opacity:.55 !important;background:radial-gradient(circle at 15% 10%,rgba(56,182,255,.10),transparent 25%),radial-gradient(circle at 85% 80%,rgba(56,182,255,.07),transparent 28%) !important}
+</style>
+<style id="final-cohesive-design">
+:root{--kk-blue:#38b6ff;--kk-deep:#168fd0;--kk-ink:#10202d;--kk-muted:#5d7181;--kk-bg:#f6fbfe;--kk-bg2:#eaf7fd;--kk-line:#d9e8f0;--kk-shadow:0 20px 55px rgba(16,32,45,.10)}
+html{scroll-behavior:smooth}body{background:var(--kk-bg)!important;color:var(--kk-ink)!important;line-height:1.72;overflow-x:hidden}p,li{color:var(--kk-muted);font-size:16px}h1,h2,h3,h4,h5,h6{color:var(--kk-ink);line-height:1.18}
+section{scroll-margin-top:80px}.modern-section{padding-top:clamp(78px,8vw,120px)!important;padding-bottom:clamp(78px,8vw,120px)!important}
+.modern-section:nth-of-type(even){background:radial-gradient(circle at 90% 15%,rgba(56,182,255,.10),transparent 28%),linear-gradient(180deg,#f8fcfe,#eaf7fd 52%,#f8fcfe)!important}.modern-section:nth-of-type(odd){background:radial-gradient(circle at 8% 80%,rgba(56,182,255,.08),transparent 25%),#f8fcfe!important}
+.section-heading{max-width:820px;margin:0 auto 48px;text-align:center}.section-kicker,.stage{color:var(--kk-deep)!important;font-size:12px!important;font-weight:800!important;letter-spacing:.16em;text-transform:uppercase}.section-title{font-size:clamp(34px,4vw,56px)!important;margin:10px 0 16px}.section-intro{max-width:720px;margin:0 auto;font-size:17px}
+.header{background:rgba(255,255,255,.92)!important;backdrop-filter:blur(16px);box-shadow:0 1px 0 rgba(16,32,45,.06)}.header .logo-img,.header .logo img,.header img[alt*="logo" i]{max-height:40px!important;width:auto!important}
+.hero-modern{min-height:82vh;display:flex;align-items:center;isolation:isolate}.hero-modern>img{filter:saturate(.98) contrast(1.02);transform:scale(1.02);animation:kkHeroZoom 14s ease-in-out infinite alternate}.hero-modern:after{background:radial-gradient(circle at 78% 30%,rgba(56,182,255,.28),transparent 25%),linear-gradient(90deg,rgba(4,14,24,.86),rgba(4,14,24,.55),rgba(4,14,24,.12))!important}.hero-content h1{font-size:clamp(42px,6vw,78px);letter-spacing:-.035em}@keyframes kkHeroZoom{from{transform:scale(1.02)}to{transform:scale(1.075)}}
+.image-card,.story-image,.contact-side-image,.visual-panel,.resource-image{border-radius:18px;overflow:hidden;box-shadow:var(--kk-shadow)}.image-card img,.story-image img,.contact-side-image img,.visual-panel img{transition:transform .9s cubic-bezier(.2,.7,.2,1),filter .5s}.image-card:hover img,.story-image:hover img,.contact-side-image:hover img,.visual-panel:hover img{transform:scale(1.055);filter:saturate(1.08)}
+.story-point{background:rgba(255,255,255,.88)!important;border:1px solid var(--kk-line)!important;border-radius:14px!important;padding:24px 26px!important;box-shadow:0 8px 25px rgba(16,32,45,.045)!important}.story-point:hover{transform:translateX(8px)!important;border-color:rgba(56,182,255,.5)!important}
+.wealth-section{background:radial-gradient(circle at 8% 10%,rgba(56,182,255,.16),transparent 24%),linear-gradient(135deg,#eef9fd,#f8fcfe)!important}.edu-card,.resource-card,.fit-card{border:1px solid var(--kk-line)!important;border-radius:16px!important;background:#fff!important;box-shadow:0 10px 30px rgba(16,32,45,.06)!important;overflow:hidden}.edu-card:hover,.resource-card:hover,.fit-card:hover{transform:translateY(-9px)!important;box-shadow:0 25px 55px rgba(16,32,45,.12)!important}.edu-card .edu-image{height:175px!important}.resource-card .resource-image{height:205px!important}
+.section-transition{height:70px;position:relative;overflow:hidden;background:linear-gradient(180deg,#f8fcfe,#eaf7fd)}.section-transition:after{content:"";position:absolute;left:-5%;top:24px;width:110%;height:40px;background:linear-gradient(135deg,transparent 48%,rgba(56,182,255,.12) 49%,transparent 51%);transform:skewY(-2deg)}
+.launch,.natural-integration,.standards{border-radius:24px;background:linear-gradient(110deg,rgba(5,18,31,.88),rgba(7,36,57,.62)),url('img/1920x1080/03.jpg') center/cover!important;color:#fff!important}.launch h2,.launch h3,.launch p,.launch li,.natural-integration h2,.natural-integration h3,.natural-integration p,.natural-integration li,.standards h2,.standards h3,.standards p,.standards li{color:#fff!important}.launch .section-kicker,.natural-integration .section-kicker,.standards .section-kicker{color:#74d1ff!important}
+.contact-modern{background:radial-gradient(circle at 8% 20%,rgba(56,182,255,.15),transparent 26%),linear-gradient(135deg,#eef9fd,#f8fcfe)!important}.contact-form{border:1px solid var(--kk-line)!important;box-shadow:0 24px 60px rgba(16,32,45,.10)!important}.contact-side-image{min-height:520px!important}
+footer{background:#10202d!important;color:#d8e6ee!important}footer h3,footer h4,footer strong{color:#fff!important}footer p,footer li,footer a{color:#c5d5df!important}
+.kk-reveal{opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}.kk-reveal.kk-visible{opacity:1;transform:none}.kk-stagger>*{opacity:0;transform:translateY(24px);transition:opacity .65s,transform .65s}.kk-stagger.kk-visible>*{opacity:1;transform:none}.kk-stagger.kk-visible>*:nth-child(2){transition-delay:.08s}.kk-stagger.kk-visible>*:nth-child(3){transition-delay:.16s}.kk-stagger.kk-visible>*:nth-child(4){transition-delay:.24s}.kk-stagger.kk-visible>*:nth-child(5){transition-delay:.32s}
+@media(max-width:767px){.hero-modern{min-height:76vh}.section-heading{margin-bottom:34px}.section-title{font-size:34px!important}.contact-side-image{min-height:350px!important}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+
+<style id="kk-white-editorial-final">
+:root{
+  --kk-blue:#38b6ff;
+  --kk-blue-deep:#168fd0;
+  --kk-ink:#10202d;
+  --kk-muted:#5d7181;
+  --kk-white:#ffffff;
+  --kk-soft:#f8fbfd;
+  --kk-line:#e1ebf0;
+  --kk-shadow:0 18px 50px rgba(16,32,45,.08);
+}
+html{background:#fff!important}
+body{background:#fff!important;color:var(--kk-ink)!important}
+p,li{color:var(--kk-muted)!important}
+h1,h2,h3,h4,h5,h6{color:var(--kk-ink)!important}
+
+/* White from top to bottom */
+section,
+.modern-section,
+.wealth-section,
+.contact-modern{
+  background:#fff!important;
+  color:var(--kk-ink)!important;
+}
+
+/* Extremely subtle separators instead of colored backgrounds */
+section:not(.hero-modern):not(.launch):not(.natural-integration):not(.standards):not(footer){
+  border-bottom:1px solid #edf3f6;
+}
+
+/* Alternate only through barely-visible surface panels */
+.modern-section:nth-of-type(even){
+  background:#fff!important;
+}
+.section-transition{
+  height:54px!important;
+  background:#fff!important;
+}
+.section-transition:before{
+  background:linear-gradient(135deg,transparent 48%,rgba(56,182,255,.10) 49%,transparent 51%)!important;
+}
+
+/* Header */
+.header{
+  background:rgba(255,255,255,.94)!important;
+  box-shadow:0 1px 0 rgba(16,32,45,.07)!important;
+}
+.header .logo-img,.header .logo img,.header img[alt*="logo" i]{
+  max-height:40px!important;
+}
+
+/* Hero remains image-led, not a dark page background */
+.hero-modern{background:#fff!important}
+.hero-modern:after{
+  background:
+    radial-gradient(circle at 78% 28%,rgba(56,182,255,.24),transparent 25%),
+    linear-gradient(90deg,rgba(4,14,24,.78),rgba(4,14,24,.43),rgba(4,14,24,.08))!important;
+}
+.hero-modern h1,.hero-modern h2,.hero-modern h3,.hero-modern p,
+.hero-modern li,.hero-modern .section-kicker{color:#fff!important}
+
+/* Cards */
+.story-point,.edu-card,.resource-card,.fit-card,.contact-form{
+  background:#fff!important;
+  border:1px solid var(--kk-line)!important;
+  box-shadow:var(--kk-shadow)!important;
+}
+.story-point:hover,.edu-card:hover,.resource-card:hover,.fit-card:hover{
+  border-color:rgba(56,182,255,.42)!important;
+}
+
+/* Light blue only as micro-accents */
+.stage,.section-kicker{color:var(--kk-blue-deep)!important}
+.btn-modern,.btn-blue{background:var(--kk-blue)!important}
+
+/* Intentional image-led feature sections */
+.launch,
+.natural-integration,
+.standards{
+  background-color:#fff!important;
+  color:#fff!important;
+}
+.launch h1,.launch h2,.launch h3,.launch h4,.launch p,.launch li,
+.natural-integration h1,.natural-integration h2,.natural-integration h3,.natural-integration h4,
+.natural-integration p,.natural-integration li,
+.standards h1,.standards h2,.standards h3,.standards h4,
+.standards p,.standards li{color:#fff!important}
+
+/* Contact stays white */
+.contact-modern{
+  background:#fff!important;
+}
+.contact-modern .section-title,
+.contact-modern .section-intro,
+.contact-modern p{color:var(--kk-ink)!important}
+.contact-modern .section-intro{color:var(--kk-muted)!important}
+
+/* Footer is the only intentionally dark anchor */
+footer{
+  background:#10202d!important;
+  color:#d7e5ed!important;
+}
+footer h1,footer h2,footer h3,footer h4,footer strong{color:#fff!important}
+footer p,footer li,footer a{color:#c6d7e0!important}
+
+/* Improve readability and whitespace */
+.section-heading{margin-bottom:50px!important}
+.section-title{letter-spacing:-.025em!important}
+.section-intro{line-height:1.8!important}
+</style>
+
+
+<style id="kk-all-white-final">
+/* FINAL: every content section uses white as its base */
+section.launch,
+section.natural-integration,
+section.standards,
+.launch,
+.natural-integration,
+.standards{
+  background:#fff!important;
+  color:#10202d!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+.launch:before,.launch:after,
+.natural-integration:before,.natural-integration:after,
+.standards:before,.standards:after{
+  display:none!important;
+}
+
+/* Restore readable dark typography on formerly dark feature sections */
+.launch h1,.launch h2,.launch h3,.launch h4,
+.launch p,.launch li,
+.natural-integration h1,.natural-integration h2,.natural-integration h3,.natural-integration h4,
+.natural-integration p,.natural-integration li,
+.standards h1,.standards h2,.standards h3,.standards h4,
+.standards p,.standards li{
+  color:#10202d!important;
+}
+.launch .section-kicker,
+.natural-integration .section-kicker,
+.standards .section-kicker{
+  color:#168fd0!important;
+}
+
+/* Launch Library becomes a clean editorial feature */
+.launch{
+  position:relative!important;
+  overflow:hidden!important;
+}
+.launch .launch-grid > div{
+  background:#fff!important;
+  border:1px solid #e1ebf0!important;
+  border-radius:16px!important;
+  box-shadow:0 12px 30px rgba(16,32,45,.07)!important;
+  transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease!important;
+}
+.launch .launch-grid > div:hover{
+  transform:translateY(-7px)!important;
+  box-shadow:0 22px 45px rgba(16,32,45,.11)!important;
+  border-color:rgba(56,182,255,.42)!important;
+}
+
+/* Give Launch Library visual contrast through a media strip */
+.launch .launch-grid > div:before{
+  content:"";
+  display:block;
+  height:7px;
+  margin:-25px -25px 22px;
+  background:linear-gradient(90deg,#38b6ff,#8edcff);
+}
+
+/* Natural Integration / Standards: image cards rather than dark backgrounds */
+.natural-integration .section-heading,
+.standards .section-heading{
+  background:#fff!important;
+}
+</style>
+
+
+<style id="kk-launch-library-images">
+.launch .launch-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:24px!important;
+}
+.launch .launch-card,
+.launch .launch-grid > article,
+.launch .launch-grid > div{
+  position:relative;
+  overflow:hidden!important;
+  padding:0!important;
+  background:#fff!important;
+  border:1px solid #e1ebf0!important;
+  border-radius:18px!important;
+  box-shadow:0 12px 32px rgba(16,32,45,.07)!important;
+  transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s,border-color .4s!important;
+}
+.launch .launch-card:hover,
+.launch .launch-grid > article:hover,
+.launch .launch-grid > div:hover{
+  transform:translateY(-9px)!important;
+  box-shadow:0 24px 52px rgba(16,32,45,.13)!important;
+  border-color:rgba(56,182,255,.45)!important;
+}
+.launch .launch-card .launch-image,
+.launch .launch-grid > article .launch-image,
+.launch .launch-grid > div .launch-image{
+  position:relative;
+  height:190px;
+  overflow:hidden;
+  background:#eaf7fd;
+}
+.launch .launch-card .launch-image img,
+.launch .launch-grid > article .launch-image img,
+.launch .launch-grid > div .launch-image img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  transition:transform .75s cubic-bezier(.2,.7,.2,1),filter .4s;
+}
+.launch .launch-card:hover .launch-image img,
+.launch .launch-grid > article:hover .launch-image img,
+.launch .launch-grid > div:hover .launch-image img{
+  transform:scale(1.07);
+  filter:saturate(1.08);
+}
+.launch .launch-image:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,transparent 45%,rgba(5,22,35,.16));
+  pointer-events:none;
+}
+.launch .launch-card .launch-body,
+.launch .launch-grid > article .launch-body,
+.launch .launch-grid > div .launch-body{
+  padding:25px!important;
+}
+.launch .launch-card h3,
+.launch .launch-grid > article h3,
+.launch .launch-grid > div h3{
+  margin-top:0!important;
+  color:#10202d!important;
+}
+.launch .launch-card p,
+.launch .launch-grid > article p,
+.launch .launch-grid > div p{
+  color:#5d7181!important;
+}
+.launch .launch-action{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top:12px;
+  color:#168fd0;
+  font-weight:750;
+  text-decoration:none;
+  transition:gap .3s;
+}
+.launch .launch-card:hover .launch-action,
+.launch .launch-grid > article:hover .launch-action,
+.launch .launch-grid > div:hover .launch-action{gap:13px}
+@media(max-width:900px){
+  .launch .launch-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:600px){
+  .launch .launch-grid{grid-template-columns:1fr}
+  .launch .launch-card .launch-image,
+  .launch .launch-grid > article .launch-image,
+  .launch .launch-grid > div .launch-image{height:210px}
+}
+</style>
+
+
+<style id="kk-launch-inline-icons">
+.kk-launch-media.kk-launch-icon{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  height:180px!important;
+  background:linear-gradient(135deg,#f5fbfe,#eaf7fd)!important;
+  position:relative!important;
+}
+.kk-launch-icon svg{
+  width:108px!important;
+  height:108px!important;
+  display:block!important;
+  transition:transform .45s ease!important;
+}
+.kk-launch-card:hover .kk-launch-icon svg{transform:scale(1.06)!important}
+@media(max-width:600px){.kk-launch-media.kk-launch-icon{height:205px!important}}
+</style>
+
+<style id="kk-launch-library-real-images">
+.kk-launch-library{
+  background:#fff!important;
+  color:#10202d!important;
+  padding:clamp(34px,5vw,64px)!important;
+  border:1px solid #e1ebf0!important;
+  border-radius:24px!important;
+  box-shadow:0 22px 60px rgba(16,32,45,.07)!important;
+}
+.kk-launch-library h2{color:#10202d!important;margin:8px 0 10px!important}
+.kk-launch-library .launch-intro{color:#5d7181!important;max-width:700px}
+.kk-launch-library-grid{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:24px!important;
+  margin-top:32px!important;
+}
+.kk-launch-card{
+  overflow:hidden!important;
+  background:#fff!important;
+  border:1px solid #e1ebf0!important;
+  border-radius:18px!important;
+  box-shadow:0 10px 30px rgba(16,32,45,.06)!important;
+  transition:transform .4s ease,box-shadow .4s ease,border-color .4s ease!important;
+}
+.kk-launch-card:hover{
+  transform:translateY(-8px)!important;
+  box-shadow:0 24px 50px rgba(16,32,45,.13)!important;
+  border-color:rgba(56,182,255,.45)!important;
+}
+.kk-launch-media{
+  height:180px!important;
+  overflow:hidden!important;
+  background:#eaf7fd!important;
+}
+.kk-launch-media img{
+  width:100%!important;height:100%!important;display:block!important;
+  object-fit:cover!important;opacity:1!important;visibility:visible!important;
+  transition:transform .7s ease!important;
+}
+.kk-launch-card:hover .kk-launch-media img{transform:scale(1.06)!important}
+.kk-launch-body{padding:22px!important}
+.kk-launch-tag{
+  color:#168fd0!important;font-size:11px!important;font-weight:800!important;
+  letter-spacing:.13em!important;text-transform:uppercase!important
+}
+.kk-launch-body h3{color:#10202d!important;margin:7px 0 9px!important}
+.kk-launch-body p{color:#5d7181!important;margin:0!important}
+.kk-launch-action{
+  display:inline-flex!important;gap:8px!important;margin-top:14px!important;
+  color:#168fd0!important;font-weight:750!important;text-decoration:none!important;
+  transition:gap .25s ease!important
+}
+.kk-launch-card:hover .kk-launch-action{gap:13px!important}
+@media(max-width:900px){.kk-launch-library-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:600px){
+  .kk-launch-library-grid{grid-template-columns:1fr!important}
+  .kk-launch-media{height:205px!important}
+}
+</style>
+
+
+<style id="kk-four-column-footer">
+.footer-modern{padding:64px 0 24px!important;background:#10202d!important;color:#d7e5ed!important}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding-bottom:42px}
+.footer-column strong{display:inline-block;font-size:18px;letter-spacing:.08em;color:#fff!important;margin-bottom:10px}
+.footer-column h4{margin:0 0 18px;font-size:15px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff!important}
+.footer-column p{margin:0 0 10px;color:#c6d7e0!important}
+.footer-column .footer-description{max-width:330px;font-size:14px;line-height:1.75;color:#aebfc9!important}
+.footer-column ul{list-style:none;padding:0;margin:0}
+.footer-column li{margin:0 0 10px}
+.footer-column a{color:#c6d7e0!important;text-decoration:none;transition:color .2s ease,transform .2s ease}
+.footer-column a:hover{color:#38b6ff!important}
+.footer-socials{display:flex;flex-wrap:wrap;gap:14px;margin-top:20px}
+.footer-socials a{font-size:13px}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-top:22px;border-top:1px solid rgba(198,215,224,.18);font-size:13px;color:#9eb1c0;flex-wrap:wrap}.footer-bottom span{display:block;max-width:100%;line-height:1.6}.footer-bottom span:last-child{margin-left:auto;white-space:normal}
+@media(max-width:991px){.footer-grid{grid-template-columns:1.5fr 1fr 1fr;gap:36px}.footer-brand{grid-column:1/-1}.footer-column .footer-description{max-width:600px}}
+@media(max-width:600px){.footer-modern{padding:48px 0 20px!important}.footer-grid{grid-template-columns:1fr;gap:30px}.footer-brand{grid-column:auto}.footer-bottom{flex-direction:column;gap:8px;text-align:center}.footer-bottom span{width:100%}.footer-bottom span:last-child{margin-left:0}}
+</style>
+<style id="kk-fullwidth-footer-final">
+/* Full-width footer: background reaches both browser edges while content stays aligned to the site container. */
+html, body { margin:0 !important; padding:0 !important; }
+.footer-modern {
+  width:100% !important;
+  max-width:none !important;
+  margin:0 !important;
+  border-radius:0 !important;
+  box-sizing:border-box !important;
+  background:#10202d !important;
+  color:#d7e5ed !important;
+  overflow:hidden !important;
+}
+.footer-modern > .container {
+  width:100% !important;
+  max-width:1170px !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  box-sizing:border-box !important;
+}
+@media (max-width:1199px){
+  .footer-modern > .container{max-width:970px !important;}
+}
+@media (max-width:991px){
+  .footer-modern > .container{max-width:750px !important;}
+}
+@media (max-width:767px){
+  .footer-modern > .container{max-width:none !important; padding-left:20px !important; padding-right:20px !important;}
+}
+</style>
+</head>
+
+<body id="body" data-spy="scroll" data-target=".header">
+<header class="header navbar-fixed-top">
+<nav class="navbar" role="navigation"><div class="container">
+<div class="menu-container js_nav-item"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse"><span class="sr-only">Toggle navigation</span><span class="toggle-icon"></span></button>
+<div class="logo"><a class="logo-wrap" href="#home"><img class="logo-img logo-img-main" src="img/logo.png" alt="Karry Karanja Personal Finance"><img class="logo-img logo-img-active" src="img/logo-dark.png" alt="Karry Karanja Personal Finance"></a></div></div>
+<div class="collapse navbar-collapse nav-collapse"><div class="menu-container"><ul class="nav navbar-nav navbar-nav-right">
+<li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#home">Home</a></li>
+<li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#about">About</a></li>
+<li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#education">Financial Education</a></li>
+<li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#resources">Resources</a></li>
+<li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#partnerships">Partnerships</a></li>
+<li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#contact">Contact</a></li>
+</ul></div></div></div></nav></header>
+
+<section id="home" class="hero-modern"><img src="img/1920x1080/01.jpg" alt="Personal finance and wealth building"><div class="container"><div class="hero-content">
+<div class="section-kicker">Karry Karanja · Personal Finance</div><h1>Build Wealth Through Better Decisions.</h1>
+<p>Practical, easy-to-understand financial education for everyday people who want to earn more, save more, protect their money, invest wisely and build lasting wealth.</p>
+<div style="margin-top:30px"><a class="btn-modern btn-blue" href="#education">Explore Financial Education →</a><a class="btn-modern btn-outline" href="#about">Discover the Brand</a></div>
+<div class="stat-strip"><div class="stat"><strong>01</strong><span>Earn More</span></div><div class="stat"><strong>02</strong><span>Save More</span></div><div class="stat"><strong>03</strong><span>Protect Your Money</span></div><div class="stat"><strong>04</strong><span>Invest Wisely</span></div><div class="stat"><strong>05</strong><span>Build Lasting Wealth</span></div></div>
+</div></div></section>
+
+<div class="section-transition" aria-hidden="true"></div>
+<section id="about" class="modern-section"><div class="container"><div class="section-heading">
+<div class="section-kicker">About</div><h2 class="section-title">Financial knowledge that is easier to understand — and easier to use.</h2>
+<p class="section-intro">Karry Karanja is a personal finance channel built around a simple purpose: helping ordinary people make better decisions with their money and work steadily toward long-term wealth.</p>
+</div>
+<div class="about-grid"><div class="image-card"><img src="img/500x500/01.jpg" alt="Karry Karanja Personal Finance"><div class="badge"><strong>Practical · Clear · Long-Term</strong><br><small>Financial education without unnecessary complexity.</small></div></div>
+<div><h2>Vision</h2><p>The idea grew from years of conversations with friends and family. Questions about saving, investing, budgeting and making money came up again and again. The response is a resource designed around the financial decisions that matter over time — not financial hype or promises of quick results.</p>
+<h2 style="margin-top:30px">Mission</h2><p>To help everyday people make smarter financial decisions and build lasting wealth through practical, easy-to-understand financial education. Every useful piece of content should leave viewers with clearer understanding and at least one practical idea they can apply.</p></div></div>
+<div class="principles stagger reveal-on-scroll"><div class="principle"><span class="num">01 · PRACTICAL EDUCATION</span><h3>Make knowledge useful.</h3><p>Explain the issue clearly and give people something useful to work with.</p></div><div class="principle"><span class="num">02 · LONG-TERM THINKING</span><h3>Look beyond quick fixes.</h3><p>Consider how today's choices affect tomorrow and encourage sustainable progress.</p></div><div class="principle"><span class="num">03 · TRUST FIRST</span><h3>Recommend with integrity.</h3><p>Products, services and ideas should be useful — not promoted simply because they can be promoted.</p></div></div>
+
+<div class="visual-story">
+  <div class="story-image reveal-left">
+    <img src="img/1920x1080/02.jpg" alt="Financial planning and long-term wealth building">
+    <div class="story-caption"><strong>Practical. Clear. Long-Term.</strong><br><small>Financial education designed to be useful beyond a single video.</small></div>
+  </div>
+  <div class="story-copy stagger">
+    <div class="story-point"><strong>Practical Education</strong><span>Advice should connect to real decisions and leave people with something useful to apply.</span></div>
+    <div class="story-point"><strong>Clarity</strong><span>Complicated financial subjects should be easier to understand without unnecessary complexity.</span></div>
+    <div class="story-point"><strong>Trust</strong><span>Recommendations should be transparent and defensible, with the audience's long-term interest in mind.</span></div>
+    <div class="story-point"><strong>Long-Term Thinking</strong><span>The objective is sustainable progress rather than financial hype.</span></div>
+  </div>
+</div>
+
+</div></section>
+
+<div class="section-transition" aria-hidden="true"></div>
+<section id="education" class="modern-section wealth-section"><div class="container"><div class="section-heading">
+<div class="section-kicker">Financial Education</div><h2 class="section-title">The Five-Part Wealth Journey</h2><p class="section-intro">Wealth-building is treated as a process rather than a single breakthrough. Each stage prepares the ground for the next.</p></div>
+
+<div class="wealth-grid stagger">
+<div class="edu-card"><div class="edu-image"><img src="img/970x647/01.jpg" alt="Earn More"></div><div class="stage">01 · EARN MORE</div><h3>Increase Your Income</h3><p>Build stronger income foundations through practical opportunities and better career or business decisions.</p><ul><li>Side hustles that work</li><li>Remote jobs</li><li>Income growth strategies</li><li>Additional income streams</li></ul></div>
+<div class="edu-card"><div class="edu-image"><img src="img/970x647/02.jpg" alt="Save More"></div><div class="stage">02 · SAVE MORE</div><h3>Build Better Habits</h3><p>Turn saving into a system that creates room for investing and long-term progress.</p><ul><li>Save $10K fast</li><li>High-yield savings accounts</li><li>Optimize your savings strategy</li></ul></div>
+<div class="edu-card"><div class="edu-image"><img src="img/970x647/03.jpg" alt="Protect Your Money"></div><div class="stage">03 · PROTECT</div><h3>Protect Your Money</h3><p>Create a financial safety net before taking on bigger financial risks.</p><ul><li>Emergency funds</li><li>Financial safety nets</li><li>Protecting your wealth</li><li>Avoiding costly mistakes</li></ul></div>
+<div class="edu-card"><div class="edu-image"><img src="img/500x500/02.jpg" alt="Invest Wisely"></div><div class="stage">04 · INVEST WISELY</div><h3>Put Money to Work</h3><p>Understand investing fundamentals and build a strategy around your long-term goals.</p><ul><li>Investing basics</li><li>Retirement accounts</li><li>Investment strategy</li></ul></div>
+<div class="edu-card"><div class="edu-image"><img src="img/500x500/03.jpg" alt="Build Lasting Wealth"></div><div class="stage">05 · BUILD WEALTH</div><h3>Think Long Term</h3><p>Move from individual decisions toward systems that support financial independence.</p><ul><li>Passive income</li><li>Wealth-building systems</li><li>Financial freedom</li><li>Long-term independence</li></ul></div>
+</div>
+<div class="wealth-connector"><span></span>One stage prepares the next<span></span></div>
+
+
+<div class="section-transition" aria-hidden="true"></div>
+<section id="resources" class="modern-section"><div class="container"><div class="section-heading">
+<div class="section-kicker">Resources</div><h2 class="section-title">A growing library built around real financial questions.</h2><p class="section-intro">The editorial approach prioritizes subjects people are likely to search for repeatedly, while each video answers a specific question or solves a specific problem.</p></div>
+<div class="pillar-grid">
+<div class="resource-card"><span class="label">Earn More</span><h3>Increase earning potential.</h3><p>Realistic opportunities for bringing in additional income.</p><ul><li>Side hustles</li><li>Remote jobs</li><li>Career growth</li><li>Small business opportunities</li><li>Income-building strategies</li></ul></div>
+<div class="resource-card"><span class="label">Save More</span><h3>Make saving consistent.</h3><p>Habits and systems that make savings more useful.</p><ul><li>Saving strategies</li><li>High-yield savings accounts</li><li>Saving your first $10,000</li><li>Budgeting and money management</li></ul></div>
+<div class="resource-card"><span class="label">Protect Your Money</span><h3>Build financial security.</h3><p>Prepare for setbacks and avoid costly financial mistakes.</p><ul><li>Emergency planning</li><li>Financial safety nets</li><li>Insurance basics</li><li>Protecting savings and investments</li></ul></div>
+<div class="resource-card"><span class="label">Invest Wisely</span><h3>Start with clarity.</h3><p>A sensible long-term approach to investing and wealth growth.</p><ul><li>Investing basics</li><li>Retirement accounts</li><li>Index funds and ETFs</li><li>Building investment habits</li></ul></div>
+<div class="resource-card"><span class="label">Build Lasting Wealth</span><h3>Create a long-term plan.</h3><p>Bring the pieces together for financial independence.</p><ul><li>Wealth-building systems</li><li>Financial freedom</li><li>Passive income concepts</li><li>Retirement planning</li></ul></div>
+<div class="resource-card"><span class="label">Editorial Direction</span><h3>Evergreen over hype.</h3><p>The library is designed to remain useful to both first-time visitors and long-term viewers.</p><ul><li>Specific questions</li><li>Practical solutions</li><li>Searchable topics</li><li>Long-term usefulness</li></ul></div>
+</div>
+<div class="launch kk-launch-library">
+<div class="section-kicker">Launch Library</div>
+<h2>Start with practical questions people already ask.</h2>
+<p class="launch-intro">Explore visual, practical resources built around the financial questions that matter most.</p>
+<div class="kk-launch-library-grid stagger reveal-on-scroll">
+
+<article class="kk-launch-card">
+  <div class="kk-launch-media kk-launch-icon" aria-hidden="true"><svg viewBox="0 0 96 96" role="img" aria-label="Earn more icon">
+<circle cx="48" cy="48" r="42" fill="#eaf7fd"/>
+<rect x="22" y="39" width="40" height="28" rx="5" fill="#fff" stroke="#10202d" stroke-width="4"/>
+<path d="M62 46h7a7 7 0 0 1 0 14h-7" fill="none" stroke="#168fd0" stroke-width="4"/>
+<circle cx="42" cy="53" r="8" fill="#38b6ff" stroke="#10202d" stroke-width="3"/>
+<path d="M42 48v10M38 51c1-2 3-3 5-3 3 0 5 2 5 4 0 5-10 3-10 8 0 2 2 4 5 4 3 0 5-1 6-3" fill="none" stroke="#10202d" stroke-width="2.5" stroke-linecap="round"/>
+<path d="M25 31c9-7 18-10 29-10" fill="none" stroke="#168fd0" stroke-width="4" stroke-linecap="round"/>
+<path d="M49 17h7v7" fill="none" stroke="#168fd0" stroke-width="4" stroke-linecap="round"/>
+</svg></div>
+  <div class="kk-launch-body"><span class="kk-launch-tag">Earn More</span><h3>Side Hustles That Work</h3><p>Practical ways to think about additional income and increasing earning potential.</p><a class="kk-launch-action" href="#resources">Explore resource <span>→</span></a></div>
+</article>
+
+<article class="kk-launch-card">
+  <div class="kk-launch-media kk-launch-icon" aria-hidden="true"><svg viewBox="0 0 96 96" role="img" aria-label="Save more icon">
+<circle cx="48" cy="48" r="42" fill="#eaf7fd"/>
+<path d="M25 35h39l7 8v25H25z" fill="#fff" stroke="#10202d" stroke-width="4" stroke-linejoin="round"/>
+<path d="M31 35v-7h27v7" fill="none" stroke="#168fd0" stroke-width="4"/>
+<rect x="35" y="47" width="21" height="13" rx="2" fill="#38b6ff" stroke="#10202d" stroke-width="3"/>
+<circle cx="63" cy="58" r="10" fill="#168fd0" stroke="#10202d" stroke-width="3"/>
+<path d="M59 58l3 3 6-7" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></div>
+  <div class="kk-launch-body"><span class="kk-launch-tag">Save More</span><h3>High-Yield Savings Account Beginner's Guide</h3><p>A clear starting point for understanding savings, interest and financial goals.</p><a class="kk-launch-action" href="#resources">Explore resource <span>→</span></a></div>
+</article>
+
+<article class="kk-launch-card">
+  <div class="kk-launch-media kk-launch-icon" aria-hidden="true"><svg viewBox="0 0 96 96" role="img" aria-label="Invest wisely icon">
+<circle cx="48" cy="48" r="42" fill="#eaf7fd"/>
+<path d="M24 68h48" stroke="#10202d" stroke-width="4" stroke-linecap="round"/>
+<path d="M28 68V55h12v13M44 68V45h12v23M60 68V34h12v34" fill="#38b6ff" stroke="#168fd0" stroke-width="3"/>
+<path d="M22 39c9-2 15-8 22-10 8-3 13-1 18-5 4-3 6-7 12-10" fill="none" stroke="#10202d" stroke-width="4" stroke-linecap="round"/>
+<path d="M66 14h10v10" fill="none" stroke="#10202d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="27" cy="39" r="4" fill="#168fd0"/>
+</svg></div>
+  <div class="kk-launch-body"><span class="kk-launch-tag">Invest Wisely</span><h3>6 Accounts You Need to Become Rich</h3><p>Understand the role different account types can play in a long-term financial plan.</p><a class="kk-launch-action" href="#resources">Explore resource <span>→</span></a></div>
+</article>
+
+<article class="kk-launch-card">
+  <div class="kk-launch-media kk-launch-icon" aria-hidden="true"><svg viewBox="0 0 96 96" role="img" aria-label="Ten thousand dollar milestone icon">
+<circle cx="48" cy="48" r="42" fill="#eaf7fd"/>
+<path d="M28 36h40v31H28z" fill="#fff" stroke="#10202d" stroke-width="4"/>
+<path d="M28 36l8-9h24l8 9" fill="none" stroke="#168fd0" stroke-width="4" stroke-linejoin="round"/>
+<circle cx="48" cy="51" r="11" fill="#38b6ff" stroke="#10202d" stroke-width="3"/>
+<path d="M48 43v16M43 46c1-2 3-3 5-3 4 0 6 2 6 5 0 6-12 4-12 10 0 3 3 5 6 5 3 0 5-1 6-4" fill="none" stroke="#10202d" stroke-width="2.5" stroke-linecap="round"/>
+<path d="M68 21v12M62 27h12" stroke="#168fd0" stroke-width="3.5" stroke-linecap="round"/>
+</svg></div>
+  <div class="kk-launch-body"><span class="kk-launch-tag">Save More</span><h3>Why Everything Changes After $10K</h3><p>Explore the financial habits and milestones that can change how savings compound.</p><a class="kk-launch-action" href="#resources">Explore resource <span>→</span></a></div>
+</article>
+
+<article class="kk-launch-card">
+  <div class="kk-launch-media kk-launch-icon" aria-hidden="true"><svg viewBox="0 0 96 96" role="img" aria-label="Build lasting wealth icon">
+<circle cx="48" cy="48" r="42" fill="#eaf7fd"/>
+<path d="M25 68h46" stroke="#10202d" stroke-width="4" stroke-linecap="round"/>
+<path d="M30 68V55l9-8 9 8v13M50 68V43l9-10 9 10v25" fill="#fff" stroke="#168fd0" stroke-width="4" stroke-linejoin="round"/>
+<path d="M36 61h5M56 55h5M56 62h5" stroke="#10202d" stroke-width="3" stroke-linecap="round"/>
+<path d="M25 38c8-8 15-9 23-6 7 3 12 0 22-10" fill="none" stroke="#10202d" stroke-width="4" stroke-linecap="round"/>
+<path d="M62 21h9v9" fill="none" stroke="#10202d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></div>
+  <div class="kk-launch-body"><span class="kk-launch-tag">Build Lasting Wealth</span><h3>Passive Income with $10K</h3><p>Learn the principles behind building sustainable long-term wealth.</p><a class="kk-launch-action" href="#resources">Explore resource <span>→</span></a></div>
+</article>
+
+</div></div></div></section>
+
+<div class="section-transition" aria-hidden="true"></div>
+
+<style id="natural-integration-card-image-fix">
+/* Natural Integration card image */
+.natural-integration .fit-grid{
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:24px!important;
+  align-items:stretch!important;
+}
+.natural-integration .fit-card{
+  height:100%!important;
+}
+.natural-integration .natural-integration-card{
+  padding:0!important;
+  overflow:hidden!important;
+  display:flex!important;
+  flex-direction:column!important;
+  height:100%!important;
+}
+/* Remove the generic fit-card pseudo-image from the fourth card.
+   The real <img> element supplies its image, so it must start at the same top edge as the other cards. */
+.natural-integration .natural-integration-card:before{
+  display:none!important;
+  content:none!important;
+}
+.natural-integration .natural-integration-card img{
+  display:block!important;
+  width:100%!important;
+  height:220px!important;
+  flex:0 0 220px!important;
+  object-fit:cover!important;
+  margin:0!important;
+  border:0!important;
+}
+.natural-integration .natural-integration-card h3,
+.natural-integration .natural-integration-card p{
+  margin-left:32px!important;
+  margin-right:32px!important;
+}
+.natural-integration .natural-integration-card h3{
+  margin-top:28px!important;
+}
+.natural-integration .natural-integration-card p{
+  margin-bottom:32px!important;
+}
+@media (max-width: 1100px){
+  .natural-integration .fit-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;}
+}
+@media (max-width: 700px){
+  .natural-integration .fit-grid{grid-template-columns:1fr!important;}
+  .natural-integration .natural-integration-card img{height:210px!important;}
+}
+
+/* Contact image caption: keep supporting text bright and readable over the dark image overlay. */
+.contact-side-caption p{
+  color:#fff !important;
+  text-shadow:0 2px 5px rgba(0,0,0,.75);
+}
+/* Final contact caption contrast override */
+#contact .contact-side-caption p,
+#contact .contact-side-caption p *{
+  color:#fff !important;
+  opacity:1 !important;
+  text-shadow:0 2px 5px rgba(0,0,0,.75) !important;
+}
+</style>
+
+<section id="partnerships" class="modern-section partnership-section natural-integration"><div class="container"><div class="section-heading">
+<div class="section-kicker">Partnerships</div><h2 class="section-title">Education first. Trust always.</h2><p class="section-intro">A product or service should make sense in the context of the subject being discussed and add something genuinely useful for the audience.</p></div>
+<div class="fit-grid stagger reveal-on-scroll"><div class="fit-card"><h3>Evergreen Subject Matter</h3><p>Financial education can continue attracting viewers and search traffic long after a video is published.</p></div><div class="fit-card"><h3>Practical Audience</h3><p>Viewers are looking for information they can use, not just entertainment.</p></div><div class="fit-card"><h3>Research-Led Content</h3><p>Topics are approached through research, financial principles and practical application.</p></div><div class="fit-card natural-integration-card"><img src="img/800x400/01.jpg" alt="Karry Karanja personal finance and wealth building" loading="lazy" onerror="this.onerror=null;this.src='img/800x400/01.JPG';"><h3>Natural Integration</h3><p>A relevant product or service can be introduced as part of the solution being discussed.</p></div></div>
+<div class="standards"><div class="standards-grid"><div><div class="section-kicker">Partnership Standards</div><h2 style="color:#fff">Does it help the audience?</h2><p style="color:#b9cbd9">The preferred partnership supports at least one of the five financial areas and fits what the channel is trying to teach.</p><p style="color:#b9cbd9">Transparency matters, and long-term value matters more than a short-term commission.</p></div><div><div class="section-kicker">What We Will Not Promote</div><ul><li>Get-rich-quick schemes</li><li>Predatory lending products</li><li>Payday loans</li><li>Gambling products or services</li><li>Misleading financial offers</li><li>Products that encourage unnecessary debt</li><li>Anything that conflicts with the educational purpose of the channel</li></ul></div></div></div>
+</div></section>
+
+
+<div class="section-transition" aria-hidden="true"></div>
+<section id="contact" class="modern-section contact-modern">
+<div class="container">
+<div class="section-heading">
+<div class="section-kicker">Contact</div>
+<h2 class="section-title">Let's build something useful.</h2>
+<p class="section-intro">For professional enquiries, partnerships and content collaborations, get in touch. The brand values clear communication, reliability, transparency and long-term value.</p>
+</div>
+<div class="contact-grid">
+<div class="contact-side-image reveal-left">
+<img src="img/800x400/01.jpg" alt="Karry Karanja personal finance and wealth building" loading="lazy" onerror="this.onerror=null;this.src='img/800x400/01.JPG';">
+<div class="contact-side-caption">
+<div class="section-kicker">Business Enquiries</div>
+<h3>Have an idea worth exploring?</h3>
+<p>Tell us what you have in mind and provide enough detail for a useful first response.</p>
+</div>
+</div>
+<div class="contact-form reveal-right">
+<form id="kkContactForm" novalidate>
+<div class="form-row">
+<div class="form-group-modern"><label for="kkName">Full Name</label><input id="kkName" name="name" class="form-control-modern" type="text" placeholder="Your full name" required></div>
+<div class="form-group-modern"><label for="kkEmail">Email Address</label><input id="kkEmail" name="email" class="form-control-modern" type="email" placeholder="you@example.com" required></div>
+</div>
+<div class="form-group-modern"><label for="kkSubject">Subject</label><select id="kkSubject" name="subject" class="form-control-modern" required><option value="">Select an enquiry type</option><option>Brand Partnership</option><option>Content Collaboration</option><option>Business Enquiry</option><option>Other</option></select></div>
+<div class="form-group-modern"><label for="kkMessage">Message</label><textarea id="kkMessage" name="message" class="form-control-modern" placeholder="Tell us about your enquiry..." required></textarea></div>
+<button type="submit" class="btn-modern btn-blue">Send Enquiry →</button>
+<div id="kkFormSuccess" class="form-success">Thank you. Your enquiry has been prepared successfully. The form is ready to connect to the preferred business email/form endpoint.</div>
+</form>
+</div>
+</div>
+</div>
+</section>
+
+
+<footer class="footer-modern">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-column footer-brand">
+        <strong>KARRY KARANJA</strong>
+        <p>Personal Finance · Education · Wealth Building</p>
+        <p class="footer-description">Practical financial education to help you make informed decisions, build strong money habits, and work toward long-term financial confidence.</p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#body">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#education">Financial Education</a></li>
+          <li><a href="#resources">Resources</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Work With Us</h4>
+        <ul>
+          <li><a href="#partnerships">Partnerships</a></li>
+          <li><a href="#contact">Business Enquiries</a></li>
+          <li><a href="#contact">Content Collaboration</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#contact">Get in Touch</a></li>
+          <li><a href="#contact">Send an Enquiry</a></li>
+        </ul>
+        <div class="footer-socials" aria-label="Social links">
+          <a href="#" aria-label="LinkedIn">LinkedIn</a>
+          <a href="#" aria-label="Instagram">Instagram</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Karry Karanja | Personal Finance Education</span>
+      <span>All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+<a href="#body" class="js-back-to-top back-to-top">Top</a>
+
+<script src="vendor/jquery.min.js" type="text/javascript"></script>
+<script src="vendor/jquery-migrate.min.js" type="text/javascript"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="vendor/jquery.easing.js" type="text/javascript"></script>
+<script src="vendor/jquery.back-to-top.js" type="text/javascript"></script>
+<script src="vendor/jquery.smooth-scroll.js" type="text/javascript"></script>
+<script src="vendor/jquery.wow.min.js" type="text/javascript"></script>
+<script src="vendor/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
+<script src="vendor/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
+<script src="vendor/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+<script src="js/layout.min.js" type="text/javascript"></script>
+<script src="js/components/wow.min.js" type="text/javascript"></script>
+<script src="js/components/swiper.min.js" type="text/javascript"></script>
+<script src="js/components/masonry.min.js" type="text/javascript"></script>
+
+<script>
+(function(){
+  // Scroll reveal animation
+  const items=document.querySelectorAll('.reveal-on-scroll,.reveal-left,.reveal-right,.stagger');
+  const observer=new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}
+    });
+  },{threshold:.12,rootMargin:'0px 0px -50px 0px'});
+  items.forEach(el=>observer.observe(el));
+
+  // Subtle mouse-parallax on large visual images.
+  document.querySelectorAll('.story-image,.contact-side-image').forEach(card=>{
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect();
+      const x=(e.clientX-r.left)/r.width-.5;
+      const y=(e.clientY-r.top)/r.height-.5;
+      const img=card.querySelector('img');
+      if(img) img.style.transform='scale(1.045) translate('+(-x*8)+'px,'+(-y*8)+'px)';
+    });
+    card.addEventListener('mouseleave',()=>{
+      const img=card.querySelector('img');
+      if(img) img.style.transform='';
+    });
+  });
+
+  // Contact form validation + polished success state.
+  const form=document.getElementById('kkContactForm');
+  const success=document.getElementById('kkFormSuccess');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      if(!form.checkValidity()){
+        form.reportValidity();
+        return;
+      }
+      success.classList.remove('show');
+      void success.offsetWidth;
+      success.classList.add('show');
+      form.reset();
+    });
+  }
+})();
+</script>
+
+<script id="final-cohesive-interactions">
+(function(){const sels=['.section-heading','.visual-story','.wealth-grid','.resource-grid','.fit-grid','.launch-grid','.contact-grid','.principles','.image-card','.story-point','.edu-card','.resource-card','.fit-card'];sels.forEach(s=>document.querySelectorAll(s).forEach(e=>e.classList.add('kk-reveal')));document.querySelectorAll('.wealth-grid,.resource-grid,.fit-grid,.launch-grid,.principles').forEach(e=>e.classList.add('kk-stagger'));const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('kk-visible');io.unobserve(e.target)}}),{threshold:.1,rootMargin:'0px 0px -55px 0px'});document.querySelectorAll('.kk-reveal,.kk-stagger').forEach(e=>io.observe(e));const nav=[...document.querySelectorAll('a[href^="#"]')];const sec=[...document.querySelectorAll('section[id]')];const ni=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)nav.forEach(a=>a.classList.toggle('active-section',a.getAttribute('href')==='#'+e.target.id))}),{threshold:.35});sec.forEach(s=>ni.observe(s));if(!matchMedia('(hover:none)').matches)document.querySelectorAll('.story-image,.contact-side-image,.image-card').forEach(c=>{c.addEventListener('mousemove',e=>{let r=c.getBoundingClientRect(),x=e.clientX/r.width-r.left/r.width-.5,y=e.clientY/r.height-r.top/r.height-.5,i=c.querySelector('img');if(i)i.style.transform='scale(1.045) translate('+(-x*7)+'px,'+(-y*7)+'px)'});c.addEventListener('mouseleave',()=>{let i=c.querySelector('img');if(i)i.style.transform=''})})})();
+</script>
+</body>
+
+</html>
