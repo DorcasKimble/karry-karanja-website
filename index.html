@@ -141,7 +141,7 @@
         .stagger-6 { transition-delay: 0.6s; }
 
         /* ----------------------------------------------------
-           4. NAVIGATION
+           4. NAVIGATION & MOBILE MENU
         ---------------------------------------------------- */
         .site-header {
             background-color: rgba(251, 249, 244, 0.95);
@@ -216,19 +216,15 @@
             gap: 5px;
             cursor: pointer;
             transition: all 0.3s ease;
+            z-index: 1001;
         }
 
         .mobile-menu-toggle span {
             display: block;
-            width: 20px;
+            width: 22px;
             height: 2px;
             background-color: var(--black);
             transition: all 0.3s ease;
-        }
-
-        .mobile-menu-toggle:hover {
-            border-color: var(--mustard);
-            background-color: var(--mustard);
         }
 
         /* ----------------------------------------------------
@@ -506,7 +502,7 @@
         }
 
         /* ----------------------------------------------------
-           9. STRATEGIC ALIGNMENT SECTION (OPTIMIZED PORTRAIT)
+           9. STRATEGIC ALIGNMENT SECTION
         ---------------------------------------------------- */
         .section-partnership-portrait {
             padding: 50px 0;
@@ -555,7 +551,7 @@
         }
 
         /* ----------------------------------------------------
-           10. PARTNERSHIPS / COMMERCIAL ALIGNMENT SECTION (IMAGE FIRST)
+           10. PARTNERSHIPS / COMMERCIAL ALIGNMENT SECTION
         ---------------------------------------------------- */
         .section-partnerships {
             padding: 80px 0;
@@ -767,9 +763,32 @@
         }
 
         /* ----------------------------------------------------
-           14. RESPONSIVE DESIGN
+           14. RESPONSIVE DESIGN & MOBILE MENU
         ---------------------------------------------------- */
         @media (max-width: 992px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                border-bottom: 1px solid var(--border);
+                padding: 24px;
+                gap: 20px;
+                align-items: flex-start;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
             .journey-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -785,6 +804,9 @@
         }
 
         @media (max-width: 600px) {
+            .hero-standalone .hero-title {
+                font-size: 2.25rem;
+            }
             .journey-grid,
             .resources-grid {
                 grid-template-columns: 1fr;
@@ -807,6 +829,12 @@
                 KARRY KARANJA<span>.</span>
             </a>
 
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
             <ul class="nav-links" id="mainNavigation">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -815,12 +843,6 @@
                 <li><a href="#partnerships">Partnerships</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-
-            <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-label="Open navigation menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </div>
     </header>
 
@@ -1070,6 +1092,23 @@
     <!-- JAVASCRIPT -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            /* Mobile Navigation Toggle */
+            const menuToggle = document.getElementById('mobileMenuToggle');
+            const navLinks = document.getElementById('mainNavigation');
+
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+
+                /* Close menu when clicking a link */
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navLinks.classList.remove('active');
+                    });
+                });
+            }
+
             /* Scroll Animations */
             const faders = document.querySelectorAll('.fade-in');
             const appearOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
