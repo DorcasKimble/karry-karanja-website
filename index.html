@@ -173,13 +173,13 @@
 
         .nav-links {
             display: flex;
-            gap: 32px;
+            gap: 28px;
             list-style: none;
             align-items: center;
         }
 
         .nav-links a {
-            font-size: 0.875rem;
+            font-size: 0.8125rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.05em;
@@ -228,7 +228,7 @@
         }
 
         /* ----------------------------------------------------
-           5. HERO SECTION
+           5. HERO SECTION (HOME)
         ---------------------------------------------------- */
         .hero-standalone {
             padding: 60px 0 100px;
@@ -295,7 +295,131 @@
         }
 
         /* ----------------------------------------------------
-           6. WEALTH JOURNEY SECTION
+           6. ABOUT SECTION
+        ---------------------------------------------------- */
+        .section-about {
+            padding: 100px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image-frame {
+            border: 1px solid var(--border);
+            padding: 12px;
+            background-color: var(--white);
+            max-width: 420px;
+            margin: 0 auto;
+        }
+
+        .about-image-crop {
+            width: 100%;
+            height: 480px;
+            overflow: hidden;
+        }
+
+        .about-image-crop img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 15%;
+        }
+
+        .about-content h2 {
+            font-size: 2.25rem;
+            margin-bottom: 24px;
+        }
+
+        .about-content p {
+            margin-bottom: 20px;
+            color: var(--charcoal);
+        }
+
+        .principles-list {
+            margin-top: 32px;
+            display: grid;
+            gap: 16px;
+        }
+
+        .principle-item {
+            padding-left: 20px;
+            border-left: 2px solid var(--mustard);
+        }
+
+        .principle-item h4 {
+            font-size: 0.9375rem;
+            margin-bottom: 4px;
+        }
+
+        .principle-item p {
+            font-size: 0.875rem;
+            color: var(--muted-charcoal);
+            margin: 0;
+        }
+
+        /* ----------------------------------------------------
+           7. FREE TOOLS SECTION
+        ---------------------------------------------------- */
+        .section-tools {
+            padding: 100px 0;
+            background-color: var(--white);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .tool-card {
+            background-color: var(--ivory);
+            border: 1px solid var(--border);
+            padding: 32px 24px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--mustard);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+        }
+
+        .tool-card h3 {
+            font-size: 1.125rem;
+            margin-bottom: 12px;
+            text-transform: none;
+        }
+
+        .tool-card p {
+            font-size: 0.875rem;
+            color: var(--muted-charcoal);
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .tool-link {
+            font-size: 0.8125rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--mustard);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* ----------------------------------------------------
+           8. FINANCIAL EDUCATION (WEALTH JOURNEY)
         ---------------------------------------------------- */
         .section-journey {
             padding: 100px 0;
@@ -383,75 +507,7 @@
         }
 
         /* ----------------------------------------------------
-           7. ABOUT SECTION (K2.JPG)
-        ---------------------------------------------------- */
-        .section-about {
-            padding: 100px 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .about-image-frame {
-            border: 1px solid var(--border);
-            padding: 12px;
-            background-color: var(--white);
-            max-width: 420px;
-            margin: 0 auto;
-        }
-
-        .about-image-crop {
-            width: 100%;
-            height: 480px;
-            overflow: hidden;
-        }
-
-        .about-image-crop img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center 15%;
-        }
-
-        .about-content h2 {
-            font-size: 2.25rem;
-            margin-bottom: 24px;
-        }
-
-        .about-content p {
-            margin-bottom: 20px;
-            color: var(--charcoal);
-        }
-
-        .principles-list {
-            margin-top: 32px;
-            display: grid;
-            gap: 16px;
-        }
-
-        .principle-item {
-            padding-left: 20px;
-            border-left: 2px solid var(--mustard);
-        }
-
-        .principle-item h4 {
-            font-size: 0.9375rem;
-            margin-bottom: 4px;
-        }
-
-        .principle-item p {
-            font-size: 0.875rem;
-            color: var(--muted-charcoal);
-            margin: 0;
-        }
-
-        /* ----------------------------------------------------
-           8. LAUNCH PREVIEW SECTION
+           9. LAUNCH PREVIEW SECTION
         ---------------------------------------------------- */
         .section-education {
             padding: 100px 0;
@@ -502,7 +558,7 @@
         }
 
         /* ----------------------------------------------------
-           9. STRATEGIC ALIGNMENT SECTION
+           10. STRATEGIC ALIGNMENT
         ---------------------------------------------------- */
         .section-partnership-portrait {
             padding: 50px 0;
@@ -551,7 +607,7 @@
         }
 
         /* ----------------------------------------------------
-           10. PARTNERSHIPS / COMMERCIAL ALIGNMENT SECTION
+           11. PARTNERSHIPS / COMMERCIAL ALIGNMENT
         ---------------------------------------------------- */
         .section-partnerships {
             padding: 80px 0;
@@ -626,7 +682,7 @@
         }
 
         /* ----------------------------------------------------
-           11. FULL-WIDTH CONTACT SECTION
+           12. FULL-WIDTH CONTACT SECTION
         ---------------------------------------------------- */
         .section-contact-full {
             width: 100%;
@@ -683,7 +739,7 @@
         }
 
         /* ----------------------------------------------------
-           12. COMPACT SINGLE-ROW FOOTER
+           13. COMPACT FOOTER
         ---------------------------------------------------- */
         .compact-footer {
             background-color: var(--black);
@@ -721,7 +777,7 @@
         }
 
         /* ----------------------------------------------------
-           13. BACK TO TOP BUTTON
+           14. BACK TO TOP BUTTON
         ---------------------------------------------------- */
         .back-to-top {
             position: fixed;
@@ -763,7 +819,7 @@
         }
 
         /* ----------------------------------------------------
-           14. RESPONSIVE DESIGN & MOBILE MENU
+           15. RESPONSIVE DESIGN & MOBILE MENU
         ---------------------------------------------------- */
         @media (max-width: 992px) {
             .mobile-menu-toggle {
@@ -792,6 +848,7 @@
             .journey-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            .tools-grid,
             .resources-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -808,6 +865,7 @@
                 font-size: 2.25rem;
             }
             .journey-grid,
+            .tools-grid,
             .resources-grid {
                 grid-template-columns: 1fr;
             }
@@ -838,15 +896,16 @@
             <ul class="nav-links" id="mainNavigation">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#tools">Free Tools</a></li>
                 <li><a href="#education">Financial Education</a></li>
-                <li><a href="#resources">Launch Preview</a></li>
+                <li><a href="#preview">Launch Preview</a></li>
                 <li><a href="#partnerships">Partnerships</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </header>
 
-    <!-- HERO SECTION -->
+    <!-- 1. HOME SECTION -->
     <section id="home" class="hero-standalone">
         <div class="container">
             <div class="hero-full-image-frame fade-in">
@@ -863,12 +922,80 @@
                 <p class="hero-lead">
                     Intelligent, practical financial education designed to help everyday people gain clarity, invest wisely, and build lasting independence.
                 </p>
-                <a href="#education" class="btn">Explore The Wealth Journey</a>
+                <a href="#tools" class="btn">Access Free Tools</a>
             </div>
         </div>
     </section>
 
-    <!-- THE 5-PART WEALTH JOURNEY -->
+    <!-- 2. ABOUT SECTION -->
+    <section id="about" class="section-about">
+        <div class="container about-grid">
+            <div class="about-image-frame fade-in">
+                <div class="about-image-crop">
+                    <img src="images/K2.jpg" alt="Karry Karanja Profile Picture">
+                </div>
+            </div>
+
+            <div class="about-content fade-in stagger-2">
+                <span class="eyebrow">About Karry</span>
+                <h2>From Questions to a <span class="serif-accent">Mission</span></h2>
+                <p>For years, friends and family came to me with questions about saving, investing, budgeting, retirement, and building real financial security.</p>
+                <p>Combining a background in Economics with CFO-level executive experience, my mission is to deliver research-backed, practical financial education without institutional jargon or promotional hype.</p>
+
+                <div class="principles-list">
+                    <div class="principle-item">
+                        <h4>Practical Education</h4>
+                        <p>Actionable guidance rooted in real financial principles.</p>
+                    </div>
+                    <div class="principle-item">
+                        <h4>Long-Term Thinking</h4>
+                        <p>Focusing on sustainable wealth over fast-money promises.</p>
+                    </div>
+                    <div class="principle-item">
+                        <h4>Trust First</h4>
+                        <p>Independent, transparent insights always aligned with audience interest.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. FREE TOOLS SECTION -->
+    <section id="tools" class="section-tools">
+        <div class="container">
+            <span class="eyebrow fade-in" style="text-align: center;">Interactive Resources</span>
+            <h2 class="section-title fade-in">Free Financial Tools</h2>
+            <p class="section-subtitle fade-in">Practical calculators and templates designed to help you take immediate control of your money.</p>
+
+            <div class="tools-grid">
+                <div class="tool-card fade-in stagger-1">
+                    <div>
+                        <h3>Emergency Fund Calculator</h3>
+                        <p>Determine exactly how much safety net cash you need based on your monthly living obligations.</p>
+                    </div>
+                    <a href="#contact" class="tool-link">Download Template →</a>
+                </div>
+
+                <div class="tool-card fade-in stagger-2">
+                    <div>
+                        <h3>Savings Milestone Tracker</h3>
+                        <p>A structured blueprint to map out your journey to your first $10K and beyond.</p>
+                    </div>
+                    <a href="#contact" class="tool-link">Access Tracker →</a>
+                </div>
+
+                <div class="tool-card fade-in stagger-3">
+                    <div>
+                        <h3>Investment Order Checklist</h3>
+                        <p>A simple step-by-step checklist to optimize your account hierarchy and minimize taxes.</p>
+                    </div>
+                    <a href="#contact" class="tool-link">Get Checklist →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. FINANCIAL EDUCATION SECTION (WEALTH JOURNEY) -->
     <section id="education" class="section-journey">
         <div class="container">
             <div class="journey-header-wrap">
@@ -918,41 +1045,8 @@
         </div>
     </section>
 
-    <!-- ABOUT SECTION (K2.JPG) -->
-    <section id="about" class="section-about">
-        <div class="container about-grid">
-            <div class="about-image-frame fade-in">
-                <div class="about-image-crop">
-                    <img src="images/K2.jpg" alt="Karry Karanja Profile Picture">
-                </div>
-            </div>
-
-            <div class="about-content fade-in stagger-2">
-                <span class="eyebrow">About Karry</span>
-                <h2>From Questions to a <span class="serif-accent">Mission</span></h2>
-                <p>For years, friends and family came to me with questions about saving, investing, budgeting, retirement, and building real financial security.</p>
-                <p>Combining a background in Economics with CFO-level executive experience, my mission is to deliver research-backed, practical financial education without institutional jargon or promotional hype.</p>
-
-                <div class="principles-list">
-                    <div class="principle-item">
-                        <h4>Practical Education</h4>
-                        <p>Actionable guidance rooted in real financial principles.</p>
-                    </div>
-                    <div class="principle-item">
-                        <h4>Long-Term Thinking</h4>
-                        <p>Focusing on sustainable wealth over fast-money promises.</p>
-                    </div>
-                    <div class="principle-item">
-                        <h4>Trust First</h4>
-                        <p>Independent, transparent insights always aligned with audience interest.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- LAUNCH PREVIEW SECTION -->
-    <section id="resources" class="section-education">
+    <!-- 5. LAUNCH PREVIEW SECTION -->
+    <section id="preview" class="section-education">
         <div class="container">
             <h2 class="section-title fade-in">Launch Preview</h2>
             <p class="section-subtitle fade-in" style="margin-bottom: 40px;">Six upcoming core guides covering the complete wealth-building path.</p>
@@ -997,23 +1091,7 @@
         </div>
     </section>
 
-    <!-- STRATEGIC ALIGNMENT SECTION (K1.JPG) -->
-    <section class="section-partnership-portrait">
-        <div class="container portrait-grid">
-            <div class="portrait-lead fade-in">
-                <span class="eyebrow">Strategic Alignment</span>
-                <h2>Built for Authentic <span class="serif-accent">Impact</span></h2>
-                <p>Bringing clarity to personal finance requires total editorial trust. Every collaboration is carefully selected to ensure absolute alignment with high standards, audience value, and long-term financial integrity.</p>
-            </div>
-            <div class="portrait-image-frame fade-in stagger-2">
-                <div class="portrait-crop">
-                    <img src="images/K1.jpg" alt="Karry Karanja Strategic Alignment Portrait">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PARTNERSHIPS / COMMERCIAL ALIGNMENT SECTION (IMAGE FIRST) -->
+    <!-- 6. PARTNERSHIPS SECTION -->
     <section id="partnerships" class="section-partnerships">
         <div class="container">
             <div class="partnership-main-wrap">
@@ -1056,7 +1134,7 @@
         </div>
     </section>
 
-    <!-- FULL-WIDTH CONTACT SECTION -->
+    <!-- CONTACT SECTION -->
     <section id="contact" class="section-contact-full">
         <div class="container">
             <div class="contact-content-wrap fade-in">
@@ -1072,14 +1150,15 @@
         </div>
     </section>
 
-    <!-- COMPACT FOOTER -->
+    <!-- FOOTER -->
     <footer class="compact-footer">
         <div class="container footer-content">
             <p>&copy; Karry Karanja. All rights reserved.</p>
             <ul class="footer-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#education">Framework</a></li>
+                <li><a href="#tools">Tools</a></li>
+                <li><a href="#education">Education</a></li>
                 <li><a href="#partnerships">Partnerships</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
