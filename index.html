@@ -203,7 +203,6 @@
             width: 100%;
         }
 
-        /* Mobile Menu Button */
         .mobile-menu-toggle {
             display: none;
             width: 44px;
@@ -230,19 +229,6 @@
         .mobile-menu-toggle:hover {
             border-color: var(--mustard);
             background-color: var(--mustard);
-        }
-
-        /* Hamburger animation */
-        .mobile-menu-toggle.active span:nth-child(1) {
-            transform: translateY(7px) rotate(45deg);
-        }
-
-        .mobile-menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .mobile-menu-toggle.active span:nth-child(3) {
-            transform: translateY(-7px) rotate(-45deg);
         }
 
         /* ----------------------------------------------------
@@ -293,10 +279,6 @@
             filter: brightness(1);
         }
 
-        .hero-full-image-frame:hover img {
-            transform: scale(1.05);
-        }
-
         .hero-header-block {
             max-width: 860px;
             margin: 0 auto;
@@ -323,6 +305,31 @@
             padding: 100px 0;
             background-color: var(--soft-ivory);
             border-bottom: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .journey-header-wrap {
+            position: relative;
+            padding: 40px 20px;
+            margin-bottom: 40px;
+        }
+
+        .chevron-watermark {
+            position: absolute;
+            top: 50%;
+            right: -5%;
+            transform: translateY(-50%);
+            width: 320px;
+            height: auto;
+            opacity: 0.12;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .journey-header-content {
+            position: relative;
+            z-index: 2;
         }
 
         .section-title {
@@ -334,7 +341,7 @@
         .section-subtitle {
             text-align: center;
             color: var(--muted-charcoal);
-            margin-bottom: 60px;
+            margin-bottom: 20px;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
@@ -344,6 +351,8 @@
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             gap: 16px;
+            position: relative;
+            z-index: 2;
         }
 
         .journey-card {
@@ -378,7 +387,7 @@
         }
 
         /* ----------------------------------------------------
-           7. ABOUT SECTION
+           7. ABOUT SECTION (K2.JPG)
         ---------------------------------------------------- */
         .section-about {
             padding: 100px 0;
@@ -396,8 +405,21 @@
             border: 1px solid var(--border);
             padding: 12px;
             background-color: var(--white);
-            max-width: 460px;
+            max-width: 420px;
             margin: 0 auto;
+        }
+
+        .about-image-crop {
+            width: 100%;
+            height: 480px;
+            overflow: hidden;
+        }
+
+        .about-image-crop img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 15%;
         }
 
         .about-content h2 {
@@ -484,10 +506,59 @@
         }
 
         /* ----------------------------------------------------
-           9. PARTNERSHIPS
+           9. STRATEGIC ALIGNMENT SECTION (OPTIMIZED PORTRAIT)
+        ---------------------------------------------------- */
+        .section-partnership-portrait {
+            padding: 50px 0;
+            background-color: var(--ivory);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .portrait-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .portrait-image-frame {
+            border: 1px solid var(--border);
+            padding: 8px;
+            background-color: var(--white);
+            max-width: 320px;
+            margin: 0 auto;
+        }
+
+        .portrait-crop {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .portrait-crop img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .portrait-lead h2 {
+            font-size: 2.25rem;
+            margin-bottom: 20px;
+        }
+
+        .portrait-lead p {
+            color: var(--muted-charcoal);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* ----------------------------------------------------
+           10. PARTNERSHIPS / COMMERCIAL ALIGNMENT SECTION (IMAGE FIRST)
         ---------------------------------------------------- */
         .section-partnerships {
-            padding: 100px 0;
+            padding: 80px 0;
             background-color: var(--black);
             color: var(--ivory);
             border-bottom: 1px solid rgba(222, 215, 202, 0.1);
@@ -498,28 +569,58 @@
             color: var(--white);
         }
 
+        .partnership-main-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .partnership-image-frame {
+            border: 1px solid rgba(222, 215, 202, 0.2);
+            padding: 8px;
+            background-color: #26221E;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+
+        .partnership-crop {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .partnership-crop img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+
         .partnerships-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            margin-top: 40px;
+            gap: 30px;
+            margin-top: 20px;
         }
 
         .partnership-box {
             border: 1px solid rgba(222, 215, 202, 0.2);
-            padding: 32px;
+            padding: 24px;
             background-color: #26221E;
         }
 
         .partnership-box ul {
             list-style: none;
-            margin-top: 16px;
+            margin-top: 12px;
         }
 
         .partnership-box li {
-            padding: 8px 0;
+            padding: 6px 0;
             border-bottom: 1px solid rgba(222, 215, 202, 0.1);
-            font-size: 0.9375rem;
+            font-size: 0.875rem;
             color: #D3CDC5;
         }
 
@@ -529,13 +630,13 @@
         }
 
         /* ----------------------------------------------------
-           10. FULL-WIDTH CONTACT SECTION
+           11. FULL-WIDTH CONTACT SECTION
         ---------------------------------------------------- */
         .section-contact-full {
             width: 100%;
             background-color: var(--soft-ivory);
             color: var(--black);
-            padding: 120px 0;
+            padding: 80px 0;
             border-bottom: 1px solid var(--border);
             text-align: center;
         }
@@ -547,21 +648,21 @@
 
         .contact-content-wrap h2 {
             color: var(--black);
-            font-size: 2.75rem;
-            margin-bottom: 20px;
+            font-size: 2.5rem;
+            margin-bottom: 16px;
         }
 
         .contact-lead {
             color: var(--muted-charcoal);
-            font-size: 1.15rem;
-            margin-bottom: 40px;
-            line-height: 1.7;
+            font-size: 1.1rem;
+            margin-bottom: 32px;
+            line-height: 1.6;
         }
 
         .contact-actions {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 16px;
             align-items: center;
             flex-wrap: wrap;
         }
@@ -586,51 +687,32 @@
         }
 
         /* ----------------------------------------------------
-           11. FOUR-COLUMN FOOTER
+           12. COMPACT SINGLE-ROW FOOTER
         ---------------------------------------------------- */
-        .site-footer {
+        .compact-footer {
             background-color: var(--black);
             color: #B5AFA5;
-            padding: 80px 0 40px;
-            font-size: 0.875rem;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1.2fr;
-            gap: 48px;
-            padding-bottom: 60px;
-            border-bottom: 1px solid rgba(222, 215, 202, 0.1);
-        }
-
-        .footer-col-title {
-            color: var(--white);
+            padding: 16px 0;
             font-size: 0.8125rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            margin-bottom: 24px;
         }
 
-        .footer-brand .logo {
-            color: var(--white);
-            display: inline-block;
-            margin-bottom: 16px;
-            font-size: 1.35rem;
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .footer-brand p {
-            line-height: 1.65;
-            max-width: 300px;
-            font-size: 0.875rem;
+        .footer-content p {
+            margin: 0;
+            color: #8C857B;
         }
 
         .footer-links {
+            display: flex;
+            gap: 20px;
             list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
+            margin: 0;
+            padding: 0;
         }
 
         .footer-links a {
@@ -642,33 +724,15 @@
             color: var(--mustard);
         }
 
-        .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 32px;
-            font-size: 0.8125rem;
-            color: #766E63;
-        }
-
-        .footer-bottom a {
-            color: #766E63;
-            transition: color 0.2s ease;
-        }
-
-        .footer-bottom a:hover {
-            color: var(--mustard);
-        }
-
         /* ----------------------------------------------------
-           12. BACK TO TOP BUTTON
+           13. BACK TO TOP BUTTON
         ---------------------------------------------------- */
         .back-to-top {
             position: fixed;
-            right: 24px;
-            bottom: 24px;
-            width: 48px;
-            height: 48px;
+            right: 28px;
+            bottom: 28px;
+            width: 38px;
+            height: 38px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -676,7 +740,7 @@
             color: var(--black);
             border: 1px solid var(--mustard);
             border-radius: 50%;
-            font-size: 1.25rem;
+            font-size: 1rem;
             font-weight: 700;
             line-height: 1;
             cursor: pointer;
@@ -684,208 +748,51 @@
             opacity: 0;
             visibility: hidden;
             transform: translateY(15px);
-            transition:
-                opacity 0.3s ease,
-                visibility 0.3s ease,
-                transform 0.3s ease,
-                background-color 0.3s ease,
-                color 0.3s ease;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
         }
 
         .back-to-top.show {
-            opacity: 1;
+            opacity: 0.9;
             visibility: visible;
             transform: translateY(0);
         }
 
         .back-to-top:hover {
+            opacity: 1;
             background-color: var(--black);
             color: var(--white);
             border-color: var(--black);
-            transform: translateY(-3px);
+            transform: translateY(-2px);
         }
 
         /* ----------------------------------------------------
-           13. RESPONSIVE DESIGN
+           14. RESPONSIVE DESIGN
         ---------------------------------------------------- */
-
-        @media (max-width: 1100px) {
-            .nav-links {
-                gap: 20px;
-            }
-
-            .nav-links a {
-                font-size: 0.78rem;
-            }
-        }
-
         @media (max-width: 992px) {
-
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 40px;
+            .journey-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
-
             .resources-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-
-            .hero-standalone .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .contact-content-wrap h2 {
-                font-size: 2.25rem;
-            }
-        }
-
-        @media (max-width: 900px) {
-
-            /* Hide desktop navigation */
-            .nav-links {
-                position: absolute;
-                top: calc(100% + 1px);
-                left: 0;
-                right: 0;
-                display: flex;
-                flex-direction: column;
-                align-items: stretch;
-                gap: 0;
-                background-color: var(--ivory);
-                border: 1px solid var(--border);
-                border-top: none;
-                box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
-
-                max-height: 0;
-                overflow: hidden;
-                opacity: 0;
-                visibility: hidden;
-
-                transition:
-                    max-height 0.35s ease,
-                    opacity 0.25s ease,
-                    visibility 0.25s ease;
-            }
-
-            /* Open mobile navigation */
-            .nav-links.mobile-open {
-                max-height: 500px;
-                opacity: 1;
-                visibility: visible;
-            }
-
-            .nav-links li {
-                width: 100%;
-                border-bottom: 1px solid var(--border);
-            }
-
-            .nav-links li:last-child {
-                border-bottom: none;
-            }
-
-            .nav-links a {
-                display: block;
-                width: 100%;
-                padding: 16px 24px;
-                font-size: 0.85rem;
-            }
-
-            .nav-links a::after {
-                display: none;
-            }
-
-            .nav-links a:hover {
-                background-color: var(--mustard-tint);
-                color: var(--black);
-            }
-
-            /* Show hamburger button */
-            .mobile-menu-toggle {
-                display: flex;
-            }
-
             .about-grid,
+            .portrait-grid,
+            .partnership-main-wrap,
             .partnerships-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .journey-grid {
                 grid-template-columns: 1fr;
             }
         }
 
         @media (max-width: 600px) {
-
-            .site-header {
-                padding: 14px 0;
-            }
-
-            .container {
-                padding-left: 18px;
-                padding-right: 18px;
-            }
-
-            .logo {
-                font-size: 1.05rem;
-            }
-
-            .hero-standalone {
-                padding: 35px 0 70px;
-            }
-
-            .hero-full-image-frame {
-                margin-bottom: 32px;
-                padding: 8px;
-            }
-
-            .hero-standalone .hero-title {
-                font-size: 2rem;
-            }
-
-            .hero-standalone .hero-lead {
-                font-size: 1rem;
-            }
-
-            .section-journey,
-            .section-about,
-            .section-education,
-            .section-partnerships {
-                padding: 70px 0;
-            }
-
-            .section-contact-full {
-                padding: 80px 0;
-            }
-
-            .section-title {
-                font-size: 1.7rem;
-            }
-
-            .contact-content-wrap h2 {
-                font-size: 1.9rem;
-            }
-
+            .journey-grid,
             .resources-grid {
                 grid-template-columns: 1fr;
             }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-bottom {
+            .footer-content {
                 flex-direction: column;
-                gap: 16px;
+                gap: 12px;
                 text-align: center;
-            }
-
-            .back-to-top {
-                right: 16px;
-                bottom: 16px;
-                width: 44px;
-                height: 44px;
-                font-size: 1.1rem;
             }
         }
     </style>
@@ -895,940 +802,302 @@
 
     <!-- NAVIGATION -->
     <header class="site-header">
-
         <div class="container nav-wrapper">
-
             <a href="#home" class="logo">
                 KARRY KARANJA<span>.</span>
             </a>
 
-            <!-- Desktop / Mobile Navigation -->
             <ul class="nav-links" id="mainNavigation">
-
-                <li>
-                    <a href="#home">Home</a>
-                </li>
-
-                <li>
-                    <a href="#about">About</a>
-                </li>
-
-                <li>
-                    <a href="#education">Financial Education</a>
-                </li>
-
-                <li>
-                    <a href="#resources">Launch Preview</a>
-                </li>
-
-                <li>
-                    <a href="#partnerships">Partnerships</a>
-                </li>
-
-                <li>
-                    <a href="#contact">Contact</a>
-                </li>
-
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Financial Education</a></li>
+                <li><a href="#resources">Launch Preview</a></li>
+                <li><a href="#partnerships">Partnerships</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
 
-            <!-- Mobile Hamburger Button -->
-            <button
-                class="mobile-menu-toggle"
-                id="mobileMenuToggle"
-                type="button"
-                aria-label="Open navigation menu"
-                aria-expanded="false"
-                aria-controls="mainNavigation">
-
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-label="Open navigation menu">
                 <span></span>
                 <span></span>
                 <span></span>
-
             </button>
-
         </div>
     </header>
 
-
     <!-- HERO SECTION -->
     <section id="home" class="hero-standalone">
-
         <div class="container">
-
             <div class="hero-full-image-frame fade-in">
-
                 <div class="hero-img-wrapper">
-
-                    <img
-                        src="images/hero.jpg"
-                        alt="Building Wealth - Karry Karanja Hero Banner">
-
+                    <img src="images/hero.jpg" alt="Building Wealth - Karry Karanja Hero Banner">
                 </div>
-
             </div>
 
             <div class="hero-header-block fade-in stagger-2">
-
-                <span class="eyebrow">
-                    Personal Finance & Wealth Building
-                </span>
-
+                <span class="eyebrow">Personal Finance & Wealth Building</span>
                 <h1 class="hero-title">
-
-                    Building wealth isn't one decision—it's a
-                    <span class="serif-accent">sequence</span>
-                    of good decisions.
-
+                    BUILD WEALTH IN THE <span class="serif-accent">RIGHT ORDER</span>.
                 </h1>
-
                 <p class="hero-lead">
-
                     Intelligent, practical financial education designed to help everyday people gain clarity, invest wisely, and build lasting independence.
-
                 </p>
-
-                <a href="#education" class="btn">
-                    Explore The Wealth Journey
-                </a>
-
+                <a href="#education" class="btn">Explore The Wealth Journey</a>
             </div>
-
         </div>
-
     </section>
-
 
     <!-- THE 5-PART WEALTH JOURNEY -->
     <section id="education" class="section-journey">
-
         <div class="container">
+            <div class="journey-header-wrap">
+                <svg class="chevron-watermark" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 40 L100 100 L180 40" stroke="#C99725" stroke-width="16" stroke-linecap="square" stroke-linejoin="miter"/>
+                    <path d="M20 90 L100 150 L180 90" stroke="#C99725" stroke-width="16" stroke-linecap="square" stroke-linejoin="miter"/>
+                </svg>
 
-            <span
-                class="eyebrow fade-in"
-                style="text-align: center;">
-
-                Core Architecture
-
-            </span>
-
-            <h2 class="section-title fade-in">
-
-                The Five-Part Wealth Journey
-
-            </h2>
-
-            <p class="section-subtitle fade-in">
-
-                A structured framework for long-term financial independence.
-
-            </p>
+                <div class="journey-header-content">
+                    <span class="eyebrow fade-in" style="text-align: center;">Core Architecture</span>
+                    <h2 class="section-title fade-in">The Five-Part Wealth Journey</h2>
+                    <p class="section-subtitle fade-in">A structured framework for long-term financial independence.</p>
+                </div>
+            </div>
             
             <div class="journey-grid">
-
                 <div class="journey-card fade-in stagger-1">
-
-                    <div class="journey-num">
-                        01 / STAGE
-                    </div>
-
-                    <h3>
-                        Earn More
-                    </h3>
-
-                    <p>
-                        Side hustles, remote opportunities, income optimization, and business models.
-                    </p>
-
+                    <div class="journey-num">01 / STAGE</div>
+                    <h3>Earn More</h3>
+                    <p>Side hustles, remote opportunities, income optimization, and business models.</p>
                 </div>
 
                 <div class="journey-card fade-in stagger-2">
-
-                    <div class="journey-num">
-                        02 / STAGE
-                    </div>
-
-                    <h3>
-                        Save More
-                    </h3>
-
-                    <p>
-                        High-yield accounts, $10K milestones, and high-impact money management.
-                    </p>
-
+                    <div class="journey-num">02 / STAGE</div>
+                    <h3>Save More</h3>
+                    <p>High-yield accounts, $10K milestones, and high-impact money management.</p>
                 </div>
 
                 <div class="journey-card fade-in stagger-3">
-
-                    <div class="journey-num">
-                        03 / STAGE
-                    </div>
-
-                    <h3>
-                        Protect Your Money
-                    </h3>
-
-                    <p>
-                        Emergency funds, safety nets, insurance, and avoiding costly financial traps.
-                    </p>
-
+                    <div class="journey-num">03 / STAGE</div>
+                    <h3>Protect Your Money</h3>
+                    <p>Emergency funds, safety nets, insurance, and avoiding costly financial traps.</p>
                 </div>
 
                 <div class="journey-card fade-in stagger-4">
-
-                    <div class="journey-num">
-                        04 / STAGE
-                    </div>
-
-                    <h3>
-                        Invest Wisely
-                    </h3>
-
-                    <p>
-                        Index funds, ETFs, retirement accounts, and sustainable long-term strategies.
-                    </p>
-
+                    <div class="journey-num">04 / STAGE</div>
+                    <h3>Invest Wisely</h3>
+                    <p>Index funds, ETFs, retirement accounts, and sustainable long-term strategies.</p>
                 </div>
 
                 <div class="journey-card fade-in stagger-5">
-
-                    <div class="journey-num">
-                        05 / STAGE
-                    </div>
-
-                    <h3>
-                        Build Lasting Wealth
-                    </h3>
-
-                    <p>
-                        Passive income streams, financial independence systems, and legacy planning.
-                    </p>
-
+                    <div class="journey-num">05 / STAGE</div>
+                    <h3>Build Lasting Wealth</h3>
+                    <p>Passive income streams, financial independence systems, and legacy planning.</p>
                 </div>
-
             </div>
-
         </div>
-
     </section>
 
-
-    <!-- ABOUT SECTION -->
+    <!-- ABOUT SECTION (K2.JPG) -->
     <section id="about" class="section-about">
-
         <div class="container about-grid">
-
             <div class="about-image-frame fade-in">
-
-                <img
-                    src="images/profile.jpg"
-                    alt="Karry Karanja Profile Picture">
-
+                <div class="about-image-crop">
+                    <img src="images/K2.jpg" alt="Karry Karanja Profile Picture">
+                </div>
             </div>
 
             <div class="about-content fade-in stagger-2">
-
-                <span class="eyebrow">
-                    About Karry
-                </span>
-
-                <h2>
-
-                    From Questions to a
-                    <span class="serif-accent">Mission</span>
-
-                </h2>
-
-                <p>
-
-                    For years, friends and family came to me with questions about saving, investing, budgeting, retirement, and building real financial security.
-
-                </p>
-
-                <p>
-
-                    Combining a background in Economics with CFO-level executive experience, my mission is to deliver research-backed, practical financial education without institutional jargon or promotional hype.
-
-                </p>
+                <span class="eyebrow">About Karry</span>
+                <h2>From Questions to a <span class="serif-accent">Mission</span></h2>
+                <p>For years, friends and family came to me with questions about saving, investing, budgeting, retirement, and building real financial security.</p>
+                <p>Combining a background in Economics with CFO-level executive experience, my mission is to deliver research-backed, practical financial education without institutional jargon or promotional hype.</p>
 
                 <div class="principles-list">
-
                     <div class="principle-item">
-
-                        <h4>
-                            Practical Education
-                        </h4>
-
-                        <p>
-                            Actionable guidance rooted in real financial principles.
-                        </p>
-
+                        <h4>Practical Education</h4>
+                        <p>Actionable guidance rooted in real financial principles.</p>
                     </div>
-
                     <div class="principle-item">
-
-                        <h4>
-                            Long-Term Thinking
-                        </h4>
-
-                        <p>
-                            Focusing on sustainable wealth over fast-money promises.
-                        </p>
-
+                        <h4>Long-Term Thinking</h4>
+                        <p>Focusing on sustainable wealth over fast-money promises.</p>
                     </div>
-
                     <div class="principle-item">
-
-                        <h4>
-                            Trust First
-                        </h4>
-
-                        <p>
-                            Independent, transparent insights always aligned with audience interest.
-                        </p>
-
+                        <h4>Trust First</h4>
+                        <p>Independent, transparent insights always aligned with audience interest.</p>
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
     </section>
-
 
     <!-- LAUNCH PREVIEW SECTION -->
     <section id="resources" class="section-education">
-
         <div class="container">
-
-            <h2 class="section-title fade-in">
-                Launch Preview
-            </h2>
-
-            <p
-                class="section-subtitle fade-in"
-                style="margin-bottom: 40px;">
-
-                Six upcoming core guides covering the complete wealth-building path.
-
-            </p>
+            <h2 class="section-title fade-in">Launch Preview</h2>
+            <p class="section-subtitle fade-in" style="margin-bottom: 40px;">Six upcoming core guides covering the complete wealth-building path.</p>
             
             <div class="resources-grid">
-
                 <div class="resource-card fade-in stagger-1">
-
-                    <span class="resource-tag">
-                        01 / Earn More
-                    </span>
-
-                    <h3>
-                        Side Hustles That Work
-                    </h3>
-
-                    <p>
-                        Actionable models to increase your baseline income and build secondary revenue streams.
-                    </p>
-
+                    <span class="resource-tag">01 / Earn More</span>
+                    <h3>Side Hustles That Work</h3>
+                    <p>Actionable models to increase your baseline income and build secondary revenue streams.</p>
                 </div>
-
 
                 <div class="resource-card fade-in stagger-2">
-
-                    <span class="resource-tag">
-                        02 / Save More
-                    </span>
-
-                    <h3>
-                        HYSA Beginner's Guide
-                    </h3>
-
-                    <p>
-                        How to maximize cash yields safely with modern high-yield savings accounts.
-                    </p>
-
+                    <span class="resource-tag">02 / Save More</span>
+                    <h3>HYSA Beginner's Guide</h3>
+                    <p>How to maximize cash yields safely with modern high-yield savings accounts.</p>
                 </div>
-
 
                 <div class="resource-card fade-in stagger-3">
-
-                    <span class="resource-tag">
-                        02 / Save More
-                    </span>
-
-                    <h3>
-                        Why Everything Changes After $10K
-                    </h3>
-
-                    <p>
-                        The mathematical and psychological shift that occurs once you hit your first $10K baseline.
-                    </p>
-
+                    <span class="resource-tag">02 / Save More</span>
+                    <h3>Why Everything Changes After $10K</h3>
+                    <p>The mathematical and psychological shift that occurs once you hit your first $10K baseline.</p>
                 </div>
-
 
                 <div class="resource-card fade-in stagger-4">
-
-                    <span class="resource-tag">
-                        03 / Protect Money
-                    </span>
-
-                    <h3>
-                        How to Build an Emergency Fund Fast
-                    </h3>
-
-                    <p>
-                        A simple step-by-step framework to insulate yourself from financial shocks.
-                    </p>
-
+                    <span class="resource-tag">03 / Protect Money</span>
+                    <h3>How to Build an Emergency Fund Fast</h3>
+                    <p>A simple step-by-step framework to insulate yourself from financial shocks.</p>
                 </div>
-
 
                 <div class="resource-card fade-in stagger-5">
-
-                    <span class="resource-tag">
-                        04 / Invest Wisely
-                    </span>
-
-                    <h3>
-                        6 Accounts You Need to Become Rich
-                    </h3>
-
-                    <p>
-                        Unlocking tax-advantaged tools and vehicles designed for reliable wealth accumulation.
-                    </p>
-
+                    <span class="resource-tag">04 / Invest Wisely</span>
+                    <h3>6 Accounts You Need to Become Rich</h3>
+                    <p>The accounts that help you save, invest, protect your money, and build wealth in the right order.</p>
                 </div>
-
 
                 <div class="resource-card fade-in stagger-6">
-
-                    <span class="resource-tag">
-                        05 / Build Lasting Wealth
-                    </span>
-
-                    <h3>
-                        Passive Income Starting With $1,000
-                    </h3>
-
-                    <p>
-                        Realistic strategies to begin generating passive yield with realistic entry capital.
-                    </p>
-
+                    <span class="resource-tag">05 / Build Lasting Wealth</span>
+                    <h3>How to Invest Your First $1,000 (Passive Income for Beginners)</h3>
+                    <p>Five practical ways to put your first $1,000 to work and begin building passive income.</p>
                 </div>
-
             </div>
-
         </div>
-
     </section>
 
+    <!-- STRATEGIC ALIGNMENT SECTION (K1.JPG) -->
+    <section class="section-partnership-portrait">
+        <div class="container portrait-grid">
+            <div class="portrait-lead fade-in">
+                <span class="eyebrow">Strategic Alignment</span>
+                <h2>Built for Authentic <span class="serif-accent">Impact</span></h2>
+                <p>Bringing clarity to personal finance requires total editorial trust. Every collaboration is carefully selected to ensure absolute alignment with high standards, audience value, and long-term financial integrity.</p>
+            </div>
+            <div class="portrait-image-frame fade-in stagger-2">
+                <div class="portrait-crop">
+                    <img src="images/K1.jpg" alt="Karry Karanja Strategic Alignment Portrait">
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- PARTNERSHIPS SECTION -->
+    <!-- PARTNERSHIPS / COMMERCIAL ALIGNMENT SECTION (IMAGE FIRST) -->
     <section id="partnerships" class="section-partnerships">
-
         <div class="container">
+            <div class="partnership-main-wrap">
+                <!-- IMAGE FIRST -->
+                <div class="partnership-image-frame fade-in">
+                    <div class="partnership-crop">
+                        <img src="images/K3.jpg" alt="Karry Karanja Partnership Portrait">
+                    </div>
+                </div>
 
-            <span class="eyebrow fade-in">
-                Commercial Alignment
-            </span>
-
-            <h2 class="fade-in">
-
-                Partnership
-                <span class="serif-accent">Philosophy</span>
-
-            </h2>
-
-            <p
-                class="fade-in"
-                style="color: #D3CDC5; max-width: 600px;">
-
-                Partnerships must support the educational mission, provide genuine value to the audience, and fit within the five-part wealth journey.
-
-            </p>
+                <!-- TEXT SECOND -->
+                <div>
+                    <span class="eyebrow fade-in stagger-2">Commercial Alignment</span>
+                    <h2 class="fade-in stagger-2">Partnership <span class="serif-accent">Philosophy</span></h2>
+                    <p class="fade-in stagger-2" style="color: #D3CDC5; max-width: 600px; margin-top: 16px;">Partnerships must support the educational mission, provide genuine value to the audience, and fit within the five-part wealth journey.</p>
+                </div>
+            </div>
 
             <div class="partnerships-grid">
-
                 <div class="partnership-box fade-in stagger-1">
-
-                    <h3>
-                        What I Prioritize
-                    </h3>
-
+                    <h3>What I Prioritize</h3>
                     <ul>
-
-                        <li>
-                            Research-driven financial services and software
-                        </li>
-
-                        <li>
-                            High-yield savings and low-fee investment platforms
-                        </li>
-
-                        <li>
-                            Products supporting long-term financial well-being
-                        </li>
-
-                        <li>
-                            Brands with transparent, ethical terms
-                        </li>
-
+                        <li>Research-driven financial services and software</li>
+                        <li>High-yield savings and low-fee investment platforms</li>
+                        <li>Products supporting long-term financial well-being</li>
+                        <li>Brands with transparent, ethical terms</li>
                     </ul>
-
                 </div>
-
 
                 <div class="partnership-box fade-in stagger-2">
-
-                    <h3>
-                        What I Do Not Promote
-                    </h3>
-
+                    <h3>What I Do Not Promote</h3>
                     <ul>
-
-                        <li>
-                            Get-rich-quick or speculative schemes
-                        </li>
-
-                        <li>
-                            Predatory lending and payday loans
-                        </li>
-
-                        <li>
-                            Gambling or sports-betting products
-                        </li>
-
-                        <li>
-                            Products encouraging unnecessary debt
-                        </li>
-
+                        <li>Get-rich-quick or speculative schemes</li>
+                        <li>Predatory lending and payday loans</li>
+                        <li>Gambling or sports-betting products</li>
+                        <li>Products encouraging unnecessary debt</li>
                     </ul>
-
                 </div>
-
             </div>
-
         </div>
-
     </section>
-
 
     <!-- FULL-WIDTH CONTACT SECTION -->
     <section id="contact" class="section-contact-full">
-
         <div class="container">
-
             <div class="contact-content-wrap fade-in">
-
-                <span class="eyebrow">
-                    Connect & Collaborate
-                </span>
-
-                <h2>
-
-                    Start a
-                    <span class="serif-accent">Conversation</span>
-
-                </h2>
-
-                <p class="contact-lead">
-
-                    Whether you are seeking strategic brand partnerships, media features, or research inquiries, let’s build practical financial clarity together.
-
-                </p>
+                <span class="eyebrow">Connect & Collaborate</span>
+                <h2>Start a <span class="serif-accent">Conversation</span></h2>
+                <p class="contact-lead">Whether you are seeking strategic brand partnerships, media features, or research inquiries, let’s build practical financial clarity together.</p>
 
                 <div class="contact-actions">
-
-                    <a
-                        href="https://mail.google.com/mail/?view=cm&fs=1&to=karry@karrykaranja.com&su=Inquiry%20via%20Website"
-                        target="_blank"
-                        class="btn">
-
-                        Send an Email
-
-                    </a>
-
-                    <a
-                        href="#partnerships"
-                        class="btn-secondary-light">
-
-                        View Partnership Terms
-
-                    </a>
-
+                    <a href="mailto:karry@karrykaranja.com?subject=Inquiry%20via%20Website" target="_blank" class="btn">Send an Email</a>
+                    <a href="#partnerships" class="btn-secondary-light">View Partnership Terms</a>
                 </div>
-
             </div>
-
         </div>
-
     </section>
 
-
-    <!-- FOUR-COLUMN FOOTER -->
-    <footer class="site-footer">
-
-        <div class="container">
-
-            <div class="footer-grid">
-
-                <!-- Column 1: Brand -->
-                <div class="footer-brand">
-
-                    <a href="#home" class="logo">
-
-                        KARRY KARANJA<span>.</span>
-
-                    </a>
-
-                    <p>
-
-                        Intelligent, practical financial education designed to help everyday people gain clarity, invest wisely, and build lasting independence.
-
-                    </p>
-
-                </div>
-
-
-                <!-- Column 2: Quick Links -->
-                <div>
-
-                    <h4 class="footer-col-title">
-                        Navigation
-                    </h4>
-
-                    <ul class="footer-links">
-
-                        <li>
-                            <a href="#home">
-                                Home
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#about">
-                                About Karry
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#education">
-                                Wealth Framework
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#resources">
-                                Launch Preview
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#partnerships">
-                                Partnerships
-                            </a>
-                        </li>
-
-                    </ul>
-
-                </div>
-
-
-                <!-- Column 3: Wealth Journey -->
-                <div>
-
-                    <h4 class="footer-col-title">
-                        The Journey
-                    </h4>
-
-                    <ul class="footer-links">
-
-                        <li>
-                            <a href="#education">
-                                01 / Earn More
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#education">
-                                02 / Save More
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#education">
-                                03 / Protect Money
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#education">
-                                04 / Invest Wisely
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#education">
-                                05 / Build Wealth
-                            </a>
-                        </li>
-
-                    </ul>
-
-                </div>
-
-
-                <!-- Column 4: Contact & Inquiries -->
-                <div>
-
-                    <h4 class="footer-col-title">
-                        Inquiries
-                    </h4>
-
-                    <ul class="footer-links">
-
-                        <li>
-
-                            <a
-                                href="https://mail.google.com/mail/?view=cm&fs=1&to=karry@karrykaranja.com&su=Inquiry%20via%20Website"
-                                target="_blank">
-
-                                karry@karrykaranja.com
-
-                            </a>
-
-                        </li>
-
-                        <li>
-                            <a href="#contact">
-                                Commercial Partnerships
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#contact">
-                                Press & Media
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#contact">
-                                Start Conversation
-                            </a>
-                        </li>
-
-                    </ul>
-
-                </div>
-
-            </div>
-
-
-            <!-- Footer Bottom Bar -->
-            <div class="footer-bottom">
-
-                <div>
-                    &copy; Karry Karanja. All rights reserved.
-                </div>
-
-                <div>
-                    Personal Finance | Saving • Investing • Building Wealth
-                </div>
-
-            </div>
-
+    <!-- COMPACT FOOTER -->
+    <footer class="compact-footer">
+        <div class="container footer-content">
+            <p>&copy; Karry Karanja. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Framework</a></li>
+                <li><a href="#partnerships">Partnerships</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
-
     </footer>
 
-
     <!-- BACK TO TOP BUTTON -->
-    <button
-        id="backToTop"
-        class="back-to-top"
-        aria-label="Back to top"
-        title="Back to top">
-
-        ↑
-
-    </button>
-
+    <button id="backToTop" class="back-to-top" aria-label="Back to top" title="Back to top">↑</button>
 
     <!-- JAVASCRIPT -->
     <script>
-
         document.addEventListener('DOMContentLoaded', function() {
-
-
-            /* ---------------------------------------------
-               FADE-IN SCROLL ANIMATIONS
-            --------------------------------------------- */
-
+            /* Scroll Animations */
             const faders = document.querySelectorAll('.fade-in');
+            const appearOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
 
-            const appearOptions = {
-                threshold: 0.15,
-                rootMargin: "0px 0px -50px 0px"
-            };
-
-            const appearOnScroll = new IntersectionObserver(
-                function(entries, observer) {
-
-                    entries.forEach(entry => {
-
-                        if (!entry.isIntersecting) {
-                            return;
-                        }
-
-                        entry.target.classList.add('appear');
-
-                        observer.unobserve(entry.target);
-
-                    });
-
-                },
-                appearOptions
-            );
-
-            faders.forEach(fader => {
-                appearOnScroll.observe(fader);
-            });
-
-
-            /* ---------------------------------------------
-               MOBILE NAVIGATION
-            --------------------------------------------- */
-
-            const mobileMenuToggle =
-                document.getElementById('mobileMenuToggle');
-
-            const mainNavigation =
-                document.getElementById('mainNavigation');
-
-            mobileMenuToggle.addEventListener('click', function() {
-
-                const isOpen =
-                    mainNavigation.classList.toggle('mobile-open');
-
-                mobileMenuToggle.classList.toggle('active', isOpen);
-
-                mobileMenuToggle.setAttribute(
-                    'aria-expanded',
-                    isOpen
-                );
-
-                mobileMenuToggle.setAttribute(
-                    'aria-label',
-                    isOpen
-                        ? 'Close navigation menu'
-                        : 'Open navigation menu'
-                );
-
-            });
-
-
-            /* ---------------------------------------------
-               CLOSE MOBILE MENU AFTER CLICKING A LINK
-            --------------------------------------------- */
-
-            const navigationLinks =
-                mainNavigation.querySelectorAll('a');
-
-            navigationLinks.forEach(function(link) {
-
-                link.addEventListener('click', function() {
-
-                    mainNavigation.classList.remove('mobile-open');
-
-                    mobileMenuToggle.classList.remove('active');
-
-                    mobileMenuToggle.setAttribute(
-                        'aria-expanded',
-                        'false'
-                    );
-
-                    mobileMenuToggle.setAttribute(
-                        'aria-label',
-                        'Open navigation menu'
-                    );
-
+            const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('appear');
+                    observer.unobserve(entry.target);
                 });
+            }, appearOptions);
 
-            });
+            faders.forEach(fader => appearOnScroll.observe(fader));
 
-
-            /* ---------------------------------------------
-               CLOSE MOBILE MENU WHEN CLICKING OUTSIDE
-            --------------------------------------------- */
-
-            document.addEventListener('click', function(event) {
-
-                const clickedInsideNavigation =
-                    mainNavigation.contains(event.target);
-
-                const clickedMenuButton =
-                    mobileMenuToggle.contains(event.target);
-
-                if (
-                    !clickedInsideNavigation &&
-                    !clickedMenuButton
-                ) {
-
-                    mainNavigation.classList.remove('mobile-open');
-
-                    mobileMenuToggle.classList.remove('active');
-
-                    mobileMenuToggle.setAttribute(
-                        'aria-expanded',
-                        'false'
-                    );
-
-                    mobileMenuToggle.setAttribute(
-                        'aria-label',
-                        'Open navigation menu'
-                    );
-
-                }
-
-            });
-
-
-            /* ---------------------------------------------
-               BACK TO TOP BUTTON
-            --------------------------------------------- */
-
-            const backToTop =
-                document.getElementById('backToTop');
-
+            /* Back to Top */
+            const backToTop = document.getElementById('backToTop');
             window.addEventListener('scroll', function() {
-
                 if (window.scrollY > 400) {
-
                     backToTop.classList.add('show');
-
                 } else {
-
                     backToTop.classList.remove('show');
-
                 }
-
             });
-
 
             backToTop.addEventListener('click', function() {
-
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
-
-
         });
-
     </script>
-
 </body>
 </html>
