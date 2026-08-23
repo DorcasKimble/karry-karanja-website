@@ -584,8 +584,9 @@
             border: 1px solid rgba(222, 215, 202, 0.2);
             padding: 8px;
             background-color: #26221E;
-            max-width: 320px;
+            max-width: 320px; /* Constrained on desktop */
             margin: 0 auto;
+            width: 100%;
         }
 
         .partnership-crop {
@@ -808,6 +809,15 @@
             .partnerships-grid {
                 grid-template-columns: 1fr;
             }
+
+            /* Full width for partnership image on mobile screens */
+            .partnership-image-frame {
+                max-width: 100%;
+            }
+
+            .partnership-crop {
+                height: 360px; /* Expands height proportionally for mobile banner effect */
+            }
         }
 
         @media (max-width: 600px) {
@@ -823,6 +833,9 @@
                 flex-direction: column;
                 gap: 12px;
                 text-align: center;
+            }
+            .partnership-crop {
+                height: 280px;
             }
         }
     </style>
