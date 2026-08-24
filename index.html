@@ -418,6 +418,24 @@
             gap: 6px;
         }
 
+
+        .tool-status {
+            display: inline-block;
+            width: fit-content;
+            margin-bottom: 14px;
+            padding: 5px 9px;
+            border: 1px solid var(--mustard);
+            color: var(--mustard);
+            font-size: 0.6875rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .tool-link {
+            cursor: pointer;
+        }
+
         /* ----------------------------------------------------
            8. FINANCIAL EDUCATION (WEALTH JOURNEY)
         ---------------------------------------------------- */
@@ -770,8 +788,73 @@
             transform: translateY(-2px);
         }
 
+
         /* ----------------------------------------------------
-           14. RESPONSIVE DESIGN & MOBILE MENU
+           14. COMING SOON MODAL
+        ---------------------------------------------------- */
+        .coming-soon-modal {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: rgba(31, 28, 24, 0.62);
+            z-index: 2000;
+        }
+
+        .coming-soon-modal.active {
+            display: flex;
+        }
+
+        .coming-soon-dialog {
+            width: min(100%, 560px);
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 40px 34px 34px;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+        }
+
+        .coming-soon-dialog h3 {
+            font-size: 1.65rem;
+            text-transform: none;
+            margin-bottom: 14px;
+        }
+
+        .coming-soon-dialog p {
+            color: var(--muted-charcoal);
+            line-height: 1.65;
+            margin-bottom: 10px;
+        }
+
+        .coming-soon-dialog .coming-soon-check {
+            font-weight: 600;
+            color: var(--black);
+            margin-top: 18px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 12px;
+            right: 14px;
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--border);
+            background: var(--white);
+            color: var(--black);
+            font-size: 1.25rem;
+            cursor: pointer;
+        }
+
+        .modal-close:hover {
+            background: var(--black);
+            color: var(--white);
+            border-color: var(--black);
+        }
+
+        /* ----------------------------------------------------
+           15. RESPONSIVE DESIGN & MOBILE MENU
         ---------------------------------------------------- */
         @media (max-width: 992px) {
             .mobile-menu-toggle {
@@ -933,26 +1016,29 @@
             <div class="tools-grid">
                 <div class="tool-card fade-in stagger-1">
                     <div>
-                        <h3>Emergency Fund Calculator</h3>
-                        <p>Determine exactly how much safety net cash you need based on your monthly living obligations.</p>
+                        <span class="tool-status">Coming Soon</span>
+                        <h3>Savings Goal Tracker &amp; Calculator</h3>
+                        <p>This free tool is being built to help you set a savings goal, see exactly what it will take to reach it, and track your progress along the way.</p>
                     </div>
-                    <a href="#contact" class="tool-link">Download Template →</a>
+                    <a href="#" class="tool-link" data-tool="savings">Learn More →</a>
                 </div>
 
                 <div class="tool-card fade-in stagger-2">
                     <div>
-                        <h3>Savings Milestone Tracker</h3>
-                        <p>A structured blueprint to map out your journey to your first $10K and beyond.</p>
+                        <span class="tool-status">Coming Soon</span>
+                        <h3>Emergency Fund Calculator</h3>
+                        <p>Find out how much you may need in your emergency fund based on your essential monthly expenses and the number of months you want to protect.</p>
                     </div>
-                    <a href="#contact" class="tool-link">Access Tracker →</a>
+                    <a href="#" class="tool-link" data-tool="emergency">Learn More →</a>
                 </div>
 
                 <div class="tool-card fade-in stagger-3">
                     <div>
-                        <h3>Investment Order Checklist</h3>
-                        <p>A simple step-by-step checklist to optimize your account hierarchy and minimize taxes.</p>
+                        <span class="tool-status">Coming Soon</span>
+                        <h3>Your Financial Order</h3>
+                        <p>Not sure what to do next with your money? Answer a few questions and get a clear next step based on where you are right now.</p>
                     </div>
-                    <a href="#contact" class="tool-link">Get Checklist →</a>
+                    <a href="#" class="tool-link" data-tool="order">Learn More →</a>
                 </div>
             </div>
         </div>
@@ -978,13 +1064,13 @@
                 <div class="journey-card fade-in stagger-1">
                     <div class="journey-num">01 / STAGE</div>
                     <h3>Earn More</h3>
-                    <p>Side hustles, remote opportunities, income optimization, and business models.</p>
+                    <p>Practical ways to earn more, including side hustles, remote opportunities, and business ideas.</p>
                 </div>
 
                 <div class="journey-card fade-in stagger-2">
                     <div class="journey-num">02 / STAGE</div>
                     <h3>Save More</h3>
-                    <p>High-yield accounts, $10K milestones, and high-impact money management.</p>
+                    <p>High-yield savings, important savings milestones, and practical ways to keep more of your money.</p>
                 </div>
 
                 <div class="journey-card fade-in stagger-3">
@@ -1017,38 +1103,38 @@
             <div class="resources-grid">
                 <div class="resource-card fade-in stagger-1">
                     <span class="resource-tag">01 / Earn More</span>
-                    <h3>Side Hustles That Work</h3>
-                    <p>Actionable models to increase your baseline income and build secondary revenue streams.</p>
+                    <h3>Side Hustles That Actually Work</h3>
+                    <p>Practical side hustles that can realistically help you earn more—without wasting your time on opportunities that sound better than they are.</p>
                 </div>
 
                 <div class="resource-card fade-in stagger-2">
                     <span class="resource-tag">02 / Save More</span>
-                    <h3>HYSA Beginner's Guide</h3>
-                    <p>How to maximize cash yields safely with modern high-yield savings accounts.</p>
+                    <h3>High-Yield Savings Account: The Ultimate Beginner's Guide</h3>
+                    <p>Everything you need to know before opening a high-yield savings account, including how they work, what to look for, and the mistakes to avoid.</p>
                 </div>
 
                 <div class="resource-card fade-in stagger-3">
                     <span class="resource-tag">02 / Save More</span>
-                    <h3>Why Everything Changes After $10K</h3>
-                    <p>The mathematical and psychological shift that occurs once you hit your first $10K baseline.</p>
+                    <h3>Why Everything Changes at $10K</h3>
+                    <p>Why reaching your first $10,000 can change the way you think about money—and what to do once you get there.</p>
                 </div>
 
                 <div class="resource-card fade-in stagger-4">
                     <span class="resource-tag">03 / Protect Money</span>
                     <h3>How to Build an Emergency Fund Fast</h3>
-                    <p>A simple step-by-step framework to insulate yourself from financial shocks.</p>
+                    <p>A practical step-by-step plan for building an emergency fund, starting with your first $1,000 and working toward several months of essential expenses.</p>
                 </div>
 
                 <div class="resource-card fade-in stagger-5">
                     <span class="resource-tag">04 / Invest Wisely</span>
-                    <h3>6 Accounts You Need to Become Rich</h3>
-                    <p>The accounts that help you save, invest, protect your money, and build wealth in the right order.</p>
+                    <h3>6 Accounts You Need to Build Wealth</h3>
+                    <p>The six financial accounts that can help you save, protect, invest, and build wealth—and how they fit together.</p>
                 </div>
 
                 <div class="resource-card fade-in stagger-6">
                     <span class="resource-tag">05 / Build Lasting Wealth</span>
                     <h3>How to Invest Your First $1,000 (Passive Income for Beginners)</h3>
-                    <p>Five practical ways to put your first $1,000 to work and begin building passive income.</p>
+                    <p>Five practical ways to put your first $1,000 to work, with the risks, trade-offs, and long-term potential of each.</p>
                 </div>
             </div>
         </div>
@@ -1128,6 +1214,18 @@
         </div>
     </footer>
 
+
+    <!-- COMING SOON MODAL -->
+    <div class="coming-soon-modal" id="comingSoonModal" aria-hidden="true">
+        <div class="coming-soon-dialog" role="dialog" aria-modal="true" aria-labelledby="comingSoonTitle">
+            <button type="button" class="modal-close" id="modalClose" aria-label="Close">×</button>
+            <span class="eyebrow">Coming Soon</span>
+            <h3 id="comingSoonTitle">Coming Soon</h3>
+            <p id="comingSoonMessage"></p>
+            <p class="coming-soon-check">Check back soon.</p>
+        </div>
+    </div>
+
     <!-- BACK TO TOP BUTTON -->
     <button id="backToTop" class="back-to-top" aria-label="Back to top" title="Back to top">↑</button>
 
@@ -1164,6 +1262,72 @@
             }, appearOptions);
 
             faders.forEach(fader => appearOnScroll.observe(fader));
+
+
+            /* Coming Soon Tool Modals */
+            const comingSoonModal = document.getElementById('comingSoonModal');
+            const modalClose = document.getElementById('modalClose');
+            const comingSoonTitle = document.getElementById('comingSoonTitle');
+            const comingSoonMessage = document.getElementById('comingSoonMessage');
+
+            const toolMessages = {
+                savings: {
+                    title: 'Savings Goal Tracker & Calculator',
+                    message: 'This free tool is being built to help you set a savings goal, see exactly what it will take to reach it, and track your progress along the way.'
+                },
+                emergency: {
+                    title: 'Emergency Fund Calculator',
+                    message: 'Find out how much you may need in your emergency fund based on your essential monthly expenses and the number of months you want to protect.'
+                },
+                order: {
+                    title: 'Your Financial Order',
+                    message: 'Not sure what to do next with your money? Answer a few questions and get a clear next step based on where you are right now.'
+                }
+            };
+
+            function openComingSoonModal(toolKey) {
+                const tool = toolMessages[toolKey];
+                if (!tool || !comingSoonModal) return;
+
+                comingSoonTitle.textContent = tool.title;
+                comingSoonMessage.textContent = tool.message;
+                comingSoonModal.classList.add('active');
+                comingSoonModal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+                modalClose.focus();
+            }
+
+            function closeComingSoonModal() {
+                if (!comingSoonModal) return;
+                comingSoonModal.classList.remove('active');
+                comingSoonModal.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            }
+
+            document.querySelectorAll('.tool-link[data-tool]').forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    openComingSoonModal(this.dataset.tool);
+                });
+            });
+
+            if (modalClose) {
+                modalClose.addEventListener('click', closeComingSoonModal);
+            }
+
+            if (comingSoonModal) {
+                comingSoonModal.addEventListener('click', function(event) {
+                    if (event.target === comingSoonModal) {
+                        closeComingSoonModal();
+                    }
+                });
+            }
+
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                    closeComingSoonModal();
+                }
+            });
 
             /* Back to Top */
             const backToTop = document.getElementById('backToTop');
