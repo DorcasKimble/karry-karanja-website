@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Savings Goal Tracker | Karry Karanja</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root{--mustard:#C99725;--ivory:#FBF9F4;--white:#fff;--black:#1F1C18;--charcoal:#2D2924;--muted:#766E63;--soft:#F7F4EE;--tint:#F3E8CD;--border:#DED7CA;--sans:Inter,Arial,sans-serif;--serif:'Playfair Display',Georgia,serif}*{box-sizing:border-box}body{margin:0;background:var(--white);color:var(--charcoal);font:16px/1.55 var(--sans)}a{text-decoration:none;color:inherit}.container{width:min(1150px,calc(100% - 42px));margin:auto}.site-header{background:rgba(255,255,255,.96);border-bottom:1px solid var(--border);padding:19px 0}.nav{display:flex;align-items:center;justify-content:space-between;gap:18px}.logo{font-weight:800;font-size:19px;letter-spacing:.05em}.logo span,.eyebrow,.accent{color:var(--mustard)}.navlinks{display:flex;list-style:none;gap:25px;padding:0;margin:0;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}.navlinks a:hover{color:var(--mustard)}.hero{text-align:center;padding:72px 0 52px;background:var(--white)}.eyebrow{display:block;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.hero h1{margin:11px 0;font-size:clamp(38px,6vw,66px);line-height:1.03;letter-spacing:-.04em;text-transform:uppercase;color:var(--black)}.hero h1 em{font:italic 400 .86em var(--serif);text-transform:none}.hero p{max-width:610px;margin:0 auto;color:var(--muted);font-size:17px}.calculator{margin:0 auto 70px}.panel{border:1px solid var(--border);padding:32px;border-radius:4px;transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s cubic-bezier(.16,1,.3,1)}.panel:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(31,28,24,.08)}
+    
+    /* SPECIFIC CARD BACKGROUND COLOR ORDER */
+    .card-1 { background: var(--white); }
+    .card-2 { background: var(--ivory); }
+    .card-3 { background: var(--mustard); color: var(--black); }
+    .card-4 { background: var(--white); }
+    .card-5 { background: var(--white); }
+    .card-6 { background: var(--ivory); }
+
+    /* ADJUSTING TEXT AND ELEMENTS WITHIN MUSTARD CARDS (CARD 3) FOR CONTRAST */
+    .card-3 .step { color: var(--black); }
+    .card-3 .card-explain { color: #3d3522; }
+    .card-3 .field { border-color: var(--black); }
+    .card-3 .answer { background: var(--ivory); border-left-color: var(--black); }
+    .card-3 .button { background: var(--black); color: var(--white); border-color: var(--black); }
+    .card-3 .button:hover { background: var(--white); color: var(--black); border-color: var(--white); }
+
+    .top{display:grid;grid-template-columns:1.08fr .92fr;gap:20px}.step{font-size:11px;letter-spacing:.12em;font-weight:800;color:var(--mustard);text-transform:uppercase;margin-bottom:6px}.card-explain{font-size:13px;color:var(--muted);margin:-15px 0 18px 0;line-height:1.4}h2{color:var(--black);text-transform:uppercase;letter-spacing:-.025em;font-size:23px;line-height:1.15;margin:0 0 23px}.label{display:block;font-size:13px;font-weight:700;margin:19px 0 7px}.chips{display:flex;flex-wrap:wrap;gap:7px}.chip{background:var(--white);border:1px solid var(--border);padding:8px 11px;font:700 12px var(--sans);cursor:pointer;transition:all .2s ease}.chip.active,.chip:hover{background:var(--tint);border-color:var(--mustard)}.field{height:48px;border:1px solid var(--border);display:flex;align-items:center;padding:0 12px;background:#fff;gap:5px;transition:border-color .2s ease,box-shadow .2s ease}.field:focus-within{border-color:var(--mustard);box-shadow:0 0 0 3px rgba(201,151,37,.15)}.field span{color:var(--muted);font-weight:700}.field input{min-width:0;width:100%;border:0;outline:0;font:700 16px var(--sans);color:var(--black);background:transparent}.button{border:1px solid var(--mustard);background:var(--mustard);color:var(--black);font:800 13px var(--sans);letter-spacing:.06em;text-transform:uppercase;padding:15px 22px;cursor:pointer;margin-top:22px;transition:all .25s ease}.button:hover{background:var(--black);border-color:var(--black);color:var(--white)}.button.full{width:100%}.button.save-btn{background:var(--white);border:2px solid var(--mustard);color:var(--black);font-weight:800}.button.save-btn:hover{background:var(--mustard);color:var(--black)}.button.save-btn:disabled{background:var(--tint);border-color:var(--mustard);color:var(--black);opacity:.95;cursor:wait}.snapshot{color:var(--charcoal)}.snapshot h2{color:var(--black);margin-bottom:5px}.snapshot .step{color:var(--mustard)}.big{font-size:45px;font-weight:800;letter-spacing:-.06em;color:var(--mustard);line-height:1.1;margin:8px 0}.muted{color:var(--muted);font-size:14px}.snapshot .muted{color:var(--muted)}.progress{height:15px;background:#e2ddd4;margin:23px 0 8px;overflow:hidden;border-radius:10px}.snapshot .progress{background:#e2ddd4}.progress i{display:block;height:100%;background:var(--mustard);width:25%;transition:width .6s cubic-bezier(.16,1,.3,1)}.row{display:flex;justify-content:space-between;gap:12px;font-size:13px;font-weight:700}.unlock{border-top:1px solid var(--border);margin-top:24px;padding-top:20px}.unlock h3{font-size:18px;line-height:1.2;margin:0 0 8px}.email{width:100%;height:45px;margin-top:12px;border:1px solid var(--border);padding:11px;font:14px var(--sans);background:#fff}.darkbutton{background:var(--mustard);color:var(--black);width:100%}.darkbutton:hover{background:var(--black);color:#fff;border-color:var(--black)}.heading{text-align:center;padding:65px 0 25px}.heading h2{font-size:31px;margin:5px 0}.heading p{color:var(--muted);margin:0}.scenarios{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.scenario{border:1px solid var(--border);background:var(--white);padding:19px;text-align:left;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}.scenario:hover,.scenario.selected{border-color:var(--mustard);background:var(--tint);transform:translateY(-3px)}.scenario strong{display:block;font-size:20px;color:var(--black);letter-spacing:-.04em}.scenario span,.scenario b{display:block;font-size:12px;margin-top:5px}.scenario span{color:var(--muted)}.scenario b{color:#735914}.dual,.track{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}.answer{background:var(--soft);border-left:3px solid var(--mustard);padding:15px;margin-top:16px;font-size:14px;transition:all .3s ease}.answer strong{display:block;color:var(--black);font-size:16px;margin-bottom:3px}.milestone .next{font-size:33px;font-weight:800;color:var(--black);letter-spacing:-.05em;margin:6px 0}.nextmove{display:flex;justify-content:space-between;align-items:center;gap:25px;margin:20px 0 70px;padding:31px;background:var(--black);color:white;border-radius:4px}.nextmove h2{color:white;margin:4px 0}.nextmove p{color:#d7d0c5;margin:0;max-width:650px}.nextmove a{color:#e5c36f;font-weight:800;white-space:nowrap;transition:color .2s ease}.nextmove a:hover{color:#fff}.footer{border-top:1px solid var(--border);padding:25px 0;color:var(--muted);font-size:13px}.footer .container{display:flex;justify-content:space-between}@media(max-width:760px){.navlinks{display:none}.hero{padding:52px 0 38px}.top,.dual,.track{grid-template-columns:1fr}.panel{padding:23px}.scenarios{grid-template-columns:1fr 1fr}.nextmove{display:block}.nextmove a{display:block;margin-top:16px}.footer .container{display:block}.footer p{margin:6px 0}}
+    
+    /* Visual & Animation layer */
+    .hero{overflow:hidden;position:relative}.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:55px;text-align:left}.hero-grid p{margin:0;max-width:530px}.hero-art{height:335px;position:relative}.portrait-frame{position:absolute;right:0;top:7px;width:250px;height:300px;overflow:hidden;border-radius:130px 130px 20px 20px;border:8px solid var(--white);box-shadow:13px 13px 0 var(--mustard)}.portrait-frame img{width:100%;height:100%;object-fit:cover;object-position:center}.coin{position:absolute;display:grid;place-items:center;width:68px;height:68px;border-radius:50%;background:var(--mustard);color:var(--black);font-size:28px;box-shadow:0 8px 20px #6b551c35}.coin.one{left:8px;top:58px;animation:float 4.5s ease-in-out infinite}.coin.two{left:85px;bottom:16px;width:51px;height:51px;font-size:22px;animation:float 4.5s ease-in-out .8s infinite}.goal-note{position:absolute;left:0;bottom:49px;background:var(--black);color:#fff;padding:14px 17px;font-size:12px;font-weight:700;box-shadow:0 8px 22px #1f1c1833;animation:rise .7s cubic-bezier(.16,1,.3,1) both .25s}.goal-note b{display:block;color:#e5c36f;font-size:17px}.hero h1,.hero p,.hero .eyebrow{animation:rise .7s cubic-bezier(.16,1,.3,1) both}.hero h1{animation-delay:.08s}.hero p{animation-delay:.16s}.icon{width:37px;height:37px;display:inline-grid;place-items:center;border-radius:50%;background:var(--tint);font-size:19px;vertical-align:middle;margin-right:9px}.snapshot .icon{background:var(--tint)}.snapshot .progress i{animation:fill 1.3s cubic-bezier(.16,1,.3,1) both .3s}.scenario{position:relative;overflow:hidden}.scenario:before{content:'↗';position:absolute;right:14px;top:11px;font-size:17px;color:var(--mustard);opacity:.7}.section-ornament{display:flex;justify-content:center;gap:8px;margin-top:12px}.section-ornament i{width:6px;height:6px;background:var(--mustard);border-radius:50%}.section-ornament i:nth-child(2){transform:scale(1.6)}.milestone{position:relative;overflow:hidden}.milestone:after{content:'✦';font-size:155px;position:absolute;right:-20px;bottom:-70px;color:#c9972526;transform:rotate(12deg)}.milestone>*{position:relative;z-index:1}.nextmove{position:relative;overflow:hidden}.nextmove:after{content:'$';position:absolute;right:35px;top:-50px;color:#ffffff0c;font:italic 220px var(--serif)}.nextmove>*{position:relative;z-index:1}@keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-12px) rotate(5deg)}}@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@keyframes fill{from{width:0}}@media(max-width:760px){.hero-grid{grid-template-columns:1fr;text-align:center;gap:18px}.hero-grid p{margin:auto}.hero-art{height:240px;width:300px;margin:auto}.portrait-frame{height:224px;width:190px;right:16px}.coin.one{left:6px;top:32px}.goal-note{left:0;bottom:18px}.hero{padding-bottom:24px}}
+  </style>
+
+  <style>
+    .auth-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}.auth-button{border:1px solid var(--mustard);background:transparent;color:var(--black);padding:9px 12px;font:800 11px var(--sans);text-transform:uppercase;letter-spacing:.06em;cursor:pointer;white-space:nowrap;transition:all .2s ease}.auth-button.primary{background:var(--mustard)}.auth-button:hover{background:var(--black);color:#fff;border-color:var(--black)}.auth-status{font-size:11px;color:var(--muted);max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.auth-modal{position:fixed;inset:0;background:#1f1c188c;display:none;align-items:center;justify-content:center;padding:20px;z-index:1000;backdrop-filter:blur(3px)}.auth-modal.open{display:flex;animation:rise .3s cubic-bezier(.16,1,.3,1)}.auth-card{width:min(460px,100%);background:var(--white);border:1px solid var(--border);padding:30px;box-shadow:0 24px 70px #0004;position:relative;border-radius:4px}.auth-card h2{margin-bottom:8px}.auth-close{position:absolute;right:16px;top:12px;border:0;background:none;font-size:25px;cursor:pointer;color:var(--muted);transition:color .2s}.auth-close:hover{color:var(--black)}.auth-form label{display:block;font-size:13px;font-weight:700;margin:16px 0 7px}.auth-form input{width:100%;height:46px;border:1px solid var(--border);padding:10px;font:14px var(--sans);background:#fff}.auth-submit{width:100%;margin-top:20px}.auth-message{min-height:24px;margin-top:12px;font-size:13px;color:var(--muted);font-weight:600}.auth-link{border:0;background:none;color:#8b6818;text-decoration:underline;cursor:pointer;font:inherit;padding:0}
+    .nav{flex-wrap:wrap}.auth-actions{margin-left:auto}
+    @media(max-width:980px){.nav{justify-content:center}.logo{margin-right:auto}.auth-actions{margin-left:0}.navlinks{order:3;width:100%;justify-content:center;gap:18px}}
+    @media(max-width:760px){.navlinks{display:none}.auth-actions{margin-left:auto}.auth-status{display:none}.auth-button{padding:8px 10px;font-size:10px}}
+  </style>
+</head>
+<body>
+  <header class="site-header"><div class="container nav"><a class="logo" href="index.html">KARRY KARANJA<span>.</span></a><ul class="navlinks"><li><a href="index.html#home">Home</a></li><li><a href="index.html#about">About</a></li><li><a href="index.html#tools">Free Tools</a></li><li><a href="index.html#education">Financial Education</a></li><li><a href="index.html#contact">Contact</a></li></ul><div class="auth-actions"><span id="authStatus" class="auth-status"></span><button id="loginBtn" class="auth-button" type="button">Log in</button><button id="signupBtn" class="auth-button primary" type="button">Sign up</button><button id="logoutBtn" class="auth-button" type="button" hidden>Log out</button></div></div></header>
+  
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Financial Tool</span>
+          <h1>Savings Goal <em>Tracker</em><br>&amp; Calculator</h1>
+          <p>Turn your savings goal into a clear, realistic plan—and see the progress you’re making along the way.</p>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="coin one">✦</div>
+          <div class="coin two">$</div>
+          <div class="portrait-frame"><img src="images/500x500/K2.jpg" alt=""></div>
+          <div class="goal-note">YOUR GOAL IS IN MOTION <b>Small steps. Real progress.</b></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container calculator">
+      <section class="top">
+        <!-- BOX 1: WHITE -->
+        <article class="panel card-1">
+          <div class="step">01 · Build your plan</div>
+          <h2><span class="icon">◎</span>What are you saving for?</h2>
+          <p class="card-explain">Set your objective, current savings, and target date to build your savings roadmap.</p>
+          <div class="chips" id="goalChips"><button class="chip active">Emergency Fund</button><button class="chip">First $10K</button><button class="chip">Home</button><button class="chip">Car</button><button class="chip">Travel</button><button class="chip">Other</button></div>
+          <label class="label">What’s your savings goal?</label>
+          <div class="chips" id="amountChips"><button class="chip">$1,000</button><button class="chip">$5,000</button><button class="chip active">$10,000</button><button class="chip">$25,000</button><button class="chip">$50,000</button></div>
+          <label class="label">Goal</label>
+          <div class="field"><span>$</span><input id="goal" type="number" value="10000" min="1"></div>
+          <label class="label">How much have you already saved?</label>
+          <div class="field"><span>$</span><input id="saved" type="number" value="2500" min="0"></div>
+          <label class="label">When do you want to reach your goal?</label>
+          <div class="field"><input id="deadline" type="date"></div>
+          <button id="calculate" class="button full">Calculate my savings plan →</button>
+          
+          <!-- SAVE PLAN BUTTON -->
+          <button id="savePlan" class="button full save-btn" style="margin-top:12px;">Save my plan</button>
+          <div id="savePlanMessage" class="auth-message" aria-live="polite" style="text-align:center"></div>
+        </article>
+
+        <!-- BOX 2: IVORY -->
+        <aside class="panel snapshot card-2">
+          <div class="step">02 · Your starting point</div>
+          <h2><span class="icon">↗</span>You’re <span id="percent">25</span>% there</h2>
+          <p class="card-explain">A high-level summary showing how close you are to your overall savings goal.</p>
+          <div class="big" id="savedStat">$2,500</div>
+          <div class="muted">saved</div>
+          <div class="progress"><i id="bar"></i></div>
+          <div class="row"><span id="remaining">$7,500 to go</span><span id="percentSide">25%</span></div>
+          <div class="unlock">
+            <h3>Your personalized savings plan is ready.</h3>
+            <p class="muted">Get monthly, paycheck and weekly targets, plus milestones and progress tracking.</p>
+            <input class="email" type="email" placeholder="Email address">
+            <button class="button darkbutton">Unlock my free savings plan</button>
+          </div>
+        </aside>
+      </section>
+
+      <section>
+        <div class="heading">
+          <span class="eyebrow">Explore the possibilities</span>
+          <h2>What if I save more?</h2>
+          <p>See how small changes affect your goal—no repeated calculations needed.</p>
+          <div class="section-ornament"><i></i><i></i><i></i></div>
+        </div>
+        <div id="scenarios" class="scenarios"></div>
+      </section>
+
+      <section class="dual">
+        <!-- BOX 3: MUSTARD -->
+        <article class="panel card-3">
+          <div class="step">03 · Find a faster path</div>
+          <h2>Want to get there sooner?</h2>
+          <p class="card-explain">Test extra monthly contributions to see how many months you can cut off your timeline.</p>
+          <label class="label">Add another amount each month</label>
+          <div class="field"><span>$</span><input id="extra" type="number" value="100" min="0"></div>
+          <div class="answer" id="faster"></div>
+        </article>
+
+        <!-- BOX 4: WHITE -->
+        <article class="panel card-4">
+          <div class="step">04 · Make it fit your life</div>
+          <h2>Tell us what you can afford</h2>
+          <p class="card-explain">Work backward from a comfortable monthly budget to calculate your realistic completion date.</p>
+          <label class="label">Comfortable monthly amount</label>
+          <div class="field"><span>$</span><input id="afford" type="number" value="400" min="1"><span>/ month</span></div>
+          <button id="recalculate" class="button">Recalculate</button>
+          <div class="answer" id="affordable"></div>
+        </article>
+      </section>
+
+      <section class="track">
+        <!-- BOX 5: WHITE -->
+        <article class="panel card-5">
+          <div class="step">05 · Track your progress</div>
+          <h2>Update your savings</h2>
+          <p class="card-explain">Log deposits or withdrawals to update your progress bar and synced cloud account.</p>
+          <label class="label">Current savings</label>
+          <div class="field"><span>$</span><input id="updateSaved" type="number" value="2500" min="0"></div>
+          <button id="update" class="button">Update progress</button>
+          <div class="progress"><i id="trackbar"></i></div>
+          <div class="row"><span id="tracktotal">$2,500 / $10,000</span><span id="trackremain">$7,500 remaining</span></div>
+          
+          <!-- TRANSACTION HISTORY PANEL -->
+          <div id="historySection" style="margin-top: 25px; padding-top: 15px; border-top: 1px solid rgba(0,0,0,0.15);" hidden>
+            <div class="step">Recent Activity</div>
+            <ul id="txList" style="list-style:none; padding:0; margin:10px 0 0; font-size:13px;"></ul>
+          </div>
+        </article>
+
+        <!-- BOX 6: IVORY -->
+        <aside class="panel milestone card-6">
+          <div class="step">06 · Next milestone</div>
+          <h2>Milestone Monitor</h2>
+          <p class="card-explain">Monitors incremental 25% checkpoints to keep you motivated on your journey.</p>
+          <div class="next" id="milestone">$5,000</div>
+          <p id="milecopy">You’re $2,500 away.</p>
+          <hr style="border:0;border-top:1px solid #d8c79e;margin:26px 0">
+          <div class="step">Are you on track?</div>
+          <h2 id="tracktitle">You’re on track.</h2>
+          <p id="trackcopy">You’re building a habit that gets you there.</p>
+        </aside>
+      </section>
+
+      <section class="nextmove">
+        <div>
+          <span class="eyebrow">Your next move</span>
+          <h2>Make the plan automatic.</h2>
+          <p id="transfer">Set up an automatic transfer for $288 every paycheck and treat it like a bill you owe yourself.</p>
+        </div>
+        <a href="index.html#education">How to Save $10,000 Fast →</a>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 Karry Karanja. All rights reserved.</p>
+      <p>Personal Finance &amp; Wealth Building</p>
+    </div>
+  </footer>
+
+  <!-- AUTH MODAL -->
+  <div id="authModal" class="auth-modal" aria-hidden="true">
+    <div class="auth-card" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+      <button id="authClose" class="auth-close" aria-label="Close" type="button">×</button>
+      <div class="step">Secure savings account</div>
+      <h2 id="authTitle">Log in to your savings plan</h2>
+      <form id="authForm" class="auth-form">
+        <label for="authEmail">Email address</label>
+        <input id="authEmail" type="email" autocomplete="email" required>
+        <label for="authPassword">Password</label>
+        <input id="authPassword" type="password" autocomplete="current-password" minlength="6" required>
+        <button id="authSubmit" class="button auth-submit" type="submit">Log in</button>
+        <div id="authMessage" class="auth-message" aria-live="polite"></div>
+        <div id="authModeText" class="muted">New here? <button type="button" class="auth-link" id="switchAuth">Create an account</button></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- CALCULATION ENGINE -->
+  <script>
+    const $=id=>document.getElementById(id),cash=n=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(Math.max(0,n));
+    const months=()=>Math.max(1,Math.ceil((new Date($('deadline').value)-new Date())/(864e5*30.4375))); const finish=m=>{let d=new Date();d.setMonth(d.getMonth()+Math.ceil(m));return d.toLocaleDateString('en-US',{month:'long',year:'numeric'})};
+    function model(){let goal=+$('goal').value||1,saved=Math.min(+$('saved').value||0,goal),left=goal-saved,n=months();return{goal,saved,left,n,monthly:left/n}}
+    function scenarios(d){let values=[400,Math.round(d.monthly/25)*25,750,1000].filter((x,i,a)=>x>0&&a.indexOf(x)===i);$('scenarios').innerHTML=values.map(v=>`<button onclick="setAffordable(${v})" class="scenario ${Math.abs(v-d.monthly)<25?'selected':''}"><strong>${cash(v)}<small>/month</small></strong><span>You’ll reach ${cash(d.goal)} in</span><b>${Math.ceil(d.left/v)} months ${Math.abs(v-d.monthly)<25?'✓':''}</b></button>`).join('')}
+    window.setAffordable=v=>{$('afford').value=v;affordable(model())}; function faster(d){let v=d.monthly+(+$('extra').value||0),m=d.left/v;$('faster').innerHTML=`<strong>New monthly savings: ${cash(v)}</strong>New estimated finish: <b>${finish(m)}</b><br>About ${Math.max(0,Math.round(d.left/d.monthly-m))} months sooner.`}function affordable(d){let v=+$('afford').value||1;$('affordable').innerHTML=`<strong>At ${cash(v)}/month, you’ll reach your goal around ${finish(d.left/v)}.</strong>That’s a plan built around your life.`}
+    function progress(d,s){let p=Math.min(100,s/d.goal*100),next=Math.min(d.goal,Math.ceil((s+.01)/(d.goal*.25))*d.goal*.25);$('trackbar').style.width=p+'%';$('tracktotal').textContent=`${cash(s)} / ${cash(d.goal)}`;$('trackremain').textContent=`${cash(d.goal-s)} remaining`;$('milestone').textContent=next===d.goal?'Goal complete!':cash(next);$('milecopy').textContent=next===d.goal?'You’ve reached every milestone.':`You’re ${cash(next-s)} away.`;let delta=s-d.saved;$('tracktitle').textContent=delta>=0?'You’re on track.':'You’re a little behind.';$('trackcopy').textContent=delta>=0?`You’re ${cash(delta)} ahead of your original starting point. Keep going.`:`You’re ${cash(-delta)} behind your original plan. A small adjustment can get you there.`}
+    function render(){let d=model(),p=Math.min(100,d.saved/d.goal*100);$('percent').textContent=p.toFixed(p%1?1:0);$('percentSide').textContent=$('percent').textContent+'%';$('savedStat').textContent=cash(d.saved);$('remaining').textContent=cash(d.left)+' to go';$('bar').style.width=p+'%';$('updateSaved').value=d.saved;scenarios(d);faster(d);affordable(d);progress(d,d.saved);$('transfer').textContent=`Set up an automatic transfer for ${cash(d.monthly/2)} every paycheck and treat it like a bill you owe yourself.`}
+    $('deadline').value=new Date(new Date().setFullYear(new Date().getFullYear()+1)).toISOString().slice(0,10);$('calculate').onclick=render;$('extra').oninput=()=>faster(model());$('recalculate').onclick=()=>affordable(model());$('update').onclick=()=>progress(model(),Math.min(+$('updateSaved').value||0,+$('goal').value||0));document.querySelectorAll('#goalChips .chip').forEach(x=>x.onclick=()=>{document.querySelectorAll('#goalChips .chip').forEach(y=>y.classList.remove('active'));x.classList.add('active')});document.querySelectorAll('#amountChips .chip').forEach(x=>x.onclick=()=>{$('goal').value=x.textContent.replace(/\D/g,'');document.querySelectorAll('#amountChips .chip').forEach(y=>y.classList.remove('active'));x.classList.add('active');render()});render();
+  </script>
+
+  <!-- EXTERNAL DEPENDENCIES -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/auth.js"></script>
+
+  <!-- SAVE SAVINGS GOAL TO SUPABASE -->
+  <script>
+    (() => {
+      const sb = window.kkSupabase;
+      const saveBtn = document.getElementById('savePlan');
+      const saveMessage = document.getElementById('savePlanMessage');
+
+      if (!sb || !saveBtn) return;
+
+      const getGoalName = () => {
+        const active = document.querySelector('#goalChips .chip.active');
+        return active ? active.textContent.trim() : 'Savings Goal';
+      };
+
+      saveBtn.addEventListener('click', async () => {
+        saveMessage.textContent = '';
+
+        const { data: { session } } = await sb.auth.getSession();
+
+        if (!session) {
+          saveMessage.textContent = 'Please log in or create an account first.';
+          document.getElementById('loginBtn')?.click();
+          return;
+        }
+
+        const goal = Math.max(1, Number(document.getElementById('goal').value) || 1);
+        const deadline = document.getElementById('deadline').value;
+        const name = getGoalName();
+
+        if (!deadline) {
+          saveMessage.textContent = 'Please choose a target date first.';
+          return;
+        }
+
+        saveBtn.disabled = true;
+        saveBtn.textContent = 'Saving…';
+        saveMessage.textContent = 'Saving your plan…';
+
+        try {
+          const { data: existing, error: findError } = await sb
+            .from('savings_goals')
+            .select('id')
+            .eq('user_id', session.user.id)
+            .eq('status', 'active')
+            .order('created_at', { ascending: false })
+            .limit(1)
+            .maybeSingle();
+
+          if (findError) throw findError;
+
+          const goalData = {
+            user_id: session.user.id,
+            name,
+            target_amount: goal,
+            target_date: deadline,
+            currency: 'USD',
+            status: 'active'
+          };
+
+          let error;
+
+          if (existing?.id) {
+            ({ error } = await sb
+              .from('savings_goals')
+              .update(goalData)
+              .eq('id', existing.id)
+              .eq('user_id', session.user.id));
+          } else {
+            ({ error } = await sb
+              .from('savings_goals')
+              .insert(goalData));
+          }
+
+          if (error) throw error;
+
+          saveMessage.textContent = 'Your savings plan has been saved.';
+        } catch (err) {
+          console.error('Save plan error:', err);
+          saveMessage.textContent = err?.message || 'Could not save your plan. Please try again.';
+        } finally {
+          saveBtn.disabled = false;
+          saveBtn.textContent = 'Save my plan';
+        }
+      });
+    })();
+  </script>
+
+  <!-- TRANSACTIONS RECORDING & HISTORY DISPLAY -->
+  <script>
+    (() => {
+      const sb = window.kkSupabase;
+      const updateBtn = document.getElementById('update');
+      const updateInput = document.getElementById('updateSaved');
+      const txList = document.getElementById('txList');
+      const historySection = document.getElementById('historySection');
+
+      if (!sb || !updateBtn) return;
+
+      window.currentBalance = Math.min(
+        +$('updateSaved').value || 0,
+        +$('goal').value || 0
+      );
+
+      let txMessage = document.getElementById('txMessage');
+      if (!txMessage) {
+        txMessage = document.createElement('div');
+        txMessage.id = 'txMessage';
+        txMessage.className = 'auth-message';
+        txMessage.style.fontSize = '12px';
+        txMessage.style.marginTop = '8px';
+        updateBtn.parentNode.insertBefore(txMessage, updateBtn.nextSibling);
+      }
+
+      async function syncUserData() {
+        const { data: { session } } = await sb.auth.getSession();
+        if (!session) {
+          historySection.hidden = true;
+          return;
+        }
+
+        try {
+          const { data: goalData } = await sb
+            .from('savings_goals')
+            .select('*')
+            .eq('user_id', session.user.id)
+            .eq('status', 'active')
+            .order('created_at', { ascending: false })
+            .limit(1)
+            .maybeSingle();
+
+          if (goalData) {
+            $('goal').value = goalData.target_amount;
+            if (goalData.target_date) $('deadline').value = goalData.target_date;
+
+            document.querySelectorAll('#goalChips .chip').forEach(chip => {
+              chip.classList.toggle('active', chip.textContent.trim() === goalData.name);
+            });
+          }
+
+          const { data: transactions, error: txError } = await sb
+            .from('savings_transactions')
+            .select('*')
+            .eq('user_id', session.user.id)
+            .order('created_at', { ascending: false });
+
+          if (txError) throw txError;
+
+          let calculatedBalance = 0;
+          if (transactions && transactions.length > 0) {
+            calculatedBalance = transactions.reduce((total, tx) => {
+              const amt = Number(tx.amount) || 0;
+              return tx.transaction_type === 'deposit' ? total + amt : total - amt;
+            }, 0);
+          }
+
+          window.currentBalance = Math.max(0, calculatedBalance);
+          $('saved').value = window.currentBalance;
+          $('updateSaved').value = window.currentBalance;
+
+          render();
+
+          if (transactions && transactions.length > 0) {
+            historySection.hidden = false;
+            txList.innerHTML = transactions.slice(0, 5).map(tx => `
+              <li style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid rgba(0,0,0,0.15);">
+                <span>${tx.transaction_type === 'deposit' ? '➕ Deposit' : '➖ Withdrawal'}</span>
+                <strong>${tx.transaction_type === 'deposit' ? '+' : '-'}$${tx.amount}</strong>
+              </li>
+            `).join('');
+          } else {
+            historySection.hidden = true;
+          }
+        } catch (err) {
+          console.error('Error syncing user data:', err);
+        }
+      }
+
+      sb.auth.onAuthStateChange((event, session) => {
+        if (session) {
+          syncUserData();
+        } else {
+          historySection.hidden = true;
+        }
+      });
+
+      updateBtn.addEventListener('click', async () => {
+        txMessage.textContent = '';
+        const newBalance = Math.min(
+          +$('updateSaved').value || 0,
+          +$('goal').value || 0
+        );
+
+        progress(model(), newBalance);
+
+        const { data: { session } } = await sb.auth.getSession();
+        if (!session) {
+          txMessage.textContent = 'Progress updated locally. Log in to save transactions to your account.';
+          window.currentBalance = newBalance;
+          return;
+        }
+
+        const difference = newBalance - window.currentBalance;
+
+        if (difference === 0) {
+          txMessage.textContent = 'No balance change detected.';
+          return;
+        }
+
+        const type = difference > 0 ? 'deposit' : 'withdrawal';
+        const amount = Math.abs(difference);
+
+        updateBtn.disabled = true;
+        txMessage.textContent = 'Recording transaction…';
+
+        try {
+          const { data: goalData, error: goalError } = await sb
+            .from('savings_goals')
+            .select('id')
+            .eq('user_id', session.user.id)
+            .eq('status', 'active')
+            .order('created_at', { ascending: false })
+            .limit(1)
+            .maybeSingle();
+
+          if (goalError) throw goalError;
+
+          if (!goalData?.id) {
+            txMessage.textContent = 'Please click "Save my plan" above first to set up your target goal.';
+            return;
+          }
+
+          const { error: txError } = await sb
+            .from('savings_transactions')
+            .insert({
+              user_id: session.user.id,
+              goal_id: goalData.id,
+              transaction_type: type,
+              amount: amount
+            });
+
+          if (txError) throw txError;
+
+          txMessage.textContent = `Transaction recorded: ${type === 'deposit' ? '+' : '-'}$${amount} (${type})`;
+          
+          await syncUserData();
+        } catch (err) {
+          console.error('Transaction save error:', err);
+          txMessage.textContent = err?.message || 'Could not record transaction. Please try again.';
+        } finally {
+          updateBtn.disabled = false;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
