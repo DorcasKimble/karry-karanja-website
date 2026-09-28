@@ -188,32 +188,42 @@
 
  <!-- GOOGLE AUTH MODAL -->
 <div id="authModal" class="auth-modal" aria-hidden="true">
-  <div class="auth-card" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+  <div class="auth-card"
+       role="dialog"
+       aria-modal="true"
+       aria-labelledby="authTitle">
 
-    <button id="authClose"
-            class="auth-close"
-            aria-label="Close"
-            type="button">×</button>
+    <button
+      id="authClose"
+      class="auth-close"
+      aria-label="Close"
+      type="button">×</button>
 
     <div class="step" id="authEyebrow">
-      Secure savings account
+      Welcome back
     </div>
 
     <h2 id="authTitle">
       Log in to your savings plan
     </h2>
 
-    <p id="authSubtitle"
-       class="muted"
-       style="margin-top:-10px;margin-bottom:18px;">
+    <p
+      id="authSubtitle"
+      class="muted"
+      style="margin-top:-10px;margin-bottom:18px;">
       Log in using the Google account connected to your savings plan.
     </p>
 
-    <div id="googleSignInButton" style="min-height:44px;"></div>
+    <div
+      id="googleSignInButton"
+      style="min-height:44px;">
+    </div>
 
-    <div id="authMessage"
-         class="auth-message"
-         aria-live="polite"></div>
+    <div
+      id="authMessage"
+      class="auth-message"
+      aria-live="polite">
+    </div>
 
   </div>
 </div>
