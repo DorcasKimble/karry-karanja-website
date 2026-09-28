@@ -136,16 +136,113 @@
       </section>
 
       <section class="track">
-        <!-- BOX 5: WHITE -->
-        <article class="panel card-5">
-          <div class="step">05 · Track your progress</div>
-          <h2>Update your savings</h2>
-          <p class="card-explain">Log deposits or withdrawals to update your progress bar and synced cloud account.</p>
-          <label class="label">Current savings</label>
-          <div class="field"><span>$</span><input id="updateSaved" type="number" value="" min="0" placeholder="Enter updated savings"></div>
-          <button id="update" class="button">Update progress</button>
-          <div class="progress"><i id="trackbar"></i></div>
-          <div class="row"><span id="tracktotal">$0 / $0</span><span id="trackremain">Enter a goal</span></div>
+
+        
+       <!-- BOX 5: WHITE -->
+<article class="panel card-5">
+  <div class="step">05 · Track your progress</div>
+  <h2>Update your savings</h2>
+  <p class="card-explain">
+    Record deposits and withdrawals separately to keep your savings progress accurate.
+  </p>
+
+  <!-- CURRENT BALANCE -->
+  <div style="margin-bottom:20px;">
+    <label class="label">Current savings</label>
+    <div id="currentSavingsDisplay"
+         style="font-size:28px; font-weight:700; margin-top:5px;">
+      $0
+    </div>
+  </div>
+
+  <!-- DEPOSIT -->
+  <div style="padding:18px; margin-bottom:15px; border:1px solid rgba(0,0,0,0.12);">
+    <div class="step">Deposit</div>
+    <h3 style="margin:5px 0 10px;">Add money to your savings</h3>
+
+    <label class="label">Deposit amount</label>
+    <div class="field">
+      <span>$</span>
+      <input
+        id="depositAmount"
+        type="number"
+        min="0"
+        step="0.01"
+        placeholder="Enter deposit amount"
+      >
+    </div>
+
+    <label class="label" style="margin-top:10px;">Note (optional)</label>
+    <div class="field">
+      <input
+        id="depositNote"
+        type="text"
+        placeholder="e.g. Monthly savings"
+      >
+    </div>
+
+    <button id="depositBtn" class="button" type="button">
+      Add Deposit
+    </button>
+
+    <div id="depositMessage" class="auth-message"
+         style="font-size:12px; margin-top:8px;"></div>
+  </div>
+
+  <!-- WITHDRAW -->
+  <div style="padding:18px; margin-bottom:20px; border:1px solid rgba(0,0,0,0.12);">
+    <div class="step">Withdraw</div>
+    <h3 style="margin:5px 0 10px;">Take money out of your savings</h3>
+
+    <label class="label">Withdrawal amount</label>
+    <div class="field">
+      <span>$</span>
+      <input
+        id="withdrawAmount"
+        type="number"
+        min="0"
+        step="0.01"
+        placeholder="Enter withdrawal amount"
+      >
+    </div>
+
+    <label class="label" style="margin-top:10px;">Note (optional)</label>
+    <div class="field">
+      <input
+        id="withdrawNote"
+        type="text"
+        placeholder="e.g. Emergency expense"
+      >
+    </div>
+
+    <button id="withdrawBtn" class="button" type="button">
+      Make Withdrawal
+    </button>
+
+    <div id="withdrawMessage" class="auth-message"
+         style="font-size:12px; margin-top:8px;"></div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress">
+    <i id="trackbar"></i>
+  </div>
+
+  <div class="row">
+    <span id="tracktotal">$0 / $0</span>
+    <span id="trackremain">Enter a goal</span>
+  </div>
+
+  <!-- TRANSACTION HISTORY PANEL -->
+  <div id="historySection"
+       style="margin-top:25px; padding-top:15px; border-top:1px solid rgba(0,0,0,0.15);"
+       hidden>
+    <div class="step">Recent Activity</div>
+    <ul id="txList"
+        style="list-style:none; padding:0; margin:10px 0 0; font-size:13px;">
+    </ul>
+  </div>
+</article>
           
           <!-- TRANSACTION HISTORY PANEL -->
           <div id="historySection" style="margin-top: 25px; padding-top: 15px; border-top: 1px solid rgba(0,0,0,0.15);" hidden>
