@@ -430,10 +430,7 @@
       $('remaining').textContent=d.goal?cash(d.left)+' to go':'Set a goal to begin';
       $('bar').style.width=p+'%';
 
-      if(document.activeElement!==$('updateSaved')){
-        $('updateSaved').value=d.saved||'';
-      }
-
+      
       scenarios(d);
       faster(d);
       affordable(d);
