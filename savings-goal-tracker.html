@@ -84,23 +84,49 @@
           <div id="savePlanMessage" class="auth-message" aria-live="polite" style="text-align:center"></div>
         </article>
 
-        <!-- BOX 2: IVORY -->
-        <aside class="panel snapshot card-2">
-          <div class="step">02 · Your starting point</div>
-          <h2><span class="icon">↗</span>You’re <span id="percent">25</span>% there</h2>
-          <p class="card-explain">A high-level summary showing how close you are to your overall savings goal.</p>
-          <div class="big" id="savedStat">$2,500</div>
-          <div class="muted">saved</div>
-          <div class="progress"><i id="bar"></i></div>
-          <div class="row"><span id="remaining">$7,500 to go</span><span id="percentSide">25%</span></div>
-          <div class="unlock">
-            <h3>Your personalized savings plan is ready.</h3>
-            <p class="muted">Get monthly, paycheck and weekly targets, plus milestones and progress tracking.</p>
-            <input class="email" type="email" placeholder="Email address">
-            <button class="button darkbutton">Unlock my free savings plan</button>
-          </div>
-        </aside>
-      </section>
+       <!-- BOX 2: IVORY -->
+<aside class="panel snapshot card-2">
+  <div class="step">02 · Your starting point</div>
+
+  <h2>
+  <span class="icon">↗</span>
+  <span id="progressHeading">Your progress starts here.</span>
+</h2>
+
+  <p class="card-explain">
+    A high-level summary showing how close you are to your overall savings goal.
+  </p>
+
+  <div class="big" id="savedStat">—</div>
+  <div class="muted">saved</div>
+
+  <div class="progress">
+    <i id="bar"></i>
+  </div>
+
+  <div class="row">
+    <span id="remaining">Set a goal to begin</span>
+    <span id="percentSide">—</span>
+  </div>
+
+  <div class="unlock">
+    <h3>Your personalized savings plan is ready.</h3>
+
+    <p class="muted">
+      Get monthly, paycheck and weekly targets, plus milestones and progress tracking.
+    </p>
+
+    <input
+      class="email"
+      type="email"
+      placeholder="Email address"
+    >
+
+    <button class="button darkbutton">
+      Unlock my free savings plan
+    </button>
+  </div>
+</aside>
 
       <section>
         <div class="heading">
@@ -422,41 +448,67 @@
     }
 
     function render(){
-      const d=model();
-      const p=d.goal?Math.min(100,d.saved/d.goal*100):0;
-      $('percent').textContent=d.goal?p.toFixed(p%1?1:0):'0';
-      $('percentSide').textContent=$('percent').textContent+'%';
-      $('savedStat').textContent=cash(d.saved);
-      $('remaining').textContent=d.goal?cash(d.left)+' to go':'Set a goal to begin';
-      $('bar').style.width=p+'%';
+  const d = model();
+  const hasGoal = d.goal && d.goal > 0;
 
-      
-      scenarios(d);
-      faster(d);
-      affordable(d);
-      progress(d,d.saved);
+  const p = hasGoal
+    ? Math.min(100, d.saved / d.goal * 100)
+    : 0;
 
-      $('transfer').textContent=d.monthly
-        ? `Set up an automatic transfer for ${cash(d.monthly/2)} every paycheck and treat it like a bill you owe yourself.`
-        : 'Enter your goal, current savings and target date to see an automatic-transfer suggestion.';
+  // BOX 2 — only show progress when a real goal exists
+  $('percent').textContent = hasGoal
+    ? p.toFixed(p % 1 ? 1 : 0)
+    : '—';
+
+  $('percentSide').textContent = hasGoal
+    ? p.toFixed(p % 1 ? 1 : 0) + '%'
+    : '—';
+
+  $('savedStat').textContent = hasGoal
+    ? cash(d.saved)
+    : '—';
+
+  $('remaining').textContent = hasGoal
+    ? cash(d.left) + ' to go'
+    : 'Set a goal to begin';
+
+  $('bar').style.width = hasGoal
+    ? p + '%'
+    : '0%';
+
+  // Other calculator sections
+  scenarios(d);
+  faster(d);
+  affordable(d);
+  progress(d, d.saved);
+
+  $('transfer').textContent = d.monthly
+    ? `Set up an automatic transfer for ${cash(d.monthly / 2)} every paycheck and treat it like a bill you owe yourself.`
+    : 'Enter your goal, current savings and target date to see an automatic-transfer suggestion.';
+}
+
+$('calculate').onclick = render;
+
+$('extra').oninput = () => faster(model());
+
+$('recalculate').onclick = () => affordable(model());
+
+document.querySelectorAll('#goalChips .chip').forEach(x => {
+  x.onclick = () => {
+    document.querySelectorAll('#goalChips .chip')
+      .forEach(y => y.classList.remove('active'));
+
+    x.classList.add('active');
+
+    const other = x.textContent.trim() === 'Other';
+
+    $('otherGoalWrap').hidden = !other;
+
+    if (other) {
+      $('otherGoalName').focus();
     }
-
-    $('calculate').onclick=render;
-    $('extra').oninput=()=>faster(model());
-    $('recalculate').onclick=()=>affordable(model());
-
-    document.querySelectorAll('#goalChips .chip').forEach(x=>{
-      x.onclick=()=>{
-        document.querySelectorAll('#goalChips .chip').forEach(y=>y.classList.remove('active'));
-        x.classList.add('active');
-
-        const other=x.textContent.trim()==='Other';
-        $('otherGoalWrap').hidden=!other;
-        if(other){
-          $('otherGoalName').focus();
-        }
-      };
-    });
+  };
+});
 
     document.querySelectorAll('#amountChips .chip').forEach(x=>{
       x.onclick=()=>{
