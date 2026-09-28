@@ -582,51 +582,274 @@
   </script>
 
   <!-- GOOGLE SAVINGS TRANSACTIONS -->
-  <script>
-    (() => {
-      const api = window.kkGoogleBackend;
-      const updateBtn = document.getElementById('update');
-      const updateInput = document.getElementById('updateSaved');
-      const txMessage = (() => {
-        let el = document.getElementById('txMessage');
-        if (!el) { el = document.createElement('div'); el.id='txMessage'; el.className='auth-message'; el.style.fontSize='12px'; el.style.marginTop='8px'; updateBtn.parentNode.insertBefore(el, updateBtn.nextSibling); }
-        return el;
-      })();
-      if (!api || !updateBtn) return;
+ <!-- GOOGLE SAVINGS TRANSACTIONS -->
+<script>
+  (() => {
+    const api = window.kkGoogleBackend;
 
-      window.currentBalance = 0;
+    const depositBtn = document.getElementById('depositBtn');
+    const withdrawBtn = document.getElementById('withdrawBtn');
 
-      updateBtn.addEventListener('click', async () => {
-        txMessage.textContent = '';
-        if (!api.isSignedIn()) {
-          txMessage.textContent = 'Please sign in with Google to save progress.';
-          document.getElementById('loginBtn')?.click();
-          return;
+    const depositInput = document.getElementById('depositAmount');
+    const withdrawInput = document.getElementById('withdrawAmount');
+
+    const depositNote = document.getElementById('depositNote');
+    const withdrawNote = document.getElementById('withdrawNote');
+
+    const depositMessage = document.getElementById('depositMessage');
+    const withdrawMessage = document.getElementById('withdrawMessage');
+
+    const balanceDisplay =
+      document.getElementById('currentSavingsDisplay');
+
+    if (!api || !depositBtn || !withdrawBtn) return;
+
+    window.currentBalance = 0;
+
+    function updateBalanceDisplay(balance) {
+      const amount = Number(balance) || 0;
+
+      window.currentBalance = amount;
+
+      if (balanceDisplay) {
+        balanceDisplay.textContent =
+          '$' +
+          amount.toLocaleString('en-US', {
+            maximumFractionDigits: 2
+          });
+      }
+
+      const savedInput = document.getElementById('saved');
+
+      if (savedInput) {
+        savedInput.value = amount;
+      }
+
+      if (typeof render === 'function') {
+        render();
+      }
+    }
+
+    async function submitTransaction(
+      type,
+      amount,
+      note,
+      button,
+      message
+    ) {
+
+      message.textContent = '';
+
+      if (!api.isSignedIn()) {
+        message.textContent =
+          'Please sign in with Google to save your progress.';
+
+        document.getElementById('loginBtn')?.click();
+        return;
+      }
+
+      amount = Number(amount || 0);
+
+      if (
+        !Number.isFinite(amount) ||
+        amount <= 0
+      ) {
+        message.textContent =
+          'Please enter an amount greater than zero.';
+        return;
+      }
+
+      if (
+        type === 'withdrawal' &&
+        amount > Number(window.currentBalance || 0)
+      ) {
+        message.textContent =
+          'You cannot withdraw more than your current savings.';
+        return;
+      }
+
+      button.disabled = true;
+      message.textContent =
+        type === 'deposit'
+          ? 'Adding your deposit…'
+          : 'Processing your withdrawal…';
+
+      try {
+
+        const response =
+          await api.request(
+            'addTransaction',
+            {
+              amount: amount,
+              type: type,
+              note: note || ''
+            }
+          );
+
+        if (!response?.ok) {
+          throw new Error(
+            response?.error ||
+            'Could not save this transaction.'
+          );
         }
-        const newBalance = Math.max(0, Number(updateInput.value || 0));
-        if (!$('goal').value) { txMessage.textContent = 'Please save a goal first.'; return; }
-        updateBtn.disabled = true; txMessage.textContent = 'Updating your savings…';
-        try {
-          const response = await api.request('updateSavings', { currentSavings: newBalance });
-          if (!response?.ok) throw new Error(response?.error || 'Could not update savings.');
-          const balance = Number(response.goal?.currentSavings || 0);
-          $('saved').value = balance;
-          $('updateSaved').value = balance;
-          window.currentBalance = balance;
-          render();
-          if (window.renderTransactions) window.renderTransactions(response.transactions || []);
-          txMessage.textContent = 'Your savings progress has been updated.';
-        } catch (err) {
-          console.error('Savings update error:', err);
-          txMessage.textContent = err?.message || 'Could not update savings. Please try again.';
-        } finally { updateBtn.disabled = false; }
-      });
 
-      document.addEventListener('kk-google-signed-out', () => {
+        if (response.goal) {
+
+          const balance =
+            Number(
+              response.goal.currentSavings || 0
+            );
+
+          updateBalanceDisplay(balance);
+        }
+
+        if (
+          window.renderTransactions &&
+          response.transactions
+        ) {
+          window.renderTransactions(
+            response.transactions
+          );
+        }
+
+        message.textContent =
+          type === 'deposit'
+            ? 'Deposit added successfully.'
+            : 'Withdrawal recorded successfully.';
+
+        if (type === 'deposit') {
+          depositInput.value = '';
+          depositNote.value = '';
+        } else {
+          withdrawInput.value = '';
+          withdrawNote.value = '';
+        }
+
+      } catch (err) {
+
+        console.error(
+          'Transaction error:',
+          err
+        );
+
+        message.textContent =
+          err?.message ||
+          'Could not save this transaction. Please try again.';
+
+      } finally {
+
+        button.disabled = false;
+      }
+    }
+
+    depositBtn.addEventListener(
+      'click',
+      () => {
+
+        submitTransaction(
+          'deposit',
+          depositInput.value,
+          depositNote.value.trim(),
+          depositBtn,
+          depositMessage
+        );
+
+      }
+    );
+
+    withdrawBtn.addEventListener(
+      'click',
+      () => {
+
+        submitTransaction(
+          'withdrawal',
+          withdrawInput.value,
+          withdrawNote.value.trim(),
+          withdrawBtn,
+          withdrawMessage
+        );
+
+      }
+    );
+
+    /*
+     * Load the current balance after Google sign-in.
+     */
+
+    document.addEventListener(
+      'kk-google-signed-in',
+      async () => {
+
+        try {
+
+          const response =
+            await api.request('getGoal');
+
+          if (
+            response?.ok &&
+            response.goal
+          ) {
+
+            updateBalanceDisplay(
+              response.goal.currentSavings || 0
+            );
+
+            if (
+              window.renderTransactions
+            ) {
+              window.renderTransactions(
+                response.transactions || []
+              );
+            }
+          }
+
+        } catch (err) {
+
+          console.error(
+            'Load savings balance error:',
+            err
+          );
+
+        }
+
+      }
+    );
+
+    /*
+     * Clear balance after sign-out.
+     */
+
+    document.addEventListener(
+      'kk-google-signed-out',
+      () => {
+
         window.currentBalance = 0;
-        document.getElementById('historySection').hidden = true;
-      });
-    })();
-  </script>
+
+        if (balanceDisplay) {
+          balanceDisplay.textContent = '$0';
+        }
+
+        if (depositMessage) {
+          depositMessage.textContent = '';
+        }
+
+        if (withdrawMessage) {
+          withdrawMessage.textContent = '';
+        }
+
+        const history =
+          document.getElementById(
+            'historySection'
+          );
+
+        if (history) {
+          history.hidden = true;
+        }
+
+      }
+    );
+
+  })();
+</script>
 </body>
 </html>
