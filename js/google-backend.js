@@ -1,8 +1,7 @@
 (() => {
   const CONFIG = {
     CLIENT_ID: '577321300623-bibhl8n6nntpt60pkv8n18mmfplsc994.apps.googleusercontent.com',
-
-    ENDPOINT: 'https://script.google.com/macros/s/AKfycbzIl_uPD_Y8d2shgWlH6WhbYkJLPXI-iJhVAdq3s4mcUI137vlYTLiDhMNAPqdFbxBDdw/exec'
+ENDPOINT: 'https://script.google.com/macros/s/AKfycbyrUWZvH2zFLsvuOBEKQ738627dd73kKhbliFoCJVsaEbO8JBKFjNJsMiEX4pBs40uNDw/exec'
   };
 
   let idToken = sessionStorage.getItem('kk_google_id_token') || '';
