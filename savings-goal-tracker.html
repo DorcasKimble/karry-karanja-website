@@ -186,18 +186,37 @@
     </div>
   </footer>
 
-  <!-- GOOGLE AUTH MODAL -->
-  <div id="authModal" class="auth-modal" aria-hidden="true">
-    <div class="auth-card" role="dialog" aria-modal="true" aria-labelledby="authTitle">
-      <button id="authClose" class="auth-close" aria-label="Close" type="button">×</button>
-      <div class="step">Secure savings account</div>
-      <h2 id="authTitle">Log in to your savings plan</h2>
-      <p class="muted" style="margin-top:-10px;margin-bottom:18px;">Use your Google account to save your plan and return to it later.</p>
-      <div id="googleSignInButton" style="min-height:44px;"></div>
-      <div id="authMessage" class="auth-message" aria-live="polite"></div>
-      <p class="muted" style="font-size:12px;margin-top:18px;">Your savings data is stored in the app's Google Sheets database.</p>
+ <!-- GOOGLE AUTH MODAL -->
+<div id="authModal" class="auth-modal" aria-hidden="true">
+  <div class="auth-card" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+
+    <button id="authClose"
+            class="auth-close"
+            aria-label="Close"
+            type="button">×</button>
+
+    <div class="step" id="authEyebrow">
+      Secure savings account
     </div>
+
+    <h2 id="authTitle">
+      Log in to your savings plan
+    </h2>
+
+    <p id="authSubtitle"
+       class="muted"
+       style="margin-top:-10px;margin-bottom:18px;">
+      Log in using the Google account connected to your savings plan.
+    </p>
+
+    <div id="googleSignInButton" style="min-height:44px;"></div>
+
+    <div id="authMessage"
+         class="auth-message"
+         aria-live="polite"></div>
+
   </div>
+</div>
 
   <!-- CALCULATION ENGINE -->
   <script>
