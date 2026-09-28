@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karry Karanja — Google Sign-In Test</title>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<style>
+body{font-family:Arial,sans-serif;background:#FBF9F4;color:#1F1C18;margin:0;padding:50px 20px}
+.card{max-width:680px;margin:auto;background:#fff;padding:36px;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.08)}
+h1{margin-top:0}.note{color:#666}.status{margin-top:24px;padding:16px;border-radius:10px;background:#f3f3f3;white-space:pre-wrap}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>Google Sign-In Test</h1>
+<p class="note">Temporary backend test for the Karry Karanja Savings App. This page does not replace the main app.</p>
+<div id="googleButton"></div>
+<div id="status" class="status">Loading Google Sign-In…</div>
+</div>
+<script>
+const CLIENT_ID = "577321300623-bibhl8n6nntpt60pkv8n18mmfplsc994.apps.googleusercontent.com";
+const ENDPOINT = "https://script.google.com/macros/s/AKfycbzIl_uPD_Y8d2shgWlH6WhbYkJLPXI-iJhVAdq3s4mcUI137vlYTLiDhMNAPqdFbxBDdw/exec";
+
+function setStatus(text){document.getElementById("status").textContent=text;}
+
+function credentialCallback(response){
+  setStatus("Google sign-in succeeded. Sending your ID token to the Google Sheets backend…");
+  const body=JSON.stringify({action:"getProfile",idToken:response.credential});
+  fetch(ENDPOINT,{
+    method:"POST",
+    mode:"no-cors",
+    headers:{"Content-Type":"text/plain;charset=UTF-8"},
+    body
+  }).then(()=>{
+    setStatus("Request sent successfully.\n\nNow open the Google Sheet → Users tab.\nIf your account appears there, the Google → Apps Script → Google Sheets authentication flow is working.");
+  }).catch(err=>{
+    setStatus("The request could not be sent: "+err.message);
+  });
+}
+
+function initGoogle(){
+  if(!window.google || !google.accounts || !google.accounts.id){
+    setStatus("Google Sign-In is still loading. Refresh the page if this remains.");
+    return;
+  }
+  google.accounts.id.initialize({
+    client_id:CLIENT_ID,
+    callback:credentialCallback,
+    auto_select:false
+  });
+  google.accounts.id.renderButton(document.getElementById("googleButton"),{
+    theme:"outline",size:"large",text:"signin_with",shape:"rectangular",width:280
+  });
+  setStatus("Ready. Click the Google Sign-In button.");
+}
+window.addEventListener("load",()=>setTimeout(initGoogle,800));
+</script>
+</body>
+</html>
