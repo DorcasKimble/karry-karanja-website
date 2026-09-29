@@ -1,0 +1,4266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Savings Goal Tracker | Karry Karanja</title>
+
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root{
+      --mustard:#C99725;
+      --ivory:#FBF9F4;
+      --white:#fff;
+      --black:#1F1C18;
+      --charcoal:#2D2924;
+      --muted:#766E63;
+      --soft:#F7F4EE;
+      --tint:#F3E8CD;
+      --border:#DED7CA;
+      --sans:Inter,Arial,sans-serif;
+      --serif:'Playfair Display',Georgia,serif
+    }
+
+    *{
+      box-sizing:border-box
+    }
+
+    body{
+      margin:0;
+      background:var(--white);
+      color:var(--charcoal);
+      font:16px/1.55 var(--sans)
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit
+    }
+
+    .container{
+      width:min(1150px,calc(100% - 42px));
+      margin:auto
+    }
+
+    .site-header{
+      background:rgba(255,255,255,.96);
+      border-bottom:1px solid var(--border);
+      padding:19px 0
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px
+    }
+
+    .logo{
+      font-weight:800;
+      font-size:19px;
+      letter-spacing:.05em
+    }
+
+    .logo span,
+    .eyebrow,
+    .accent{
+      color:var(--mustard)
+    }
+
+    .navlinks{
+      display:flex;
+      list-style:none;
+      gap:25px;
+      padding:0;
+      margin:0;
+      font-size:13px;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.05em
+    }
+
+    .navlinks a:hover{
+      color:var(--mustard)
+    }
+
+    .hero{
+      text-align:center;
+      padding:72px 0 52px;
+      background:var(--white)
+    }
+
+    .eyebrow{
+      display:block;
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.14em;
+      text-transform:uppercase
+    }
+
+    .hero h1{
+      margin:11px 0;
+      font-size:clamp(38px,6vw,66px);
+      line-height:1.03;
+      letter-spacing:-.04em;
+      text-transform:uppercase;
+      color:var(--black)
+    }
+
+    .hero h1 em{
+      font:italic 400 .86em var(--serif);
+      text-transform:none
+    }
+
+    .hero p{
+      max-width:610px;
+      margin:0 auto;
+      color:var(--muted);
+      font-size:17px
+    }
+
+    .calculator{
+      margin:0 auto 70px
+    }
+
+    .panel{
+      border:1px solid var(--border);
+      padding:32px;
+      border-radius:4px;
+      transition:
+        transform .3s cubic-bezier(.16,1,.3,1),
+        box-shadow .3s cubic-bezier(.16,1,.3,1)
+    }
+
+    .panel:hover{
+      transform:translateY(-4px);
+      box-shadow:0 12px 28px rgba(31,28,24,.08)
+    }
+
+    /* CARD BACKGROUNDS */
+
+    .card-1{
+      background:var(--white)
+    }
+
+    .card-2{
+      background:var(--ivory)
+    }
+
+    .card-3{
+      background:var(--mustard);
+      color:var(--black)
+    }
+
+    .card-4{
+      background:var(--white)
+    }
+
+    .card-5{
+      background:var(--white)
+    }
+
+    .card-6{
+      background:var(--ivory)
+    }
+
+    /* MUSTARD CARD CONTRAST */
+
+    .card-3 .step{
+      color:var(--black)
+    }
+
+    .card-3 .card-explain{
+      color:#3d3522
+    }
+
+    .card-3 .field{
+      border-color:var(--black)
+    }
+
+    .card-3 .answer{
+      background:var(--ivory);
+      border-left-color:var(--black)
+    }
+
+    .card-3 .button{
+      background:var(--black);
+      color:var(--white);
+      border-color:var(--black)
+    }
+
+    .card-3 .button:hover{
+      background:var(--white);
+      color:var(--black);
+      border-color:var(--white)
+    }
+
+    .top{
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      gap:20px
+    }
+
+    .step{
+      font-size:11px;
+      letter-spacing:.12em;
+      font-weight:800;
+      color:var(--mustard);
+      text-transform:uppercase;
+      margin-bottom:6px
+    }
+
+    .card-explain{
+      font-size:13px;
+      color:var(--muted);
+      margin:-15px 0 18px 0;
+      line-height:1.4
+    }
+
+    h2{
+      color:var(--black);
+      text-transform:uppercase;
+      letter-spacing:-.025em;
+      font-size:23px;
+      line-height:1.15;
+      margin:0 0 23px
+    }
+
+    .label{
+      display:block;
+      font-size:13px;
+      font-weight:700;
+      margin:19px 0 7px
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:7px
+    }
+
+    .chip{
+      background:var(--white);
+      border:1px solid var(--border);
+      padding:8px 11px;
+      font:700 12px var(--sans);
+      cursor:pointer;
+      transition:all .2s ease
+    }
+
+    .chip.active,
+    .chip:hover{
+      background:var(--tint);
+      border-color:var(--mustard)
+    }
+
+    .field{
+      height:48px;
+      border:1px solid var(--border);
+      display:flex;
+      align-items:center;
+      padding:0 12px;
+      background:#fff;
+      gap:5px;
+      transition:
+        border-color .2s ease,
+        box-shadow .2s ease
+    }
+
+    .field:focus-within{
+      border-color:var(--mustard);
+      box-shadow:0 0 0 3px rgba(201,151,37,.15)
+    }
+
+    .field span{
+      color:var(--muted);
+      font-weight:700
+    }
+
+    .field input{
+      min-width:0;
+      width:100%;
+      border:0;
+      outline:0;
+      font:700 16px var(--sans);
+      color:var(--black);
+      background:transparent
+    }
+
+    .button{
+      border:1px solid var(--mustard);
+      background:var(--mustard);
+      color:var(--black);
+      font:800 13px var(--sans);
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      padding:15px 22px;
+      cursor:pointer;
+      margin-top:22px;
+      transition:all .25s ease
+    }
+
+    .button:hover{
+      background:var(--black);
+      border-color:var(--black);
+      color:var(--white)
+    }
+
+    .button.full{
+      width:100%
+    }
+
+    .button.save-btn{
+      background:var(--white);
+      border:2px solid var(--mustard);
+      color:var(--black);
+      font-weight:800
+    }
+
+    .button.save-btn:hover{
+      background:var(--mustard);
+      color:var(--black)
+    }
+
+    .button.save-btn:disabled{
+      background:var(--tint);
+      border-color:var(--mustard);
+      color:var(--black);
+      opacity:.95;
+      cursor:wait
+    }
+
+    .button:disabled{
+      cursor:wait;
+      opacity:.65
+    }
+
+    .snapshot{
+      color:var(--charcoal)
+    }
+
+    .snapshot h2{
+      color:var(--black);
+      margin-bottom:5px
+    }
+
+    .snapshot .step{
+      color:var(--mustard)
+    }
+
+    .big{
+      font-size:45px;
+      font-weight:800;
+      letter-spacing:-.06em;
+      color:var(--mustard);
+      line-height:1.1;
+      margin:8px 0
+    }
+
+    .muted{
+      color:var(--muted);
+      font-size:14px
+    }
+
+    .snapshot .muted{
+      color:var(--muted)
+    }
+
+    .progress{
+      height:15px;
+      background:#e2ddd4;
+      margin:23px 0 8px;
+      overflow:hidden;
+      border-radius:10px
+    }
+
+    .snapshot .progress{
+      background:#e2ddd4
+    }
+
+    .progress i{
+      display:block;
+      height:100%;
+      background:var(--mustard);
+      width:25%;
+      transition:width .6s cubic-bezier(.16,1,.3,1)
+    }
+
+    .row{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      font-size:13px;
+      font-weight:700
+    }
+
+    .unlock{
+      border-top:1px solid var(--border);
+      margin-top:24px;
+      padding-top:20px
+    }
+
+    .unlock h3{
+      font-size:18px;
+      line-height:1.2;
+      margin:0 0 8px
+    }
+
+    .email{
+      width:100%;
+      height:45px;
+      margin-top:12px;
+      border:1px solid var(--border);
+      padding:11px;
+      font:14px var(--sans);
+      background:#fff
+    }
+
+    .darkbutton{
+      background:var(--mustard);
+      color:var(--black);
+      width:100%
+    }
+
+    .darkbutton:hover{
+      background:var(--black);
+      color:#fff;
+      border-color:var(--black)
+    }
+
+    .heading{
+      text-align:center;
+      padding:65px 0 25px
+    }
+
+    .heading h2{
+      font-size:31px;
+      margin:5px 0
+    }
+
+    .heading p{
+      color:var(--muted);
+      margin:0
+    }
+
+    .scenarios{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px
+    }
+
+    .scenario{
+      border:1px solid var(--border);
+      background:var(--white);
+      padding:19px;
+      text-align:left;
+      cursor:pointer;
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease
+    }
+
+    .scenario:hover,
+    .scenario.selected{
+      border-color:var(--mustard);
+      background:var(--tint);
+      transform:translateY(-3px)
+    }
+
+    .scenario strong{
+      display:block;
+      font-size:20px;
+      color:var(--black);
+      letter-spacing:-.04em
+    }
+
+    .scenario span,
+    .scenario b{
+      display:block;
+      font-size:12px;
+      margin-top:5px
+    }
+
+    .scenario span{
+      color:var(--muted)
+    }
+
+    .scenario b{
+      color:#735914
+    }
+
+    .dual,
+    .track{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+      margin-top:20px
+    }
+
+    .answer{
+      background:var(--soft);
+      border-left:3px solid var(--mustard);
+      padding:15px;
+      margin-top:16px;
+      font-size:14px;
+      transition:all .3s ease
+    }
+
+    .answer strong{
+      display:block;
+      color:var(--black);
+      font-size:16px;
+      margin-bottom:3px
+    }
+
+    .milestone .next{
+      font-size:33px;
+      font-weight:800;
+      color:var(--black);
+      letter-spacing:-.05em;
+      margin:6px 0
+    }
+
+    .nextmove{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:25px;
+      margin:20px 0 70px;
+      padding:31px;
+      background:var(--black);
+      color:white;
+      border-radius:4px
+    }
+
+    .nextmove h2{
+      color:white;
+      margin:4px 0
+    }
+
+    .nextmove p{
+      color:#d7d0c5;
+      margin:0;
+      max-width:650px
+    }
+
+    .nextmove a{
+      color:#e5c36f;
+      font-weight:800;
+      white-space:nowrap;
+      transition:color .2s ease
+    }
+
+    .nextmove a:hover{
+      color:#fff
+    }
+
+    .footer{
+      border-top:1px solid var(--border);
+      padding:25px 0;
+      color:var(--muted);
+      font-size:13px
+    }
+
+    .footer .container{
+      display:flex;
+      justify-content:space-between
+    }
+
+    /* VISUAL & ANIMATION */
+
+    .hero{
+      overflow:hidden;
+      position:relative
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      align-items:center;
+      gap:55px;
+      text-align:left
+    }
+
+    .hero-grid p{
+      margin:0;
+      max-width:530px
+    }
+
+    .hero-art{
+      height:335px;
+      position:relative
+    }
+
+    .portrait-frame{
+      position:absolute;
+      right:0;
+      top:7px;
+      width:250px;
+      height:300px;
+      overflow:hidden;
+      border-radius:130px 130px 20px 20px;
+      border:8px solid var(--white);
+      box-shadow:13px 13px 0 var(--mustard)
+    }
+
+    .portrait-frame img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center
+    }
+
+    .coin{
+      position:absolute;
+      display:grid;
+      place-items:center;
+      width:68px;
+      height:68px;
+      border-radius:50%;
+      background:var(--mustard);
+      color:var(--black);
+      font-size:28px;
+      box-shadow:0 8px 20px #6b551c35
+    }
+
+    .coin.one{
+      left:8px;
+      top:58px;
+      animation:float 4.5s ease-in-out infinite
+    }
+
+    .coin.two{
+      left:85px;
+      bottom:16px;
+      width:51px;
+      height:51px;
+      font-size:22px;
+      animation:float 4.5s ease-in-out .8s infinite
+    }
+
+    .goal-note{
+      position:absolute;
+      left:0;
+      bottom:49px;
+      background:var(--black);
+      color:#fff;
+      padding:14px 17px;
+      font-size:12px;
+      font-weight:700;
+      box-shadow:0 8px 22px #1f1c1833;
+      animation:rise .7s cubic-bezier(.16,1,.3,1) both .25s
+    }
+
+    .goal-note b{
+      display:block;
+      color:#e5c36f;
+      font-size:17px
+    }
+
+    .hero h1,
+    .hero p,
+    .hero .eyebrow{
+      animation:rise .7s cubic-bezier(.16,1,.3,1) both
+    }
+
+    .hero h1{
+      animation-delay:.08s
+    }
+
+    .hero p{
+      animation-delay:.16s
+    }
+
+    .icon{
+      width:37px;
+      height:37px;
+      display:inline-grid;
+      place-items:center;
+      border-radius:50%;
+      background:var(--tint);
+      font-size:19px;
+      vertical-align:middle;
+      margin-right:9px
+    }
+
+    .snapshot .icon{
+      background:var(--tint)
+    }
+
+    .snapshot .progress i{
+      animation:fill 1.3s cubic-bezier(.16,1,.3,1) both .3s
+    }
+
+    .scenario{
+      position:relative;
+      overflow:hidden
+    }
+
+    .scenario:before{
+      content:'↗';
+      position:absolute;
+      right:14px;
+      top:11px;
+      font-size:17px;
+      color:var(--mustard);
+      opacity:.7
+    }
+
+    .section-ornament{
+      display:flex;
+      justify-content:center;
+      gap:8px;
+      margin-top:12px
+    }
+
+    .section-ornament i{
+      width:6px;
+      height:6px;
+      background:var(--mustard);
+      border-radius:50%
+    }
+
+    .section-ornament i:nth-child(2){
+      transform:scale(1.6)
+    }
+
+    .milestone{
+      position:relative;
+      overflow:hidden
+    }
+
+    .milestone:after{
+      content:'✦';
+      font-size:155px;
+      position:absolute;
+      right:-20px;
+      bottom:-70px;
+      color:#c9972526;
+      transform:rotate(12deg)
+    }
+
+    .milestone>*{
+      position:relative;
+      z-index:1
+    }
+
+    .nextmove{
+      position:relative;
+      overflow:hidden
+    }
+
+    .nextmove:after{
+      content:'$';
+      position:absolute;
+      right:35px;
+      top:-50px;
+      color:#ffffff0c;
+      font:italic 220px var(--serif)
+    }
+
+    .nextmove>*{
+      position:relative;
+      z-index:1
+    }
+
+    @keyframes float{
+      0%,100%{
+        transform:translateY(0) rotate(0deg)
+      }
+
+      50%{
+        transform:translateY(-12px) rotate(5deg)
+      }
+    }
+
+    @keyframes rise{
+      from{
+        opacity:0;
+        transform:translateY(20px)
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0)
+      }
+    }
+
+    @keyframes fill{
+      from{
+        width:0
+      }
+    }
+
+    /* ACTIVITY HISTORY */
+
+    .history-panel{
+      margin-top:25px;
+      padding-top:20px;
+      border-top:1px solid rgba(0,0,0,.15)
+    }
+
+    .history-head{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:15px;
+      margin-bottom:12px
+    }
+
+    .history-head h3{
+      margin:2px 0 0;
+      font-size:18px;
+      line-height:1.2;
+      color:var(--black)
+    }
+
+    .history-refresh{
+      border:1px solid var(--border);
+      background:var(--white);
+      color:var(--black);
+      padding:8px 11px;
+      font:800 11px var(--sans);
+      text-transform:uppercase;
+      letter-spacing:.05em;
+      cursor:pointer
+    }
+
+    .history-refresh:hover{
+      background:var(--black);
+      color:#fff;
+      border-color:var(--black)
+    }
+
+    .history-list{
+      display:grid;
+      gap:8px
+    }
+
+    .history-group{
+      margin-top:10px
+    }
+
+    .history-date{
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin:12px 0 7px
+    }
+
+    .history-item{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
+      padding:11px 12px;
+      background:rgba(255,255,255,.72);
+      border:1px solid var(--border)
+    }
+
+    .history-item-main{
+      min-width:0
+    }
+
+    .history-type{
+      font-weight:800;
+      font-size:13px;
+      color:var(--black)
+    }
+
+    .history-detail{
+      font-size:12px;
+      color:var(--muted);
+      margin-top:2px
+    }
+
+    .history-time{
+      font-size:11px;
+      color:var(--muted);
+      white-space:nowrap
+    }
+
+    .history-amount{
+      font-weight:800;
+      font-size:13px;
+      white-space:nowrap
+    }
+
+    .history-amount.positive{
+      color:#3b6f36
+    }
+
+    .history-amount.negative{
+      color:#9a3d2e
+    }
+
+    .history-more{
+      display:block;
+      width:100%;
+      margin-top:12px
+    }
+
+    .savings-action{
+      margin-top:14px;
+      padding-top:14px;
+      border-top:1px solid rgba(0,0,0,.12)
+    }
+
+    .savings-action h3{
+      margin:0;
+      font-size:15px;
+      color:var(--black)
+    }
+
+    .transaction-message{
+      min-height:20px;
+      margin-top:8px;
+      font-size:12px;
+      font-weight:700;
+      color:var(--muted)
+    }
+
+    /* AUTH */
+
+    .auth-actions{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-shrink:0
+    }
+
+    .auth-button{
+      border:1px solid var(--mustard);
+      background:transparent;
+      color:var(--black);
+      padding:9px 12px;
+      font:800 11px var(--sans);
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      cursor:pointer;
+      white-space:nowrap;
+      transition:all .2s ease
+    }
+
+    .auth-button.primary{
+      background:var(--mustard)
+    }
+
+    .auth-button:hover{
+      background:var(--black);
+      color:#fff;
+      border-color:var(--black)
+    }
+
+    .auth-status{
+      font-size:11px;
+      color:var(--muted);
+      max-width:180px;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap
+    }
+
+    .auth-modal{
+      position:fixed;
+      inset:0;
+      background:#1f1c188c;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      z-index:1000;
+      backdrop-filter:blur(3px)
+    }
+
+    .auth-modal.open{
+      display:flex;
+      animation:rise .3s cubic-bezier(.16,1,.3,1)
+    }
+
+    .auth-card{
+      width:min(460px,100%);
+      background:var(--white);
+      border:1px solid var(--border);
+      padding:30px;
+      box-shadow:0 24px 70px #0004;
+      position:relative;
+      border-radius:4px
+    }
+
+    .auth-card h2{
+      margin-bottom:8px
+    }
+
+    .auth-close{
+      position:absolute;
+      right:16px;
+      top:12px;
+      border:0;
+      background:none;
+      font-size:25px;
+      cursor:pointer;
+      color:var(--muted);
+      transition:color .2s
+    }
+
+    .auth-close:hover{
+      color:var(--black)
+    }
+
+    .auth-form label{
+      display:block;
+      font-size:13px;
+      font-weight:700;
+      margin:16px 0 7px
+    }
+
+    .auth-form input{
+      width:100%;
+      height:46px;
+      border:1px solid var(--border);
+      padding:10px;
+      font:14px var(--sans);
+      background:#fff
+    }
+
+    .auth-submit{
+      width:100%;
+      margin-top:20px
+    }
+
+    .auth-message{
+      min-height:24px;
+      margin-top:12px;
+      font-size:13px;
+      color:var(--muted);
+      font-weight:600
+    }
+
+    .auth-link{
+      border:0;
+      background:none;
+      color:#8b6818;
+      text-decoration:underline;
+      cursor:pointer;
+      font:inherit;
+      padding:0
+    }
+
+    .nav{
+      flex-wrap:wrap
+    }
+
+    .auth-actions{
+      margin-left:auto
+    }
+
+    @media(max-width:980px){
+
+      .nav{
+        justify-content:center
+      }
+
+      .logo{
+        margin-right:auto
+      }
+
+      .auth-actions{
+        margin-left:0
+      }
+
+      .navlinks{
+        order:3;
+        width:100%;
+        justify-content:center;
+        gap:18px
+      }
+    }
+
+    @media(max-width:760px){
+
+      .navlinks{
+        display:none
+      }
+
+      .auth-actions{
+        margin-left:auto
+      }
+
+      .auth-status{
+        display:none
+      }
+
+      .auth-button{
+        padding:8px 10px;
+        font-size:10px
+      }
+
+      .hero{
+        padding:52px 0 38px
+      }
+
+      .hero-grid{
+        grid-template-columns:1fr;
+        text-align:center;
+        gap:18px
+      }
+
+      .hero-grid p{
+        margin:auto
+      }
+
+      .hero-art{
+        height:240px;
+        width:300px;
+        margin:auto
+      }
+
+      .portrait-frame{
+        height:224px;
+        width:190px;
+        right:16px
+      }
+
+      .coin.one{
+        left:6px;
+        top:32px
+      }
+
+      .goal-note{
+        left:0;
+        bottom:18px
+      }
+
+      .top,
+      .dual,
+      .track{
+        grid-template-columns:1fr
+      }
+
+      .panel{
+        padding:23px
+      }
+
+      .scenarios{
+        grid-template-columns:1fr 1fr
+      }
+
+      .nextmove{
+        display:block
+      }
+
+      .nextmove a{
+        display:block;
+        margin-top:16px
+      }
+
+      .footer .container{
+        display:block
+      }
+
+      .footer p{
+        margin:6px 0
+      }
+
+      .history-item{
+        gap:8px
+      }
+
+      .history-time{
+        font-size:10px
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="container nav">
+
+      <a class="logo" href="index.html">
+        KARRY KARANJA<span>.</span>
+      </a>
+
+      <ul class="navlinks">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#tools">Free Tools</a></li>
+        <li><a href="index.html#education">Financial Education</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+
+      <div class="auth-actions">
+
+        <span
+          id="authStatus"
+          class="auth-status">
+        </span>
+
+        <button
+          id="loginBtn"
+          class="auth-button"
+          type="button">
+          Log in
+        </button>
+
+        <button
+          id="signupBtn"
+          class="auth-button primary"
+          type="button">
+          Sign up
+        </button>
+
+        <button
+          id="logoutBtn"
+          class="auth-button"
+          type="button"
+          hidden>
+          Log out
+        </button>
+
+      </div>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+      <div class="container hero-grid">
+
+        <div>
+
+          <span class="eyebrow">
+            Financial Tool
+          </span>
+
+          <h1>
+            Savings Goal
+            <em>Tracker</em>
+            <br>
+            &amp; Calculator
+          </h1>
+
+          <p>
+            Turn your savings goal into a clear,
+            realistic plan—and see the progress
+            you’re making along the way.
+          </p>
+
+        </div>
+
+        <div
+          class="hero-art"
+          aria-hidden="true">
+
+          <div class="coin one">
+            ✦
+          </div>
+
+          <div class="coin two">
+            $
+          </div>
+
+          <div class="portrait-frame">
+            <img
+              src="images/500x500/K2.jpg"
+              alt="">
+          </div>
+
+          <div class="goal-note">
+            YOUR GOAL IS IN MOTION
+            <b>
+              Small steps. Real progress.
+            </b>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <div class="container calculator">
+
+      <!-- =========================
+           SECTION 01 + 02
+           ========================= -->
+
+      <section class="top">
+
+        <!-- BOX 1 -->
+
+        <article class="panel card-1">
+
+          <div class="step">
+            01 · Build your plan
+          </div>
+
+          <h2>
+            <span class="icon">◎</span>
+            What are you saving for?
+          </h2>
+
+          <p class="card-explain">
+            Choose what you are saving for,
+            then enter your own goal, current
+            savings, and target date. Your plan
+            will populate as you go.
+          </p>
+
+          <div
+            class="chips"
+            id="goalChips">
+
+            <button class="chip">
+              Emergency Fund
+            </button>
+
+            <button class="chip">
+              First $10K
+            </button>
+
+            <button class="chip">
+              Home
+            </button>
+
+            <button class="chip">
+              Car
+            </button>
+
+            <button class="chip">
+              Travel
+            </button>
+
+            <button class="chip">
+              Other
+            </button>
+
+          </div>
+
+
+          <div
+            id="otherGoalWrap"
+            hidden
+            style="margin-top:12px;">
+
+            <div class="field">
+
+              <input
+                id="otherGoalName"
+                type="text"
+                placeholder="What are you saving for?">
+
+            </div>
+
+          </div>
+
+
+          <label class="label">
+            What’s your savings goal?
+          </label>
+
+
+          <div
+            class="chips"
+            id="amountChips">
+
+            <button class="chip">
+              $1,000
+            </button>
+
+            <button class="chip">
+              $5,000
+            </button>
+
+            <button class="chip">
+              $10,000
+            </button>
+
+            <button class="chip">
+              $25,000
+            </button>
+
+            <button class="chip">
+              $50,000
+            </button>
+
+          </div>
+
+
+          <label class="label">
+            Goal
+          </label>
+
+          <div class="field">
+
+            <span>$</span>
+
+            <input
+              id="goal"
+              type="number"
+              value=""
+              min="1"
+              placeholder="Enter your goal">
+
+          </div>
+
+
+          <label class="label">
+            How much have you already saved?
+          </label>
+
+          <div class="field">
+
+            <span>$</span>
+
+            <input
+              id="saved"
+              type="number"
+              value=""
+              min="0"
+              placeholder="Enter amount already saved">
+
+          </div>
+
+
+          <label class="label">
+            When do you want to reach your goal?
+          </label>
+
+          <div class="field">
+
+            <input
+              id="deadline"
+              type="date">
+
+          </div>
+
+
+          <button
+            id="calculate"
+            class="button full"
+            type="button">
+
+            Calculate my savings plan →
+
+          </button>
+
+
+          <button
+            id="savePlan"
+            class="button full save-btn"
+            type="button"
+            style="margin-top:12px;">
+
+            Save my plan
+
+          </button>
+
+
+          <div
+            id="savePlanMessage"
+            class="auth-message"
+            aria-live="polite"
+            style="text-align:center">
+
+          </div>
+
+        </article>
+
+
+        <!-- BOX 2 -->
+
+        <aside class="panel snapshot card-2">
+
+          <div class="step">
+            02 · Your starting point
+          </div>
+
+          <h2>
+            <span class="icon">↗</span>
+            You’re
+            <span id="percent">0</span>
+            % there
+          </h2>
+
+          <p class="card-explain">
+            A high-level summary showing how
+            close you are to your overall savings goal.
+          </p>
+
+          <div
+            class="big"
+            id="savedStat">
+            $0
+          </div>
+
+          <div class="muted">
+            saved
+          </div>
+
+          <div class="progress">
+
+            <i id="bar"></i>
+
+          </div>
+
+          <div class="row">
+
+            <span id="remaining">
+              Set a goal to begin
+            </span>
+
+            <span id="percentSide">
+              0%
+            </span>
+
+          </div>
+
+
+          <div class="unlock">
+
+            <h3>
+              Your personalized savings plan is ready.
+            </h3>
+
+            <p class="muted">
+              Get monthly, paycheck and weekly targets,
+              plus milestones and progress tracking.
+            </p>
+
+            <input
+              class="email"
+              type="email"
+              placeholder="Email address">
+
+            <button
+              class="button darkbutton"
+              type="button">
+
+              Unlock my free savings plan
+
+            </button>
+
+          </div>
+
+        </aside>
+
+      </section>
+
+
+      <!-- SCENARIOS -->
+
+      <section>
+
+        <div class="heading">
+
+          <span class="eyebrow">
+            Explore the possibilities
+          </span>
+
+          <h2>
+            What if I save more?
+          </h2>
+
+          <p>
+            See how small changes affect your goal—
+            no repeated calculations needed.
+          </p>
+
+          <div class="section-ornament">
+            <i></i>
+            <i></i>
+            <i></i>
+          </div>
+
+        </div>
+
+        <div
+          id="scenarios"
+          class="scenarios">
+        </div>
+
+      </section>
+
+
+      <!-- SECTION 03 + 04 -->
+
+      <section class="dual">
+
+        <!-- BOX 3 -->
+
+        <article class="panel card-3">
+
+          <div class="step">
+            03 · Find a faster path
+          </div>
+
+          <h2>
+            Want to get there sooner?
+          </h2>
+
+          <p class="card-explain">
+            Test extra monthly contributions
+            to see how many months you can cut
+            off your timeline.
+          </p>
+
+          <label class="label">
+            Add another amount each month
+          </label>
+
+          <div class="field">
+
+            <span>$</span>
+
+            <input
+              id="extra"
+              type="number"
+              value=""
+              min="0"
+              placeholder="Enter extra amount">
+
+          </div>
+
+          <div
+            class="answer"
+            id="faster">
+          </div>
+
+        </article>
+
+
+        <!-- BOX 4 -->
+
+        <article class="panel card-4">
+
+          <div class="step">
+            04 · Make it fit your life
+          </div>
+
+          <h2>
+            Tell us what you can afford
+          </h2>
+
+          <p class="card-explain">
+            Work backward from a comfortable
+            monthly budget to calculate your
+            realistic completion date.
+          </p>
+
+          <label class="label">
+            Comfortable monthly amount
+          </label>
+
+          <div class="field">
+
+            <span>$</span>
+
+            <input
+              id="afford"
+              type="number"
+              value=""
+              min="1"
+              placeholder="Enter monthly amount">
+
+            <span>
+              / month
+            </span>
+
+          </div>
+
+          <button
+            id="recalculate"
+            class="button"
+            type="button">
+
+            Recalculate
+
+          </button>
+
+          <div
+            class="answer"
+            id="affordable">
+          </div>
+
+        </article>
+
+      </section>
+
+
+      <!-- SECTION 05 + 06 -->
+
+      <section class="track">
+
+        <!-- BOX 5 -->
+
+        <article class="panel card-5">
+
+          <div class="step">
+            05 · Track your progress
+          </div>
+
+          <h2>
+            Update your savings
+          </h2>
+
+          <p class="card-explain">
+            Add a deposit or record a withdrawal
+            to keep your savings progress up to date.
+          </p>
+
+
+          <!-- DEPOSIT -->
+
+          <div class="savings-action">
+
+            <h3>
+              Deposit
+            </h3>
+
+            <label class="label">
+              Amount deposited
+            </label>
+
+            <div class="field">
+
+              <span>$</span>
+
+              <input
+                id="depositAmount"
+                type="number"
+                min="0"
+                step="0.01"
+                placeholder="Enter deposit amount">
+
+            </div>
+
+            <button
+              id="deposit"
+              class="button"
+              type="button">
+
+              Add deposit
+
+            </button>
+
+          </div>
+
+
+          <!-- WITHDRAWAL -->
+
+          <div class="savings-action">
+
+            <h3>
+              Withdraw
+            </h3>
+
+            <label class="label">
+              Amount withdrawn
+            </label>
+
+            <div class="field">
+
+              <span>$</span>
+
+              <input
+                id="withdrawAmount"
+                type="number"
+                min="0"
+                step="0.01"
+                placeholder="Enter withdrawal amount">
+
+            </div>
+
+            <button
+              id="withdraw"
+              class="button"
+              type="button">
+
+              Record withdrawal
+
+            </button>
+
+          </div>
+
+
+          <div
+            id="transactionMessage"
+            class="transaction-message"
+            aria-live="polite">
+          </div>
+
+
+          <!-- PROGRESS -->
+
+          <div class="progress">
+
+            <i id="trackbar"></i>
+
+          </div>
+
+          <div class="row">
+
+            <span id="tracktotal">
+              $0 / $0
+            </span>
+
+            <span id="trackremain">
+              Enter a goal
+            </span>
+
+          </div>
+
+
+          <!-- ACTIVITY HISTORY -->
+
+          <div
+            id="historySection"
+            class="history-panel"
+            hidden>
+
+            <div class="history-head">
+
+              <div>
+
+                <div class="step">
+                  Activity History
+                </div>
+
+                <h3>
+                  Everything you do,
+                  saved permanently.
+                </h3>
+
+              </div>
+
+              <button
+                id="refreshHistory"
+                class="history-refresh"
+                type="button">
+
+                Refresh
+
+              </button>
+
+            </div>
+
+
+            <div
+              id="historyList"
+              class="history-list"
+              aria-live="polite">
+            </div>
+
+
+            <button
+              id="loadMoreHistory"
+              class="button history-more"
+              type="button"
+              hidden>
+
+              Load more activity
+
+            </button>
+
+          </div>
+
+        </article>
+
+
+        <!-- BOX 6 -->
+
+        <aside class="panel milestone card-6">
+
+          <div class="step">
+            06 · Next milestone
+          </div>
+
+          <h2>
+            Milestone Monitor
+          </h2>
+
+          <p class="card-explain">
+            Monitors incremental 25% checkpoints
+            to keep you motivated on your journey.
+          </p>
+
+          <div
+            class="next"
+            id="milestone">
+            —
+          </div>
+
+          <p id="milecopy">
+            Your next milestone will appear
+            once you set a goal.
+          </p>
+
+          <hr
+            style="
+              border:0;
+              border-top:1px solid #d8c79e;
+              margin:26px 0
+            ">
+
+          <div class="step">
+            Are you on track?
+          </div>
+
+          <h2 id="tracktitle">
+            Set your goal.
+          </h2>
+
+          <p id="trackcopy">
+            Your progress guidance will appear here.
+          </p>
+
+        </aside>
+
+      </section>
+
+
+      <!-- NEXT MOVE -->
+
+      <section class="nextmove">
+
+        <div>
+
+          <span class="eyebrow">
+            Your next move
+          </span>
+
+          <h2>
+            Make the plan automatic.
+          </h2>
+
+          <p id="transfer">
+            Enter your goal, current savings
+            and target date to see an
+            automatic-transfer suggestion.
+          </p>
+
+        </div>
+
+        <a
+          href="https://youtu.be/-XqYwjdyv1Y"
+          target="_blank"
+          rel="noopener noreferrer">
+
+          How to Save $10,000 Fast →
+
+        </a>
+
+      </section>
+
+    </div>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer class="footer">
+
+    <div class="container">
+
+      <p>
+        © 2026 Karry Karanja.
+        All rights reserved.
+      </p>
+
+      <p>
+        Personal Finance &amp;
+        Wealth Building
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <!-- GOOGLE AUTH MODAL -->
+
+  <div
+    id="authModal"
+    class="auth-modal"
+    aria-hidden="true">
+
+    <div
+      class="auth-card"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="authTitle">
+
+      <button
+        id="authClose"
+        class="auth-close"
+        aria-label="Close"
+        type="button">
+
+        ×
+
+      </button>
+
+      <div
+        class="step"
+        id="authEyebrow">
+
+        Welcome back
+
+      </div>
+
+      <h2 id="authTitle">
+
+        Log in to your savings plan
+
+      </h2>
+
+      <p
+        id="authSubtitle"
+        class="muted"
+        style="
+          margin-top:-10px;
+          margin-bottom:18px;
+        ">
+
+        Log in using the Google account
+        connected to your savings plan.
+
+      </p>
+
+      <div
+        id="googleSignInButton"
+        style="min-height:44px;">
+
+      </div>
+
+      <div
+        id="authMessage"
+        class="auth-message"
+        aria-live="polite">
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- CALCULATION ENGINE -->
+
+  <script>
+
+    const $ = id =>
+      document.getElementById(id);
+
+    const cash = n =>
+      new Intl.NumberFormat(
+        'en-US',
+        {
+          style:'currency',
+          currency:'USD',
+          maximumFractionDigits:0
+        }
+      ).format(
+        Math.max(
+          0,
+          Number(n) || 0
+        )
+      );
+
+
+    const months = () => {
+
+      const value =
+        $('deadline').value;
+
+      if (!value) return 0;
+
+      const days =
+        (
+          new Date(value) -
+          new Date()
+        ) / 864e5;
+
+      return Math.max(
+        1,
+        Math.ceil(
+          days / 30.4375
+        )
+      );
+
+    };
+
+
+    const finish = m => {
+
+      if (
+        !Number.isFinite(m) ||
+        m <= 0
+      ) {
+        return '—';
+      }
+
+      const d =
+        new Date();
+
+      d.setMonth(
+        d.getMonth() +
+        Math.ceil(m)
+      );
+
+      return d.toLocaleDateString(
+        'en-US',
+        {
+          month:'long',
+          year:'numeric'
+        }
+      );
+
+    };
+
+
+    function model(){
+
+      const goal =
+        Math.max(
+          0,
+          Number(
+            $('goal').value
+          ) || 0
+        );
+
+      const saved =
+        Math.min(
+          Math.max(
+            0,
+            Number(
+              $('saved').value
+            ) || 0
+          ),
+          goal ||
+          Number.MAX_SAFE_INTEGER
+        );
+
+      const left =
+        Math.max(
+          0,
+          goal - saved
+        );
+
+      const n =
+        months();
+
+      return {
+        goal,
+        saved,
+        left,
+        n,
+        monthly:
+          (
+            goal > 0 &&
+            n > 0
+          )
+            ? left / n
+            : 0
+      };
+
+    }
+
+
+    function scenarios(d){
+
+      if (
+        !d.goal ||
+        !d.n
+      ){
+
+        $('scenarios').innerHTML =
+          '';
+
+        return;
+      }
+
+
+      let values = [
+        400,
+        Math.round(
+          d.monthly / 25
+        ) * 25,
+        750,
+        1000
+      ]
+      .filter(
+        (x,i,a) =>
+          x > 0 &&
+          a.indexOf(x) === i
+      );
+
+
+      $('scenarios').innerHTML =
+        values.map(
+          v => `
+            <button
+              onclick="setAffordable(${v})"
+              class="scenario ${
+                Math.abs(
+                  v - d.monthly
+                ) < 25
+                  ? 'selected'
+                  : ''
+              }">
+
+              <strong>
+                ${cash(v)}
+                <small>/month</small>
+              </strong>
+
+              <span>
+                You’ll reach
+                ${cash(d.goal)}
+                in
+              </span>
+
+              <b>
+                ${Math.ceil(
+                  d.left / v
+                )}
+                months
+                ${
+                  Math.abs(
+                    v - d.monthly
+                  ) < 25
+                    ? '✓'
+                    : ''
+                }
+              </b>
+
+            </button>
+          `
+        )
+        .join('');
+
+    }
+
+
+    window.setAffordable = v => {
+
+      $('afford').value =
+        v;
+
+      affordable(
+        model()
+      );
+
+    };
+
+
+    function faster(d){
+
+      if (
+        !d.goal ||
+        !d.n
+      ){
+
+        $('faster').innerHTML =
+          '<strong>Complete your goal and target date above.</strong>Your faster-path estimate will appear here.';
+
+        return;
+      }
+
+
+      const v =
+        d.monthly +
+        (
+          Number(
+            $('extra').value
+          ) || 0
+        );
+
+
+      if (!v){
+
+        $('faster').innerHTML =
+          '<strong>Enter an extra monthly amount.</strong>';
+
+        return;
+      }
+
+
+      const m =
+        d.left / v;
+
+      const original =
+        d.monthly
+          ? Math.ceil(
+              d.left /
+              d.monthly
+            )
+          : 0;
+
+
+      $('faster').innerHTML =
+        `<strong>
+          New monthly savings:
+          ${cash(v)}
+        </strong>
+        New estimated finish:
+        <b>${finish(m)}</b>
+        <br>
+        About
+        ${
+          Math.max(
+            0,
+            original -
+            Math.ceil(m)
+          )
+        }
+        months sooner.`;
+
+    }
+
+
+    function affordable(d){
+
+      const v =
+        Number(
+          $('afford').value
+        ) || 0;
+
+
+      if (
+        !d.goal ||
+        !d.n ||
+        !v
+      ){
+
+        $('affordable').innerHTML =
+          '<strong>Enter your goal, savings and target date.</strong>Your realistic completion estimate will appear here.';
+
+        return;
+      }
+
+
+      $('affordable').innerHTML =
+        `<strong>
+          At ${cash(v)}/month,
+          you’ll reach your goal
+          around ${finish(d.left / v)}.
+        </strong>
+        That’s a plan built around your life.`;
+
+    }
+
+
+    function progress(
+      d,
+      s
+    ){
+
+      if (!d.goal){
+
+        $('trackbar').style.width =
+          '0%';
+
+        $('tracktotal').textContent =
+          '$0 / $0';
+
+        $('trackremain').textContent =
+          'Enter a goal';
+
+        $('milestone').textContent =
+          '—';
+
+        $('milecopy').textContent =
+          'Your next milestone will appear once you set a goal.';
+
+        $('tracktitle').textContent =
+          'Set your goal.';
+
+        $('trackcopy').textContent =
+          'Your progress guidance will appear here.';
+
+        return;
+      }
+
+
+      const p =
+        Math.min(
+          100,
+          s / d.goal * 100
+        );
+
+
+      const next =
+        Math.min(
+          d.goal,
+          Math.ceil(
+            (
+              s + .01
+            ) /
+            (
+              d.goal * .25
+            )
+          ) *
+          d.goal *
+          .25
+        );
+
+
+      $('trackbar').style.width =
+        p + '%';
+
+
+      $('tracktotal').textContent =
+        `${cash(s)} / ${cash(d.goal)}`;
+
+
+      $('trackremain').textContent =
+        `${cash(
+          Math.max(
+            0,
+            d.goal - s
+          )
+        )} remaining`;
+
+
+      $('milestone').textContent =
+        next === d.goal
+          ? 'Goal complete!'
+          : cash(next);
+
+
+      $('milecopy').textContent =
+        next === d.goal
+          ? 'You’ve reached every milestone.'
+          : `You’re ${
+              cash(
+                Math.max(
+                  0,
+                  next - s
+                )
+              )
+            } away.`;
+
+
+      const delta =
+        s - d.saved;
+
+
+      $('tracktitle').textContent =
+        delta >= 0
+          ? 'You’re on track.'
+          : 'You’re a little behind.';
+
+
+      $('trackcopy').textContent =
+        delta >= 0
+          ? `You’re ${cash(
+              delta
+            )} ahead of your original starting point. Keep going.`
+          : `You’re ${cash(
+              -delta
+            )} behind your original plan. A small adjustment can get you there.`;
+
+    }
+
+
+    function render(){
+
+      const d =
+        model();
+
+
+      const p =
+        d.goal
+          ? Math.min(
+              100,
+              d.saved /
+              d.goal *
+              100
+            )
+          : 0;
+
+
+      $('percent').textContent =
+        d.goal
+          ? p.toFixed(
+              p % 1
+                ? 1
+                : 0
+            )
+          : '0';
+
+
+      $('percentSide').textContent =
+        $('percent').textContent +
+        '%';
+
+
+      $('savedStat').textContent =
+        cash(
+          d.saved
+        );
+
+
+      $('remaining').textContent =
+        d.goal
+          ? cash(
+              d.left
+            ) +
+            ' to go'
+          : 'Set a goal to begin';
+
+
+      $('bar').style.width =
+        p + '%';
+
+
+      const updateField =
+        $('updateSaved');
+
+
+      if (
+        updateField &&
+        document.activeElement !==
+          updateField
+      ){
+
+        updateField.value =
+          d.saved || '';
+
+      }
+
+
+      scenarios(d);
+      faster(d);
+      affordable(d);
+      progress(
+        d,
+        d.saved
+      );
+
+
+      $('transfer').textContent =
+        d.monthly
+          ? `Set up an automatic transfer for ${cash(
+              d.monthly / 2
+            )} every paycheck and treat it like a bill you owe yourself.`
+          : 'Enter your goal, current savings and target date to see an automatic-transfer suggestion.';
+
+    }
+
+
+    $('calculate').onclick =
+      render;
+
+
+    $('extra').oninput =
+      () =>
+        faster(
+          model()
+        );
+
+
+    $('recalculate').onclick =
+      () =>
+        affordable(
+          model()
+        );
+
+
+    document
+      .querySelectorAll(
+        '#goalChips .chip'
+      )
+      .forEach(
+        x => {
+
+          x.onclick =
+            () => {
+
+              document
+                .querySelectorAll(
+                  '#goalChips .chip'
+                )
+                .forEach(
+                  y =>
+                    y.classList.remove(
+                      'active'
+                    )
+                );
+
+
+              x.classList.add(
+                'active'
+              );
+
+
+              const other =
+                x.textContent.trim() ===
+                'Other';
+
+
+              $('otherGoalWrap')
+                .hidden =
+                !other;
+
+
+              if (other){
+
+                $('otherGoalName')
+                  .focus();
+
+              }
+
+              render();
+
+            };
+
+        }
+      );
+
+
+    document
+      .querySelectorAll(
+        '#amountChips .chip'
+      )
+      .forEach(
+        x => {
+
+          x.onclick =
+            () => {
+
+              $('goal').value =
+                x.textContent.replace(
+                  /\D/g,
+                  ''
+                );
+
+
+              document
+                .querySelectorAll(
+                  '#amountChips .chip'
+                )
+                .forEach(
+                  y =>
+                    y.classList.remove(
+                      'active'
+                    )
+                );
+
+
+              x.classList.add(
+                'active'
+              );
+
+
+              render();
+
+            };
+
+        }
+      );
+
+
+    [
+      'goal',
+      'saved',
+      'deadline',
+      'otherGoalName'
+    ]
+    .forEach(
+      id => {
+
+        $(id).addEventListener(
+          'input',
+          render
+        );
+
+        $(id).addEventListener(
+          'change',
+          render
+        );
+
+      }
+    );
+
+
+    /*
+     * Start blank.
+     * Existing saved data is loaded by the
+     * Google backend after authentication.
+     */
+
+    $('goal').value =
+      '';
+
+    $('saved').value =
+      '';
+
+    $('deadline').value =
+      '';
+
+    if (
+      $('updateSaved')
+    ){
+
+      $('updateSaved').value =
+        '';
+
+    }
+
+    $('otherGoalWrap')
+      .hidden =
+      true;
+
+
+    render();
+
+  </script>
+
+
+  <!-- GOOGLE BACKEND -->
+
+  <script src="js/google-backend.js"></script>
+
+  <script src="js/auth.js"></script>
+
+
+  <!-- SAVINGS APPLICATION -->
+
+  <script>
+
+    (() => {
+
+      const api =
+        window.kkGoogleBackend;
+
+
+      const saveBtn =
+        document.getElementById(
+          'savePlan'
+        );
+
+
+      const saveMessage =
+        document.getElementById(
+          'savePlanMessage'
+        );
+
+
+      const historySection =
+        document.getElementById(
+          'historySection'
+        );
+
+
+      const historyList =
+        document.getElementById(
+          'historyList'
+        );
+
+
+      const loadMoreBtn =
+        document.getElementById(
+          'loadMoreHistory'
+        );
+
+
+      const refreshHistoryBtn =
+        document.getElementById(
+          'refreshHistory'
+        );
+
+
+      const depositBtn =
+        document.getElementById(
+          'deposit'
+        );
+
+
+      const withdrawBtn =
+        document.getElementById(
+          'withdraw'
+        );
+
+
+      const depositInput =
+        document.getElementById(
+          'depositAmount'
+        );
+
+
+      const withdrawInput =
+        document.getElementById(
+          'withdrawAmount'
+        );
+
+
+      let historyOffset =
+        0;
+
+
+      let historyHasMore =
+        false;
+
+
+      let activityCache =
+        [];
+
+
+      /*
+       * Safely escape data before
+       * putting it into HTML.
+       */
+
+      function esc(value){
+
+        return String(
+          value ?? ''
+        )
+        .replace(
+          /&/g,
+          '&amp;'
+        )
+        .replace(
+          /</g,
+          '&lt;'
+        )
+        .replace(
+          />/g,
+          '&gt;'
+        )
+        .replace(
+          /"/g,
+          '&quot;'
+        )
+        .replace(
+          /'/g,
+          '&#039;'
+        );
+
+      }
+
+
+      function activityIcon(
+        type
+      ){
+
+        const value =
+          String(
+            type || ''
+          )
+          .toLowerCase();
+
+
+        if (
+          value.includes(
+            'deposit'
+          )
+        ){
+
+          return '🟢';
+
+        }
+
+
+        if (
+          value.includes(
+            'withdraw'
+          )
+        ){
+
+          return '🔴';
+
+        }
+
+
+        if (
+          value.includes(
+            'sign'
+          )
+        ){
+
+          return '🔵';
+
+        }
+
+
+        if (
+          value.includes(
+            'created'
+          )
+        ){
+
+          return '🟡';
+
+        }
+
+
+        if (
+          value.includes(
+            'updated'
+          )
+        ){
+
+          return '🟡';
+
+        }
+
+
+        return '⚪';
+
+      }
+
+
+      function formatActivityDate(
+        value
+      ){
+
+        if (!value){
+
+          return 'Unknown date';
+
+        }
+
+
+        const d =
+          new Date(
+            value
+          );
+
+
+        if (
+          Number.isNaN(
+            d.getTime()
+          )
+        ){
+
+          return String(
+            value
+          );
+
+        }
+
+
+        return d.toLocaleDateString(
+          'en-US',
+          {
+            month:'long',
+            day:'numeric',
+            year:'numeric'
+          }
+        );
+
+      }
+
+
+      function formatActivityTime(
+        value
+      ){
+
+        if (!value){
+
+          return '';
+
+        }
+
+
+        const d =
+          new Date(
+            value
+          );
+
+
+        if (
+          Number.isNaN(
+            d.getTime()
+          )
+        ){
+
+          return '';
+
+        }
+
+
+        return d.toLocaleTimeString(
+          'en-US',
+          {
+            hour:'numeric',
+            minute:'2-digit'
+          }
+        );
+
+      }
+
+
+      function formatActivityAmount(
+        activity
+      ){
+
+        if (
+          activity.amount ===
+            null ||
+          activity.amount ===
+            undefined ||
+          activity.amount ===
+            ''
+        ){
+
+          return '';
+
+        }
+
+
+        const n =
+          Number(
+            activity.amount
+          );
+
+
+        if (
+          !Number.isFinite(n) ||
+          n === 0
+        ){
+
+          return '';
+
+        }
+
+
+        const type =
+          String(
+            activity.activityType ||
+            ''
+          ).toLowerCase();
+
+
+        const sign =
+          type.includes(
+            'withdraw'
+          )
+            ? '-'
+            : '+';
+
+
+        return `${sign}${cash(n)}`;
+
+      }
+
+
+      function renderActivityHistory(){
+
+        if (
+          !historySection ||
+          !historyList
+        ){
+
+          return;
+
+        }
+
+
+        if (
+          !activityCache.length
+        ){
+
+          historySection.hidden =
+            false;
+
+
+          historyList.innerHTML =
+            '<div class="history-detail">No activity has been recorded yet.</div>';
+
+
+          if (
+            loadMoreBtn
+          ){
+
+            loadMoreBtn.hidden =
+              true;
+
+          }
+
+
+          return;
+
+        }
+
+
+        const groups =
+          {};
+
+
+        activityCache.forEach(
+          item => {
+
+            const key =
+              formatActivityDate(
+                item.dateTime
+              );
+
+
+            if (
+              !groups[key]
+            ){
+
+              groups[key] =
+                [];
+
+            }
+
+
+            groups[key].push(
+              item
+            );
+
+          }
+        );
+
+
+        historyList.innerHTML =
+          Object.keys(
+            groups
+          )
+          .map(
+            date => {
+
+              const items =
+                groups[date]
+                .map(
+                  item => {
+
+                    const amount =
+                      formatActivityAmount(
+                        item
+                      );
+
+
+                    const amountClass =
+                      amount.startsWith(
+                        '-'
+                      )
+                        ? 'negative'
+                        : 'positive';
+
+
+                    return `
+                      <div class="history-item">
+
+                        <div class="history-item-main">
+
+                          <div class="history-type">
+                            ${activityIcon(
+                              item.activityType
+                            )}
+                            ${esc(
+                              item.activityType ||
+                              'Activity'
+                            )}
+                          </div>
+
+                          <div class="history-detail">
+                            ${esc(
+                              item.description ||
+                              ''
+                            )}
+                          </div>
+
+                        </div>
+
+                        <div
+                          style="
+                            text-align:right;
+                          ">
+
+                          ${
+                            amount
+                              ? `
+                                <div
+                                  class="
+                                    history-amount
+                                    ${amountClass}
+                                  ">
+                                  ${esc(
+                                    amount
+                                  )}
+                                </div>
+                              `
+                              : ''
+                          }
+
+                          <div class="history-time">
+                            ${esc(
+                              formatActivityTime(
+                                item.dateTime
+                              )
+                            )}
+                          </div>
+
+                        </div>
+
+                      </div>
+                    `;
+
+                  }
+                )
+                .join('');
+
+
+              return `
+                <div class="history-group">
+
+                  <div class="history-date">
+                    ${esc(date)}
+                  </div>
+
+                  ${items}
+
+                </div>
+              `;
+
+            }
+          )
+          .join('');
+
+
+        historySection.hidden =
+          false;
+
+
+        if (
+          loadMoreBtn
+        ){
+
+          loadMoreBtn.hidden =
+            !historyHasMore;
+
+        }
+
+      }
+
+
+      async function loadActivityHistory(
+        reset = false
+      ){
+
+        if (
+          !api ||
+          !api.isSignedIn()
+        ){
+
+          activityCache =
+            [];
+
+          if (
+            historySection
+          ){
+
+            historySection.hidden =
+              true;
+
+          }
+
+          return;
+
+        }
+
+
+        if (reset){
+
+          historyOffset =
+            0;
+
+          historyHasMore =
+            false;
+
+          activityCache =
+            [];
+
+        }
+
+
+        if (
+          loadMoreBtn
+        ){
+
+          loadMoreBtn.disabled =
+            true;
+
+          loadMoreBtn.textContent =
+            'Loading…';
+
+        }
+
+
+        try {
+
+          const response =
+            await api.request(
+              'getActivityHistory',
+              {
+                offset:
+                  historyOffset,
+
+                limit:
+                  20
+              }
+            );
+
+
+          if (
+            !response?.ok
+          ){
+
+            throw new Error(
+              response?.error ||
+              'Could not load activity history.'
+            );
+
+          }
+
+
+          const incoming =
+            Array.isArray(
+              response.activities
+            )
+              ? response.activities
+              : [];
+
+
+          activityCache =
+            reset
+              ? incoming
+              : activityCache.concat(
+                  incoming
+                );
+
+
+          historyHasMore =
+            !!response.hasMore;
+
+
+          historyOffset =
+            Number(
+              response.nextOffset ||
+              activityCache.length
+            );
+
+
+          renderActivityHistory();
+
+        } catch (err){
+
+          console.error(
+            'Activity history error:',
+            err
+          );
+
+
+          if (
+            historySection
+          ){
+
+            historySection.hidden =
+              false;
+
+          }
+
+
+          if (
+            historyList
+          ){
+
+            historyList.innerHTML =
+              `<div class="history-detail">
+                ${esc(
+                  err.message ||
+                  'Could not load activity history.'
+                )}
+              </div>`;
+
+          }
+
+
+          if (
+            loadMoreBtn
+          ){
+
+            loadMoreBtn.hidden =
+              true;
+
+          }
+
+        } finally {
+
+          if (
+            loadMoreBtn
+          ){
+
+            loadMoreBtn.disabled =
+              false;
+
+            loadMoreBtn.textContent =
+              'Load more activity';
+
+          }
+
+        }
+
+      }
+
+
+      window.loadActivityHistory =
+        loadActivityHistory;
+
+
+      /*
+       * Load the user's saved goal.
+       */
+
+      const loadSavedGoal =
+        async () => {
+
+          if (
+            !api ||
+            !api.isSignedIn()
+          ){
+
+            return;
+
+          }
+
+
+          try {
+
+            const response =
+              await api.request(
+                'getGoal'
+              );
+
+
+            if (
+              !response?.ok
+            ){
+
+              throw new Error(
+                response?.error ||
+                'Could not load your savings plan.'
+              );
+
+            }
+
+
+            if (
+              response.goal
+            ){
+
+              const g =
+                response.goal;
+
+
+              $('goal').value =
+                g.targetAmount ||
+                '';
+
+
+              $('saved').value =
+                g.currentSavings ||
+                '';
+
+
+              if (
+                $('updateSaved')
+              ){
+
+                $('updateSaved').value =
+                  g.currentSavings ||
+                  '';
+
+              }
+
+
+              $('deadline').value =
+                g.targetDate ||
+                '';
+
+
+              document
+                .querySelectorAll(
+                  '#goalChips .chip'
+                )
+                .forEach(
+                  chip => {
+
+                    chip.classList.toggle(
+                      'active',
+                      chip.textContent.trim() ===
+                      g.goalName
+                    );
+
+                  }
+                );
+
+
+              const other =
+                g.goalName ===
+                'Other';
+
+
+              $('otherGoalWrap')
+                .hidden =
+                !other;
+
+
+              if (
+                other
+              ){
+
+                $('otherGoalName')
+                  .value =
+                  g.otherGoalName ||
+                  '';
+
+              }
+
+
+              window.currentBalance =
+                Number(
+                  g.currentSavings ||
+                  0
+                );
+
+
+              render();
+
+            }
+
+
+            await loadActivityHistory(
+              true
+            );
+
+
+          } catch (err){
+
+            console.error(
+              'Load saved goal error:',
+              err
+            );
+
+
+            if (
+              saveMessage
+            ){
+
+              saveMessage.textContent =
+                err.message ||
+                'Could not load your saved plan.';
+
+            }
+
+          }
+
+        };
+
+
+      window.loadSavedGoal =
+        loadSavedGoal;
+
+
+      /*
+       * SAVE PLAN
+       */
+
+      async function savePlan(){
+
+        if (
+          !api ||
+          !saveBtn
+        ){
+
+          return;
+
+        }
+
+
+        if (
+          saveMessage
+        ){
+
+          saveMessage.textContent =
+            '';
+
+        }
+
+
+        if (
+          !api.isSignedIn()
+        ){
+
+          if (
+            saveMessage
+          ){
+
+            saveMessage.textContent =
+              'Please sign in with Google first.';
+
+          }
+
+
+          document
+            .getElementById(
+              'loginBtn'
+            )
+            ?.click();
+
+
+          return;
+
+        }
+
+
+        const goal =
+          Number(
+            $('goal').value ||
+            0
+          );
+
+
+        const currentSavings =
+          Number(
+            $('saved').value ||
+            0
+          );
+
+
+        const deadline =
+          $('deadline').value;
+
+
+        const active =
+          document.querySelector(
+            '#goalChips .chip.active'
+          );
+
+
+        const goalName =
+          active
+            ? active.textContent.trim()
+            : '';
+
+
+        const otherGoalName =
+          $('otherGoalName')
+            .value
+            .trim();
+
+
+        if (
+          goal <= 0
+        ){
+
+          saveMessage.textContent =
+            'Please enter your savings goal.';
+
+          return;
+
+        }
+
+
+        if (
+          currentSavings < 0
+        ){
+
+          saveMessage.textContent =
+            'Current savings cannot be negative.';
+
+          return;
+
+        }
+
+
+        if (
+          currentSavings >
+          goal
+        ){
+
+          saveMessage.textContent =
+            'Current savings cannot be greater than your target amount.';
+
+          return;
+
+        }
+
+
+        if (
+          !deadline
+        ){
+
+          saveMessage.textContent =
+            'Please choose a target date first.';
+
+          return;
+
+        }
+
+
+        if (
+          !goalName
+        ){
+
+          saveMessage.textContent =
+            'Please choose what you are saving for.';
+
+          return;
+
+        }
+
+
+        if (
+          goalName ===
+            'Other' &&
+          !otherGoalName
+        ){
+
+          saveMessage.textContent =
+            'Please describe what you are saving for.';
+
+          return;
+
+        }
+
+
+        saveBtn.disabled =
+          true;
+
+        saveBtn.textContent =
+          'Saving…';
+
+        saveMessage.textContent =
+          'Saving your plan…';
+
+
+        try {
+
+          const response =
+            await api.request(
+              'saveGoal',
+              {
+                goalName,
+                otherGoalName,
+                targetAmount:
+                  goal,
+                currentSavings,
+                targetDate:
+                  deadline,
+                currency:
+                  'USD'
+              }
+            );
+
+
+          if (
+            !response?.ok
+          ){
+
+            throw new Error(
+              response?.error ||
+              'Could not save your plan.'
+            );
+
+          }
+
+
+          if (
+            response.goal
+          ){
+
+            $('saved').value =
+              response.goal.currentSavings ||
+              '';
+
+
+            if (
+              $('updateSaved')
+            ){
+
+              $('updateSaved').value =
+                response.goal.currentSavings ||
+                '';
+
+            }
+
+
+            window.currentBalance =
+              Number(
+                response.goal.currentSavings ||
+                0
+              );
+
+          }
+
+
+          render();
+
+
+          await loadActivityHistory(
+            true
+          );
+
+
+          saveMessage.textContent =
+            'Your savings plan has been saved.';
+
+
+        } catch (err){
+
+          console.error(
+            'Save plan error:',
+            err
+          );
+
+
+          saveMessage.textContent =
+            err?.message ||
+            'Could not save your plan. Please try again.';
+
+
+        } finally {
+
+          saveBtn.disabled =
+            false;
+
+          saveBtn.textContent =
+            'Save my plan';
+
+        }
+
+      }
+
+
+      saveBtn?.addEventListener(
+        'click',
+        savePlan
+      );
+
+
+      /*
+       * DEPOSIT / WITHDRAWAL
+       */
+
+      async function recordTransaction(
+        type
+      ){
+
+        const isDeposit =
+          type ===
+          'deposit';
+
+
+        const input =
+          isDeposit
+            ? depositInput
+            : withdrawInput;
+
+
+        const button =
+          isDeposit
+            ? depositBtn
+            : withdrawBtn;
+
+
+        if (
+          !input ||
+          !button ||
+          !api
+        ){
+
+          return;
+
+        }
+
+
+        const amount =
+          Number(
+            input.value ||
+            0
+          );
+
+
+        const message =
+          document.getElementById(
+            'transactionMessage'
+          );
+
+
+        if (
+          message
+        ){
+
+          message.textContent =
+            '';
+
+        }
+
+
+        if (
+          !api.isSignedIn()
+        ){
+
+          if (
+            message
+          ){
+
+            message.textContent =
+              'Please sign in with Google to save your transaction.';
+
+          }
+
+
+          document
+            .getElementById(
+              'loginBtn'
+            )
+            ?.click();
+
+
+          return;
+
+        }
+
+
+        if (
+          !Number.isFinite(
+            amount
+          ) ||
+          amount <= 0
+        ){
+
+          if (
+            message
+          ){
+
+            message.textContent =
+              'Enter an amount greater than zero.';
+
+          }
+
+
+          input.focus();
+
+          return;
+
+        }
+
+
+        const currentBalance =
+          Number(
+            window.currentBalance ||
+            $('saved').value ||
+            0
+          );
+
+
+        if (
+          !isDeposit &&
+          amount >
+            currentBalance
+        ){
+
+          if (
+            message
+          ){
+
+            message.textContent =
+              `You cannot withdraw more than your current balance of ${cash(
+                currentBalance
+              )}.`;
+
+          }
+
+
+          input.focus();
+
+          return;
+
+        }
+
+
+        button.disabled =
+          true;
+
+
+        button.textContent =
+          isDeposit
+            ? 'Adding…'
+            : 'Recording…';
+
+
+        if (
+          message
+        ){
+
+          message.textContent =
+            isDeposit
+              ? 'Saving your deposit…'
+              : 'Saving your withdrawal…';
+
+        }
+
+
+        try {
+
+          const response =
+            await api.request(
+              'addTransaction',
+              {
+                amount,
+                type,
+                note:
+                  isDeposit
+                    ? 'Deposit'
+                    : 'Withdrawal'
+              }
+            );
+
+
+          if (
+            !response?.ok
+          ){
+
+            throw new Error(
+              response?.error ||
+              'Could not save the transaction.'
+            );
+
+          }
+
+
+          const balance =
+            Number(
+              response.goal?.currentSavings ||
+              0
+            );
+
+
+          $('saved').value =
+            balance;
+
+
+          if (
+            $('updateSaved')
+          ){
+
+            $('updateSaved').value =
+              balance;
+
+          }
+
+
+          window.currentBalance =
+            balance;
+
+
+          input.value =
+            '';
+
+
+          render();
+
+
+          await loadActivityHistory(
+            true
+          );
+
+
+          if (
+            message
+          ){
+
+            message.textContent =
+              isDeposit
+                ? 'Deposit recorded successfully.'
+                : 'Withdrawal recorded successfully.';
+
+          }
+
+
+        } catch (err){
+
+          console.error(
+            'Transaction error:',
+            err
+          );
+
+
+          if (
+            message
+          ){
+
+            message.textContent =
+              err?.message ||
+              'Could not save the transaction. Please try again.';
+
+          }
+
+
+        } finally {
+
+          button.disabled =
+            false;
+
+
+          button.textContent =
+            isDeposit
+              ? 'Add deposit'
+              : 'Record withdrawal';
+
+        }
+
+      }
+
+
+      depositBtn?.addEventListener(
+        'click',
+        () =>
+          recordTransaction(
+            'deposit'
+          )
+      );
+
+
+      withdrawBtn?.addEventListener(
+        'click',
+        () =>
+          recordTransaction(
+            'withdrawal'
+          )
+      );
+
+
+      refreshHistoryBtn?.addEventListener(
+        'click',
+        () =>
+          loadActivityHistory(
+            true
+          )
+      );
+
+
+      loadMoreBtn?.addEventListener(
+        'click',
+        () =>
+          loadActivityHistory(
+            false
+          )
+      );
+
+
+      /*
+       * Google sign-in event.
+       */
+
+      document.addEventListener(
+        'kk-google-signed-in',
+        loadSavedGoal
+      );
+
+
+      /*
+       * Clear user-specific information
+       * after logout.
+       */
+
+      document.addEventListener(
+        'kk-google-signed-out',
+        () => {
+
+          window.currentBalance =
+            0;
+
+
+          activityCache =
+            [];
+
+
+          historyOffset =
+            0;
+
+
+          historyHasMore =
+            false;
+
+
+          if (
+            historySection
+          ){
+
+            historySection.hidden =
+              true;
+
+          }
+
+
+          if (
+            historyList
+          ){
+
+            historyList.innerHTML =
+              '';
+
+          }
+
+        }
+      );
+
+
+      /*
+       * If auth.js restored an existing
+       * login before this listener was
+       * attached, load the saved data.
+       */
+
+      window.addEventListener(
+        'load',
+        () => {
+
+          if (
+            api?.isSignedIn()
+          ){
+
+            loadSavedGoal();
+
+          }
+
+        }
+      );
+
+    })();
+
+  </script>
+
+</body>
+</html>
