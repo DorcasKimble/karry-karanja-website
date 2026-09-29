@@ -1,7 +1,7 @@
 (() => {
   const CONFIG = {
     CLIENT_ID: '577321300623-bibhl8n6nntpt60pkv8n18mmfplsc994.apps.googleusercontent.com',
-ENDPOINT: 'https://script.google.com/macros/s/AKfycbyrUWZvH2zFLsvuOBEKQ738627dd73kKhbliFoCJVsaEbO8JBKFjNJsMiEX4pBs40uNDw/exec'
+    ENDPOINT: 'https://script.google.com/macros/s/AKfycbyrUWZvH2zFLsvuOBEKQ738627dd73kKhbliFoCJVsaEbO8JBKFjNJsMiEX4pBs40uNDw/exec'
   };
 
   let idToken = sessionStorage.getItem('kk_google_id_token') || '';
@@ -52,7 +52,9 @@ ENDPOINT: 'https://script.google.com/macros/s/AKfycbyrUWZvH2zFLsvuOBEKQ738627dd7
     try {
       setToken(response.credential);
 
-      const result = await request('getProfile');
+      const result = await request('getProfile', {
+        logSignIn: true
+      });
 
       if (!result || !result.ok) {
         throw new Error(
